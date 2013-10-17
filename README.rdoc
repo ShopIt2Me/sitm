@@ -1,28 +1,6 @@
-== README
+Shopit2me is a web application aimed to provide you with curated products based on your likes and dislikes. With a sleek, dynamic and simple UI you can browse for your next favorite look. Built upon Amazon's product advertising api, you can checkout directly with Amazon. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Shopit2me's production app can be found at shopit2me.herokuapp.com.
 
-Things you may want to cover:
+Stay tuned for devloper set up information. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
