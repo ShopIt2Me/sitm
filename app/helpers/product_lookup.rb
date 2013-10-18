@@ -1,0 +1,68 @@
+module ProductLookup
+  # make instance methods available as class methods
+  extend self
+
+  def load_from_asin asin
+    req = ProductLookup.get_request_object
+
+    params = {
+      'Operation'     => 'ItemLookup',
+      'IdType'        => 'ASIN',
+      'ResponseGroup' => "Large",
+      'ItemId'        => asin
+    }
+
+    res = Response.new(req.get(query: params)).to_h
+    item_response = res["ItemLookupResponse"]["Items"]["Item"]
+
+    {
+      product_attributes: get_attribute_hash(item_response),
+      similar_products: get_similar_products(item_response)
+    }
+  end
+
+  def get_request_object
+    req = Vacuum.new('US')
+    req.configure(
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'] ,
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      associate_tag: ENV['ASSOCIATE_TAG']
+      )
+  end
+
+  def get_attribute_hash item_response
+    p item_response
+    {
+      small_image: item_response["SmallImage"]["URL"],
+      med_image: item_response["MediumImage"]["URL"],
+      large_image: item_response["LargeImage"]["URL"],
+      title: item_response["ItemAttributes"]["Title"],
+      price: item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"],
+      brand: item_response["ItemAttributes"]["Brand"],
+      buylink: item_response["DetailPageURL"]
+    }
+  end
+
+  def get_similar_products item_response
+    similar_product_array = item_response["SimilarProducts"]["SimilarProduct"]
+    similar_product_asins = similar_product_array.map {|product| product["ASIN"]}
+  end
+
+  def get_ten_asins
+    req = ProductLookup.get_request_object
+    params = {
+      'Operation'     => 'ItemSearch',
+      'SearchIndex'   => 'Apparel',
+      'ResponseGroup' => 'ItemAttributes',
+      'Keywords'      => 'American Apparel'
+    }
+    res = Response.new(req.get(query: params)).to_h
+    item_response = res["ItemSearchResponse"]["Items"]["Item"]
+    item_response.map { |product| product["ASIN"]}
+  end
+end
+
+
+if $0 == __FILE__
+end
+

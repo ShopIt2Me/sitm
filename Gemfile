@@ -38,6 +38,9 @@ group :test, :development do
   gem 'dotenv-rails'
 end
 
+gem 'multi_xml'
+gem 'vacuum'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
