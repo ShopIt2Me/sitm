@@ -33,10 +33,10 @@ module ProductLookup
   def get_attribute_hash item_response
     {
       small_image: item_response["SmallImage"]["URL"],
-      med_image: item_response["MediumImage"]["URL"],
+      medium_image: item_response["MediumImage"]["URL"],
       large_image: item_response["LargeImage"]["URL"],
       title: item_response["ItemAttributes"]["Title"],
-      price: item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"],
+      # price: item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"], ***need to account for products without prices
       brand: item_response["ItemAttributes"]["Brand"],
       buylink: item_response["DetailPageURL"]
     }
@@ -53,7 +53,7 @@ module ProductLookup
       'Operation'     => 'ItemSearch',
       'SearchIndex'   => 'Apparel',
       'ResponseGroup' => 'ItemAttributes',
-      'Keywords'      => 'American Apparel'
+      'Keywords'      => 'Calvin Klein'
     }
     res = Response.new(req.get(query: params)).to_h
     item_response = res["ItemSearchResponse"]["Items"]["Item"]

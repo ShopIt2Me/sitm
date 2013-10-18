@@ -41,6 +41,8 @@ end
 gem 'multi_xml'
 gem 'vacuum'
 
+gem 'awesome_print'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
