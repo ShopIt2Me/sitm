@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018035147) do
+ActiveRecord::Schema.define(version: 20131018185533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 20131018035147) do
     t.string   "amzn_id"
     t.text     "small_image"
     t.text     "medium_image"
+  end
+
+  create_table "simple_sessions", force: true do |t|
+    t.string   "session_key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
