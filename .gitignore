@@ -17,3 +17,4 @@
 
 # Ignore .env files
 /.env.development
+/.env.test
