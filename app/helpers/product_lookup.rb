@@ -38,7 +38,7 @@ module ProductLookup
     params = {
       'Operation'     => 'ItemLookup',
       'IdType'        => 'ASIN',
-      'ResponseGroup' => "Large",
+      'ResponseGroup' => 'Large',
       'ItemId'        => asins
     }
 
@@ -71,11 +71,12 @@ module ProductLookup
 
   def get_attribute_hash item_response
     {
+      asin: item_response["ASIN"],
       small_image: item_response["SmallImage"]["URL"],
       medium_image: item_response["MediumImage"]["URL"],
       large_image: item_response["LargeImage"]["URL"],
       title: item_response["ItemAttributes"]["Title"],
-      # price: item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"], ***need to account for products without prices
+      price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
       brand: item_response["ItemAttributes"]["Brand"],
       buylink: item_response["DetailPageURL"],
       similar_products: get_similar_products(item_response).join(",")
@@ -107,5 +108,6 @@ if $0 == __FILE__
   require 'awesome_print'
   require_relative '../../config/environment'
 
-  ap ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM")
+  # ap ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52")
+  ap ProductLookup.load_product_batch("B00CHHB2QU")
 end
