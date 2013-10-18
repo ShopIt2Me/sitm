@@ -17,3 +17,6 @@
 
 # Ignore .env files
 /.env.development
+
+# Ignore precompiled assets
+/public/assets/*
