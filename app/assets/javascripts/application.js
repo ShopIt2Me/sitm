@@ -10,7 +10,20 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require modernizr.custom
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require masonry.pkgd.min
+//= require imagesloaded
+//= require classie
+//= require AnimOnScroll
 //= require_tree .
+
+$(document).ready(function(){
+  new AnimOnScroll( document.getElementById( 'grid' ), {
+    minDuration : 0.4,
+    maxDuration : 0.7,
+    viewportFactor : 0.2
+  } );
+})
