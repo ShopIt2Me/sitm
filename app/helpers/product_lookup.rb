@@ -47,6 +47,19 @@ module ProductLookup
     similar_product_array = item_response["SimilarProducts"]["SimilarProduct"]
     similar_product_asins = similar_product_array.map {|product| product["ASIN"]}
   end
+
+  def get_ten_asins
+    req = ProductLookup.get_request_object
+    params = {
+      'Operation'     => 'ItemSearch',
+      'SearchIndex'   => 'Apparel',
+      'ResponseGroup' => 'ItemAttributes',
+      'Keywords'      => 'American Apparel'
+    }
+    res = Response.new(req.get(query: params)).to_h
+    item_response = res["ItemSearchResponse"]["Items"]["Item"]
+    item_response.map { |product| product["ASIN"]}
+  end
 end
 
 
