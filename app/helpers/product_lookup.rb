@@ -31,8 +31,11 @@ module ProductLookup
   end
 
   def get_attribute_hash item_response
+    p item_response
     {
-      image: item_response["LargeImage"]["URL"],
+      small_image: item_response["SmallImage"]["URL"],
+      med_image: item_response["MediumImage"]["URL"],
+      large_image: item_response["LargeImage"]["URL"],
       title: item_response["ItemAttributes"]["Title"],
       price: item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"],
       brand: item_response["ItemAttributes"]["Brand"],
