@@ -13,3 +13,13 @@
  *= require default
  *= require_tree .
  */
+.like{
+  height: 20%;
+  z-index: 3000;
+  position: absolute;
+  width: 97%;
+  border-color: red;
+  border-style: solid;
+  z-index: 50;
+  display: none;
+}

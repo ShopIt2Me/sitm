@@ -1,9 +1,9 @@
 <div class="container">
-  <ul class="grid effect-3" id="grid">
+  <ul class="grid effect-2" id="grid">
     <%@products.each do |product| %>
         <li>
             <a href="<%=product.buylink %>">
-                <img src="<%=product.large_image%>">
+                <div><div class="like"></div><img src="<%=product.large_image%>"></div>
             </a>
         </li>
     <%end%>

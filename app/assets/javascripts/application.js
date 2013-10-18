@@ -20,10 +20,16 @@
 //= require AnimOnScroll
 //= require_tree .
 
+
 $(document).ready(function(){
   new AnimOnScroll( document.getElementById( 'grid' ), {
     minDuration : 0.4,
     maxDuration : 0.7,
     viewportFactor : 0.2
   } );
+  $('img').hover(function(){
+    $(this).parent().find('.like').fadeIn('slow')
+  }, function() {
+    $(this).parent().find('.like').fadeOut('slow')
+  })
 })
