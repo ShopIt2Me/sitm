@@ -1,3 +1,52 @@
+# ProductLookup module takes care of querying Amazon API for products
+#
+# load_from_asin method receives batches of Amazon ASINS in the format of:
+#   FORMAT: String => "ASIN1,ASIN2,ASIN3,..,ASIN10"
+#
+# And returns and array containing a hash for each product composed by
+# the product attributes and its similar products, in the format of:
+#   FORMAT: Array => [
+#     {
+#       :product_attributes => {
+#         small_image: ''
+#         medium_image: ''
+#         large_image: ''
+#         title: ''
+#         price: ''
+#         brand: ''
+#         buylink: ''
+#       }
+#       :similar_products   => [
+#         'ASIN1',
+#         'ASIN2',
+#         'ASIN3',
+#         ...
+#         'ASIN10'
+#       ]
+#     },
+#     {
+#       :product_attributes => {
+#         small_image: ''
+#         medium_image: ''
+#         large_image: ''
+#         title: ''
+#         price: ''
+#         brand: ''
+#         buylink: ''
+#       }
+#       :similar_products   => [
+#         'ASIN1',
+#         'ASIN2',
+#         'ASIN3',
+#         ...
+#         'ASIN10'
+#       ]
+#     },
+#     ...
+#   ]
+#
+# get_ten_asins returns an array of ten random ASINs
+
 module ProductLookup
   # make instance methods available as class methods
   extend self
