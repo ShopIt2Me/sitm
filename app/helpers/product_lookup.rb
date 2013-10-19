@@ -7,23 +7,16 @@
 # the product attributes and its similar products, in the format of:
 #   FORMAT: Array => [
 #     {
-#       :product_attributes => {
-#         small_image: ''
-#         medium_image: ''
-#         large_image: ''
-#         title: ''
-#         price: ''
-#         brand: ''
-#         buylink: ''
-#         similar_products: [
-#           'ASIN1',
-#           'ASIN2',
-#           'ASIN3',
-#           ...
-#           'ASIN10'
-#         ]
-#      },
-#      ...
+#       small_image: ''
+#       medium_image: ''
+#       large_image: ''
+#       title: ''
+#       price: ''
+#       brand: ''
+#       buylink: ''
+#       sim_products: 'ASIN1,ASIN2,ASIN3,...,ASIN10'
+#     },
+#     ...
 #   ]
 #
 # get_ten_asins returns an array of ten random ASINs
@@ -79,13 +72,17 @@ module ProductLookup
       price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
       brand: item_response["ItemAttributes"]["Brand"],
       buylink: item_response["DetailPageURL"],
-      similar_products: get_similar_products(item_response).join(",")
+      sim_products: get_similar_products(item_response).join(",")
     }
   end
 
   def get_similar_products item_response
-    similar_product_array = item_response["SimilarProducts"]["SimilarProduct"]
-    similar_product_array.map {|product| product["ASIN"]}
+    similar_product = item_response["SimilarProducts"]["SimilarProduct"]
+    if similar_product.is_a?(Hash)
+      [similar_product['ASIN']]
+    else
+      similar_product.map { |product| product["ASIN"] }
+    end
   end
 
   def get_ten_asins
@@ -109,5 +106,6 @@ if $0 == __FILE__
   require_relative '../../config/environment'
 
   # ap ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52")
-  ap ProductLookup.load_product_batch("B00CHHB2QU")
+  ap ProductLookup.load_product_batch("B00DQN7NA8")
+  # ap ProductLookup.load_product_batch("B00CHHB2QU")
 end
