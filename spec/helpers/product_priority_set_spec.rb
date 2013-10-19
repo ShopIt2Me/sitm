@@ -17,9 +17,21 @@ describe 'ProductPrioritySet' do
 
   describe "next_batch" do
     it "returns the most frequently called ASINs from the set in a string" do
-    expect(ProductPrioritySet.next_batch).to eq(product_priority1.asin)
+      expect(ProductPrioritySet.next_batch).to eq(product_priority1.asin)
     end
   end  
+
+  describe "persist_products" do
+   let(:product_hash1) { FactoryGirl.build(:product_hash) }
+   let(:product_hash2) { FactoryGirl.build(:product_hash, :asin => "B00DH9NB52") }
+   let!(:parent_product) { FactoryGirl.create(:product, :id => 1) }
+   it "saves products in database and assigns similarity relationship with its parent product" do
+    product_hash_array = [product_hash1, product_hash2]
+    expect{
+      ProductPrioritySet.persist_products(product_hash_array)
+      }.to change(Product, :count).by(2)
+    end
+  end
 
   describe "delete_persisted_product_priorities" do
    let(:product_hash1) { FactoryGirl.build(:product_hash) }
