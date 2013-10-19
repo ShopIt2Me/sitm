@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019000628) do
+ActiveRecord::Schema.define(version: 20131019033416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20131019000628) do
     t.text     "sim_products"
   end
 
-  create_table "similarities_tables", force: true do |t|
-    t.integer "sim_product_id"
-    t.integer "parent_product_id"
+  create_table "similars", force: true do |t|
+    t.integer "similarprod_id"
+    t.integer "product_id"
   end
 
 end
