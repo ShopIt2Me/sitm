@@ -5,15 +5,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :update_session
 
-  def update_session 
-    unless params[:session_id]
-      params[:session_id] = generate_session_key
+  def update_session
+    unless params[:session_key]
+      params[:session_key] = generate_session_key
     end
-    @simple_session = SimpleSession.find_by session_id: params[:session_id]
+      @simple_session = SimpleSession.find_by session_key: params[:session_key]
     unless @simple_session
       @simple_session = SimpleSession.create(session_key: params[:session_key])
     end
-
   end
 
 end
