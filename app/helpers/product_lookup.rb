@@ -72,7 +72,7 @@ module ProductLookup
       price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
       brand: item_response["ItemAttributes"]["Brand"],
       buylink: item_response["DetailPageURL"],
-      sim_products: get_similar_products(item_response).join(",")
+      asins_of_sim_prods: get_similar_products(item_response).join(",")
     }
   end
 
