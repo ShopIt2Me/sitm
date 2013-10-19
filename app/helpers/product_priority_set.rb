@@ -15,7 +15,9 @@ module ProductPrioritySet
   extend self
 
   def add_to_set(product_id, asins)
-
+    asins.each do |asin|
+      ProductPriority.create(product_id: product_id, asin: asin)
+    end
   end
 
 end
