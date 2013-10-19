@@ -37,6 +37,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
 end
 
 gem 'multi_xml'
