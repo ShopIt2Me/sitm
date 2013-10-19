@@ -6,5 +6,6 @@ class ProductsController < ApplicationController
   def like
     missing = Product.find(params[:product_id]).identify_missing_asins
     ProductPrioritySet.add_to_set(params[:product_id], missing)
+    #update array of likes in session
   end
 end
