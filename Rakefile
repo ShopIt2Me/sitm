@@ -10,7 +10,7 @@ task "db:seed" do
 	@asins = ProductLookup.get_ten_asins
 	@asins.each do |asin|
 		prod_attrs = ProductLookup.load_from_asin(asin)[:product_attributes]
-		prod_attrs["amzn_id"] = asin
+		prod_attrs["asin"] = asin
 		prod_obj = Product.create(prod_attrs)
 		#once relationship table has been created we will also want to create relationships for each similar product
 	end
