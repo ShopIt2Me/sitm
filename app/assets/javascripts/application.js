@@ -28,12 +28,12 @@ $(document).ready(function(){
     viewportFactor : 0.2
   } );
 
-  $('img').hover(function(){
-    if ($(this).parent().find('.like').is(':animated')) {
+  $('ul.grid li').hover(function(){
+    if ($(this).find('.like').is(':animated')) {
       return false;
     }
-    $(this).parent().find('.like').fadeIn('slow')
+    $(this).find('.like').fadeIn('slow')
   }, function() {
-    $(this).parent().find('.like').fadeOut('slow')
+    $(this).find('.like').fadeOut('slow')
   });
 })
