@@ -54,7 +54,7 @@ module ProductPrioritySet
 
   def delete_persisted_product_priorities(products)
     products.each do |product|
-      ProductPriority.destroy_all(asin: product.asin)
+      ProductPriority.destroy_all(asin: product[:asin])
     end
   end
 end

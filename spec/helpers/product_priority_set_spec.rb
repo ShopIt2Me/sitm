@@ -9,7 +9,22 @@ describe 'ProductPrioritySet' do
       expect{
         ProductPrioritySet.add_to_set(product_id, asins)
         }.to change(ProductPriority, :count).by(asins.length)
+      end
     end
-  end
 
-end
+    describe "delete_persisted_product_priorities" do
+     let!(:product_priority1) { FactoryGirl.create(:product_priority) }
+     let!(:product_priority2) { FactoryGirl.create(:product_priority) }
+     let!(:product_priority3) { FactoryGirl.create(:product_priority) }
+     let!(:product_hash1) { FactoryGirl.build(:product_hash) }
+     let!(:product_hash2) { FactoryGirl.build(:product_hash, :asin => "B00DH9NB52") }
+
+     it "destroys all ProductPriority entries pertaining to passed products" do
+      product_hash_array = [product_hash1, product_hash2]
+      expect{
+        ProductPrioritySet.delete_persisted_product_priorities(product_hash_array)
+        }.to change(ProductPriority, :count).by(-3)
+      end
+    end
+
+  end
