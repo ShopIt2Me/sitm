@@ -36,7 +36,6 @@ module ProductLookup
     }
 
     res = Response.new(req.get(query: params)).to_h
-    ap res["ItemLookupResponse"]["Items"]["Request"]["IsValid"]
     if is_valid_response?(res)
       items = res["ItemLookupResponse"]["Items"]["Item"]
       if items.is_a?(Hash)
