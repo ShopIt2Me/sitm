@@ -1,24 +1,56 @@
+# ProductLookup module takes care of querying Amazon API for products
+#
+# load_product_batch method receives batches of Amazon ASINS in the format of:
+#   FORMAT: String => "ASIN1,ASIN2,ASIN3,..,ASIN10"
+#
+# And returns and array containing a hash for each product composed by
+# the product attributes and its similar products, in the format of:
+#   FORMAT: Array => [
+#     {
+#       small_image: ''
+#       medium_image: ''
+#       large_image: ''
+#       title: ''
+#       price: ''
+#       brand: ''
+#       buylink: ''
+#       sim_products: 'ASIN1,ASIN2,ASIN3,...,ASIN10'
+#     },
+#     ...
+#   ]
+#
+# get_ten_asins returns an array of ten random ASINs
+
 module ProductLookup
   # make instance methods available as class methods
   extend self
 
-  def load_from_asin asin
+  def load_product_batch asins
     req = ProductLookup.get_request_object
 
     params = {
       'Operation'     => 'ItemLookup',
       'IdType'        => 'ASIN',
-      'ResponseGroup' => "Large",
-      'ItemId'        => asin
+      'ResponseGroup' => 'Large',
+      'ItemId'        => asins
     }
 
     res = Response.new(req.get(query: params)).to_h
-    item_response = res["ItemLookupResponse"]["Items"]["Item"]
 
-    {
-      product_attributes: get_attribute_hash(item_response),
-      similar_products: get_similar_products(item_response)
-    }
+    if is_valid_response?(res)
+      items = res["ItemLookupResponse"]["Items"]["Item"]
+      if items.is_a?(Hash)
+        return [get_attribute_hash(items)]
+      else
+        return items.map { |item| get_attribute_hash(item) }
+      end
+    end
+
+    []
+  end
+
+  def is_valid_response?(response)
+    true
   end
 
   def get_request_object
@@ -32,19 +64,25 @@ module ProductLookup
 
   def get_attribute_hash item_response
     {
+      asin: item_response["ASIN"],
       small_image: item_response["SmallImage"]["URL"],
       medium_image: item_response["MediumImage"]["URL"],
       large_image: item_response["LargeImage"]["URL"],
       title: item_response["ItemAttributes"]["Title"],
-      # price: item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"], ***need to account for products without prices
+      price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
       brand: item_response["ItemAttributes"]["Brand"],
-      buylink: item_response["DetailPageURL"]
+      buylink: item_response["DetailPageURL"],
+      sim_products: get_similar_products(item_response).join(",")
     }
   end
 
   def get_similar_products item_response
-    similar_product_array = item_response["SimilarProducts"]["SimilarProduct"]
-    similar_product_asins = similar_product_array.map {|product| product["ASIN"]}
+    similar_product = item_response["SimilarProducts"]["SimilarProduct"]
+    if similar_product.is_a?(Hash)
+      [similar_product['ASIN']]
+    else
+      similar_product.map { |product| product["ASIN"] }
+    end
   end
 
   def get_ten_asins
@@ -63,5 +101,11 @@ end
 
 
 if $0 == __FILE__
-end
+  require 'vacuum'
+  require 'awesome_print'
+  require_relative '../../config/environment'
 
+  # ap ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52")
+  ap ProductLookup.load_product_batch("B00DQN7NA8")
+  # ap ProductLookup.load_product_batch("B00CHHB2QU")
+end
