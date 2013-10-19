@@ -19,16 +19,10 @@ module DisplayPrioritizer
     freq_hash = {}
     ary_of_likes_ids.each do |liked_id|
       sim_product_ids = get_sim_prod_ids(liked_id)
-      never_displayed_ids = remove_already_displayed(sim_product_ids, ary_of_displayed_ids)
+      never_displayed_ids = sim_product_ids - ary_of_displayed_ids
       freq_hash = update_freq_hash(freq_hash, never_displayed_ids)
     end
     freq_hash
-  end
-
-  def remove_already_displayed(ary_of_similarprods, ary_of_displayed_ids)
-    ary_of_similarprods.select do |similarprod|
-      similarprod unless ary_of_displayed_ids.include?(similarprod)
-    end
   end
 
   def get_sim_prod_ids(liked_id)
@@ -49,5 +43,5 @@ if $0 == __FILE__
 
   require_relative '../../config/environment'
 
-  p DisplayPrioritizer.frequentize([7,1], [3])
+  p DisplayPrioritizer.frequentize([7,1], [5])
 end
