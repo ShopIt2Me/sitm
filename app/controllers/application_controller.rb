@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   before_filter :update_session
 
   def update_session 
-    unless params[:session]
-      params[:session] = {:session_key => generate_session_key, :value => nil}
+    unless params[:session_id]
+      params[:session_id] = generate_session_key
     end
-    @simple_session = SimpleSession.find_by_session_key(params[:session_key])
+    @simple_session = SimpleSession.find_by session_id: params[:session_id]
     unless @simple_session
-      @simple_session = SimpleSession.create(session_key: params[:session][:session_key], value: params[:session][:value])
+      @simple_session = SimpleSession.create(session_key: params[:session_key])
     end
 
   end
