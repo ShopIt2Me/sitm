@@ -5,6 +5,6 @@ class ProductsController < ApplicationController
 
   def like
     missing = Product.find(params[:product_id]).identify_missing_asins
-    #add_to_set(params[:product_id], missing)
+    ProductPrioritySet.add_to_set(params[:product_id], missing)
   end
 end
