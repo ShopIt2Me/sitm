@@ -27,9 +27,13 @@ $(document).ready(function(){
     maxDuration : 0.7,
     viewportFactor : 0.2
   } );
+
   $('img').hover(function(){
+    if ($(this).parent().find('.like').is(':animated')) {
+      return false;
+    }
     $(this).parent().find('.like').fadeIn('slow')
   }, function() {
     $(this).parent().find('.like').fadeOut('slow')
-  })
+  });
 })

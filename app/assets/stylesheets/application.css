@@ -18,8 +18,9 @@
   z-index: 3000;
   position: absolute;
   width: 97%;
-  border-color: red;
-  border-style: solid;
+  background-color: white;
+  opacity: 0.9;
+  overflow: hidden;
   z-index: 50;
   display: none;
 }
