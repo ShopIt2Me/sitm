@@ -14,7 +14,7 @@
 #       price: ''
 #       brand: ''
 #       buylink: ''
-#       sim_products: 'ASIN1,ASIN2,ASIN3,...,ASIN10'
+#       asins_of_sim_prods: 'ASIN1,ASIN2,ASIN3,...,ASIN10'
 #     },
 #     ...
 #   ]

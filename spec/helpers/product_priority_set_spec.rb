@@ -24,7 +24,8 @@ describe 'ProductPrioritySet' do
   describe "persist_products" do
    let(:product_hash1) { FactoryGirl.build(:product_hash) }
    let(:product_hash2) { FactoryGirl.build(:product_hash, :asin => "B00DH9NB52") }
-   let!(:parent_product) { FactoryGirl.create(:product, :id => 1) }
+   let!(:parent_product) { FactoryGirl.create(:product, :id => 1, :asin => "B00CHHBDA0") }
+   let!(:product_priority3) { FactoryGirl.create(:product_priority, :asin => "B00DH9NB52") }
    it "saves products in database and assigns similarity relationship with its parent product" do
     product_hash_array = [product_hash1, product_hash2]
     expect{

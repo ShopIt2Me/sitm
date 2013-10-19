@@ -43,8 +43,7 @@ module ProductPrioritySet
 
   def persist_products(products)
     products.each do |product_attributes|
-      product_priority_entries = ProductPriority.where('asin = ?', product_attributes[:asin]).uniq_by(&:product_id)
-
+      product_priority_entries = ProductPriority.where('asin = ?', product_attributes[:asin]).uniq(&:product_id)
       product_priority_entries.each do |product_priority_entry|
         parent_product = Product.find(product_priority_entry.product_id)
         parent_product.similarprods.create(product_attributes)

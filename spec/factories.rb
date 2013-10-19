@@ -26,7 +26,7 @@ FactoryGirl.define do
     price "$25.99"
     brand "American Apparel"
     buylink "http://www.amazon.com/example_link"
-    sim_products "B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52"
+    asins_of_sim_prods "B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52"
 
     initialize_with { attributes } 
   end
