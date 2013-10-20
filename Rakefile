@@ -41,3 +41,21 @@ task "db:seed" do
   puts "ALL DONE!"
   puts "SEEDED #{Product.count - start_count} PRODUCTS. DEFINED #{relationship_count} RELATIONSHIPS."
 end
+
+desc "Connect products with each other by similarity in db "
+task "db:connect_similar" => :environment do
+  relationship_count = 0
+  Product.all.each do |product|
+    sim_prod_array = product.asins_of_sim_prods.split(',')
+    sim_prod_array.each do |asin|
+      if sim_product = Product.find_by(asin: asin)
+        unless product.similarprods.include?(sim_product)
+          product.similarprods << sim_product
+          puts "Defined relationship for #{product.title} and #{sim_product.title}..."
+          relationship_count += 1
+        end
+      end
+    end
+  end
+  puts "DEFINED #{relationship_count} RELATIONSHIPS."
+end

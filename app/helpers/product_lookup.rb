@@ -106,8 +106,12 @@ module ProductLookup
     }
     res = Response.new(req.get(query: params)).to_h
     return nil if res["ItemSearchResponse"]["Items"]["Request"]["Errors"]
-    item_response = res["ItemSearchResponse"]["Items"]["Item"]
+    item_response = normalize_to_array(res["ItemSearchResponse"]["Items"]["Item"])
     item_response.map { |product| product["ASIN"]}
+  end
+
+  def normalize_to_array(item_search_response)
+    [item_search_response].flatten
   end
 
   def _get_random_page
@@ -127,6 +131,6 @@ if $0 == __FILE__
   require_relative '../../config/environment'
 
   # ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52,B00DP34DW0")
-  p ProductLookup.load_product_batch("B00DQN7NA8")
+  ProductLookup.load_product_batch("B00DQN7NA8")
   # ap ProductLookup.load_product_batch("B00CHHB2QU")
 end
