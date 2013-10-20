@@ -7,8 +7,9 @@ Sitm::Application.load_tasks
 
 desc "Seed db with products"
 task "db:seed" do
+  start_time = Time.now
   start_count = Product.count
-  10.times do |n|
+  30.times do |n|
     if random_asins = ProductLookup.get_ten_asins
       sleep 1
       products = ProductLookup.load_product_batch(random_asins.join(','))
@@ -39,7 +40,7 @@ task "db:seed" do
   end
   puts "**************************************************************"
   puts "ALL DONE!"
-  puts "SEEDED #{Product.count - start_count} PRODUCTS. DEFINED #{relationship_count} RELATIONSHIPS."
+  puts "SEEDED #{Product.count - start_count} PRODUCTS. DEFINED #{relationship_count} RELATIONSHIPS. TOTAL TIME: #{Time.at(Time.now - start_time).gmtime.strftime('%R:%S')}"
 end
 
 desc "Connect products with each other by similarity in db "
@@ -58,5 +59,5 @@ task "db:connect_similar" => :environment do
     end
   end
   puts "**************************************************************"
-  puts "DEFINED #{relationship_count} RELATIONSHIPS."
+  puts "DEFINED #{relationship_count} RELATIONSHIPS. "
 end

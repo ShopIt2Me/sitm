@@ -187,6 +187,7 @@
         2,
         2,
         null,
+        null,
         2,
         2,
         2,
@@ -332,17 +333,6 @@
         null,
         null,
         null,
-        null
-      ],
-      "/Users/apprentice/Desktop/sitm/app/models/similar.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/apprentice/Desktop/sitm/app/models/image.rb": [
-        1,
-        1,
         null
       ],
       "/Users/apprentice/Desktop/sitm/app/helpers/product_lookup.rb": [
@@ -508,8 +498,19 @@
         5,
         null,
         null
+      ],
+      "/Users/apprentice/Desktop/sitm/app/models/similar.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/sitm/app/models/image.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1382300486
+    "timestamp": 1382301338
   }
 }

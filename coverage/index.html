@@ -14,7 +14,7 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-10-20T13:21:26-07:00">2013-10-20T13:21:26-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-10-20T13:35:38-07:00">2013-10-20T13:35:38-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -183,7 +183,7 @@
       <tr>
         <td class="strong"><a href="#3caf5ba484f8457ffe22f40be0fa7b29f397bbcf" class="src_link" title="spec/models/product_spec.rb">spec/models/product_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>28</td>
+        <td>29</td>
         <td>18</td>
         <td>18</td>
         <td>0</td>
@@ -3155,13 +3155,13 @@
         <li class="covered" data-hits="2" data-linenumber="5">
           <span class="hits">2</span>
           
-          <code class="ruby">  let (:prod1_attrs) { {asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', department: 'mens', asins_of_sim_prods: &quot;B00CTGB4M6,B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2&quot;}}</code>
+          <code class="ruby">  let (:prod1_attrs) { FactoryGirl.build(:product_hash, asin: 'B00CTGB8OK', asins_of_sim_prods: &quot;B00CTGB4M6,B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2&quot;)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="6">
           <span class="hits">2</span>
           
-          <code class="ruby">  let (:prod2_attrs) { {asin: 'B00CTGB4M6', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', department: 'mens', asins_of_sim_prods: &quot;B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2&quot;}}</code>
+          <code class="ruby">  let (:prod2_attrs) { FactoryGirl.build(:product_hash, asin: 'B00CTGB4M6', asins_of_sim_prods: &quot;B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2&quot;)}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -3170,127 +3170,133 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="8">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="8">
           
-          <code class="ruby">  it { should validate_uniqueness_of(:asin)}</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="9">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should validate_presence_of(:asin)}</code>
+          <code class="ruby">  it { should validate_uniqueness_of(:asin)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="10">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should validate_presence_of(:buylink)}</code>
+          <code class="ruby">  it { should validate_presence_of(:asin)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="11">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should validate_presence_of(:department)}</code>
+          <code class="ruby">  it { should validate_presence_of(:buylink)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="12">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should validate_presence_of(:large_image)}</code>
+          <code class="ruby">  it { should validate_presence_of(:department)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="13">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should validate_presence_of(:small_image)}</code>
+          <code class="ruby">  it { should validate_presence_of(:large_image)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="14">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should validate_presence_of(:medium_image)}</code>
+          <code class="ruby">  it { should validate_presence_of(:small_image)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="15">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should have_many(:images)}</code>
+          <code class="ruby">  it { should validate_presence_of(:medium_image)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="16">
           <span class="hits">2</span>
           
-          <code class="ruby">  it { should have_many(:similars)}</code>
+          <code class="ruby">  it { should have_many(:images)}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="17">
           <span class="hits">2</span>
           
+          <code class="ruby">  it { should have_many(:similars)}</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="18">
+          <span class="hits">2</span>
+          
           <code class="ruby">  it { should have_many(:similarprods)}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
+        <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
           <code class="ruby">  it 'returns asins for similar products not in db as an array of strings' do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    prod1 = Product.create(prod1_attrs)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="22">
           <span class="hits">1</span>
           
+          <code class="ruby">    prod1 = Product.create(prod1_attrs)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
           <code class="ruby">    prod2 = Product.create(prod2_attrs)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="24">
+        <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(prod1.identify_missing_asins).to eq(['B00CTGB4OO','B00CTGB5FW','B00CTGB2X2','B00CTGB1Y2'])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="26">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby">end</code>
