@@ -27,4 +27,21 @@ describe 'ProductLookup' do
     expect(ProductLookup.load_product_batch("B00DQN7NA8,B00CHHCCDC").length).to be(1)
   end
 
+  it "get_ten_asins returns nil if no results are found" do
+    expect(ProductLookup.get_ten_asins('1981273')).to eq(nil)
+  end
+
+  it "get_similar_products attribute is an empty string when product has no similarities" do
+    ProductLookup.stub(:get_parsed_response) {
+      params = ProductLookup.get_params("B00DQN7NA8")
+      req = ProductLookup.get_request_object
+      res = Response.new(req.get(query: params)).to_h
+
+      res["ItemLookupResponse"]["Items"]["Item"]['SimilarProducts'] = nil
+      res
+    }    
+
+    expect(ProductLookup.load_product_batch("B00DQN7NA8")[0][:asins_of_sim_prods]).to eq('')
+  end
+
 end

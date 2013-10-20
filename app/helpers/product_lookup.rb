@@ -86,23 +86,23 @@ module ProductLookup
   end
 
   def get_similar_products item_response
+    return [] if item_response["SimilarProducts"].nil?
     similar_product = item_response["SimilarProducts"]["SimilarProduct"]
-    if similar_product.is_a?(Hash)
-      [similar_product['ASIN']]
-    else
-      similar_product.map { |product| product["ASIN"] }
-    end
+    [similar_product].flatten.map { |product| product["ASIN"] }
   end
 
-  def get_ten_asins
+  def get_ten_asins(page = '1', brand = 'Calvin Klein', keywords = '')
     req = ProductLookup.get_request_object
     params = {
       'Operation'     => 'ItemSearch',
       'SearchIndex'   => 'Apparel',
       'ResponseGroup' => 'ItemAttributes',
-      'Keywords'      => 'Calvin Klein'
+      'Brand'         =>  brand,
+      'Keywords'      =>  keywords,
+      'ItemPage'      =>  page
     }
     res = Response.new(req.get(query: params)).to_h
+    return nil if res["ItemSearchResponse"]["Items"]["Request"]["Errors"]
     item_response = res["ItemSearchResponse"]["Items"]["Item"]
     item_response.map { |product| product["ASIN"]}
   end
