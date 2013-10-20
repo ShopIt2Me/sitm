@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe ProductsController do
-  let (:prod1) { Product.create(asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4M6,B00CTGU4M7")}
-  let (:prod2) { Product.create(asin: 'B00CTGB4M6', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "")}
-  let (:prod3) { Product.create(asin: 'B00CTGU4M7', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "")}
+  let (:prod1) { Product.create(asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4M6,B00CTGU4M7", department: 'mens' )}
+  let (:prod2) { Product.create(asin: 'B00CTGB4M6', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "", department: 'mens')}
+  let (:prod3) { Product.create(asin: 'B00CTGU4M7', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "", department: 'mens')}
   let (:simple_session) { SimpleSession.create(session_key: 'test', value: {ary_of_likes: [], ary_of_displayed_ids: []})}
 
   context "when a user likes a product"

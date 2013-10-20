@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe DisplayPrioritizer do
 
-  let (:prod1) { Product.create(asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4M6,B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2")}
-  let (:prod2) { Product.create(asin: 'B00CTGB4M6', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2")}
-  let (:prod3) { Product.create(asin: 'B00CTGU4M7', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2")}
+  let (:prod1) { Product.create(asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4M6,B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2", department: 'mens')}
+  let (:prod2) { Product.create(asin: 'B00CTGB4M6', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2", department: 'mens')}
+  let (:prod3) { Product.create(asin: 'B00CTGU4M7', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2", department: 'mens')}
   
 
   it "should return an array of product ids for similar products in the db given a product id" do
