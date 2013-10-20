@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-  	@products = Product.all.shuffle
+  	@products = Product.all.shuffle.shift(20)
   end
 
   def like
