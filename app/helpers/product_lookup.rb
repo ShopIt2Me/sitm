@@ -36,16 +36,17 @@ module ProductLookup
     }
 
     res = Response.new(req.get(query: params)).to_h
+
     if is_valid_response?(res)
       items = res["ItemLookupResponse"]["Items"]["Item"]
-      if items.is_a?(Hash)
-        return [get_attribute_hash(items)]
-      else
-        return items.map { |item| get_attribute_hash(item) }
-      end
+      return normalize_response(items)
     end
 
     []
+  end
+
+  def normalize_response(item_response)
+    [item_response].flatten.map { |item| get_attribute_hash(item) }
   end
 
   def is_valid_response?(response)
@@ -104,7 +105,7 @@ if $0 == __FILE__
   require 'awesome_print'
   require_relative '../../config/environment'
 
-  ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52,B00DP34DW0")
-  # ap ProductLookup.load_product_batch("B00DQN7NA8")
+  # ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52,B00DP34DW0")
+  p ProductLookup.load_product_batch("B00DQN7NA8")
   # ap ProductLookup.load_product_batch("B00CHHB2QU")
 end
