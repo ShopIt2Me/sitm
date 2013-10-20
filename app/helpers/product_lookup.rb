@@ -93,7 +93,7 @@ module ProductLookup
 
   def get_ten_asins(page = '', keywords = '', brand = '')
     page = _get_random_page if page.empty?
-    brand = _get_random_brand if brand.empty?
+    brand = "Frederick's"#_get_random_brand if brand.empty?
     req = ProductLookup.get_request_object
     params = {
       'Operation'     => 'ItemSearch',

@@ -13,8 +13,10 @@ task "db:seed" do
       sleep 1
       products = ProductLookup.load_product_batch(random_asins.join(','))
       products.each do |product|
-        new_product = Product.create(product)
-        puts "Seeded #{new_product.title}..."
+        unless Product.find_by(product)
+          new_product = Product.create(product)
+          puts "Seeded #{new_product.title}..."
+        end
       end
     end
   #once relationship table has been created we will also want to create relationships for each similar product
@@ -22,15 +24,20 @@ task "db:seed" do
   puts "**************************************************************"
   puts "SEEDED #{Product.count - start_count} PRODUCTS. DEFINING RELATIONSHIPS..."
 
+  relationship_count = 0
   Product.all.each do |product|
     sim_prod_array = product.asins_of_sim_prods.split(',')
     sim_prod_array.each do |asin|
       if sim_product = Product.find_by(asin: asin)
-        product.similarprods << sim_product
-        puts "Defined relationship for #{product.title} and #{sim_product.title}..."
+        unless product.similarprods.include?(sim_product)
+          product.similarprods << sim_product
+          puts "Defined relationship for #{product.title} and #{sim_product.title}..."
+          relationship_count += 1
+        end
       end
     end
   end
   puts "**************************************************************"
   puts "ALL DONE!"
+  puts "SEEDED #{Product.count - start_count} PRODUCTS. DEFINED #{relationship_count} RELATIONSHIPS."
 end
