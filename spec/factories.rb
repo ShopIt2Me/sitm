@@ -5,12 +5,14 @@ FactoryGirl.define do
     asin  { "B00CHHCCDC" }
   end  
 
+
   factory :product do
     asin {"B00CHHCCDC"}
     small_image {"http://www.example.com/small.jpg"}
     medium_image {"http://www.example.com/med.jpg"}
     large_image {"http://www.example.com/large.jpg"}
     title {"American Apparel Hoodie!!"}
+    department {"mens"}
     price {"$25.99"}
     brand {"American Apparel"}
     buylink {"http://www.amazon.com/example_link"}
@@ -23,6 +25,7 @@ FactoryGirl.define do
     medium_image "http://www.example.com/med.jpg"
     large_image "http://www.example.com/large.jpg"
     title "American Apparel Hoodie!!"
+    department "mens"
     price "$25.99"
     brand "American Apparel"
     buylink "http://www.amazon.com/example_link"

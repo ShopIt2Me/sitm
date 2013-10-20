@@ -38,6 +38,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
 end
 
 gem 'multi_xml'
