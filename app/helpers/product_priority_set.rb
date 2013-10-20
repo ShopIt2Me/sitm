@@ -32,7 +32,7 @@ module ProductPrioritySet
       :group => :asin,
       :order => 'count_all DESC',
       :limit => MAX_AMAZON_BATCH_SIZE
-    )
+      )
     batch_hash.keys.join(',')
   end
 
@@ -46,7 +46,12 @@ module ProductPrioritySet
       product_priority_entries = ProductPriority.where('asin = ?', product_attributes[:asin]).uniq(&:product_id)
       product_priority_entries.each do |product_priority_entry|
         parent_product = Product.find(product_priority_entry.product_id)
-        parent_product.similarprods.create(product_attributes)
+        if Product.exists?(asin: product_attributes[:asin])
+          product = Product.find_by(asin: product_attributes[:asin])
+          parent_product.similarprods << product
+        else
+          parent_product.similarprods.create(product_attributes)
+        end
       end
     end
   end

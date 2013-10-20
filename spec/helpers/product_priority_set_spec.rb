@@ -38,17 +38,24 @@ describe 'ProductPrioritySet' do
   end
 
   describe "persist_products" do
-    let(:product_hash1) { FactoryGirl.build(:product_hash) }
-    let(:product_hash2) { FactoryGirl.build(:product_hash, :asin => "B00DH9NB52") }
+    let(:product_hash_array) { [FactoryGirl.build(:product_hash), FactoryGirl.build(:product_hash, :asin => "B00DH9NB52")] }
     let!(:parent_product) { FactoryGirl.create(:product, :id => 1, :asin => "B00CHHBDA0") }
     let!(:product_priority3) { FactoryGirl.create(:product_priority, :asin => "B00DH9NB52") }
+    let(:persist_products) { -> { ProductPrioritySet.persist_products(product_hash_array) } }
 
-    it "saves products in database and assigns similarity relationship with its parent product" do
-      product_hash_array = [product_hash1, product_hash2]
-      expect{
-        ProductPrioritySet.persist_products(product_hash_array)
-      }.to change(Product, :count).by(2)
+    it "saves products in database if it does not exist in the database" do
+      expect(persist_products).to change(Product, :count).by(2)
     end
+
+    it "assigns the relationship to its parent product if it does not exist in the database"  do
+      expect(persist_products).to change(parent_product.similarprods, :count).by(3)
+    end
+
+    it "assigns the relationship to its parent product if it already existed in the database" do
+      FactoryGirl.create(:product, :asin => "B00DH9NB52")
+      expect(persist_products).to change(parent_product.similarprods, :count).by(3)
+    end
+
   end
 
   describe "delete_persisted_product_priorities" do
