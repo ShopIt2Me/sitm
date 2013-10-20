@@ -25,6 +25,16 @@ module DisplayPrioritizer
     freq_hash
   end
 
+  def top_prod_ids(freq_hash, numofprod)
+    sorted_hash = freq_hash.sort{ |prod_id, freq| freq[1] <=> prod_id[1] }
+    prod_ids = sorted_hash.map { |key_value| key_value[0] }
+    prod_ids[0..numofprod-1]
+  end
+
+  def get_top_prods(top_prod_ids)
+    top_prod_ids.map { |prod_id| Product.find(prod_id)}
+  end
+
   def get_sim_prod_ids(liked_id)
     prod = Product.find(liked_id)
     prod.similarprods.map { |prod| prod.id }
