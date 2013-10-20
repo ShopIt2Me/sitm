@@ -26,16 +26,7 @@ module ProductLookup
   extend self
 
   def load_product_batch asins
-    req = ProductLookup.get_request_object
-
-    params = {
-      'Operation'     => 'ItemLookup',
-      'IdType'        => 'ASIN',
-      'ResponseGroup' => 'Large',
-      'ItemId'        => asins
-    }
-
-    res = Response.new(req.get(query: params)).to_h
+    res = get_parsed_response(get_params(asins))
 
     if is_valid_response?(res)
       items = res["ItemLookupResponse"]["Items"]["Item"]
@@ -45,8 +36,22 @@ module ProductLookup
     []
   end
 
+  def get_params asins
+    {
+      'Operation'     => 'ItemLookup',
+      'IdType'        => 'ASIN',
+      'ResponseGroup' => 'Large',
+      'ItemId'        => asins
+    }
+  end
+
+  def get_parsed_response(params)
+    req = ProductLookup.get_request_object
+    Response.new(req.get(query: params)).to_h
+  end
+
   def normalize_response(item_response)
-    [item_response].flatten.map { |item| get_attribute_hash(item) }
+    [item_response].flatten.map { |item| get_attribute_hash(item) }.compact
   end
 
   def is_valid_response?(response)
@@ -59,21 +64,25 @@ module ProductLookup
       aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'] ,
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       associate_tag: ENV['ASSOCIATE_TAG']
-      )
+    )
   end
 
   def get_attribute_hash item_response
-    {
-      asin: item_response["ASIN"],
-      small_image: item_response["SmallImage"]["URL"],
-      medium_image: item_response["MediumImage"]["URL"],
-      large_image: item_response["LargeImage"]["URL"],
-      title: item_response["ItemAttributes"]["Title"],
-      price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
-      brand: item_response["ItemAttributes"]["Brand"],
-      buylink: item_response["DetailPageURL"],
-      asins_of_sim_prods: get_similar_products(item_response).join(",")
-    }
+    begin
+      {
+        asin: item_response["ASIN"],
+        small_image: item_response["SmallImage"]["URL"],
+        medium_image: item_response["MediumImage"]["URL"],
+        large_image: item_response["LargeImage"]["URL"],
+        title: item_response["ItemAttributes"]["Title"],
+        price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
+        brand: item_response["ItemAttributes"]["Brand"],
+        buylink: item_response["DetailPageURL"],
+        asins_of_sim_prods: get_similar_products(item_response).join(",")
+      }
+    rescue
+      nil
+    end
   end
 
   def get_similar_products item_response
