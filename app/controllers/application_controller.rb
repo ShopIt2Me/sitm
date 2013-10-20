@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
       @simple_session = SimpleSession.find_by session_key: params[:session_key]
     unless @simple_session
-      @simple_session = SimpleSession.create(session_key: params[:session_key])
+      @simple_session = SimpleSession.create(session_key: params[:session_key], value: {ary_of_likes: [], ary_of_displayed_ids:[]})
     end
   end
 
