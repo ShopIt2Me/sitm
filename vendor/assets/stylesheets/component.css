@@ -265,3 +265,21 @@
 		width: 100%;
 	}
 }
+
+/* Not vendor code, added to boiler plate ------------------------------------------*/
+
+@media screen and (min-width: 1400px) {
+.grid {
+	max-width: 130em;
+}
+
+.grid li {
+	padding: 15px;
+	width: 20%;
+}
+
+
+
+}
+
+
