@@ -9,8 +9,7 @@ desc "Seed db with products"
 task "db:seed" do
   start_count = Product.count
   10.times do |n|
-    page = (n+1).to_s
-    if random_asins = ProductLookup.get_ten_asins(page,'Women')
+    if random_asins = ProductLookup.get_ten_asins
       sleep 1
       products = ProductLookup.load_product_batch(random_asins.join(','))
       products.each do |product|
@@ -21,5 +20,17 @@ task "db:seed" do
   #once relationship table has been created we will also want to create relationships for each similar product
   end
   puts "**************************************************************"
-  puts "SEEDED #{Product.count - start_count} PRODUCTS. TIME TO PARTY!"
+  puts "SEEDED #{Product.count - start_count} PRODUCTS. DEFINING RELATIONSHIPS..."
+
+  Product.all.each do |product|
+    sim_prod_array = product.asins_of_sim_prods.split(',')
+    sim_prod_array.each do |asin|
+      if sim_product = Product.find_by(asin: asin)
+        product.similarprods << sim_product
+        puts "Defined relationship for #{product.title} and #{sim_product.title}..."
+      end
+    end
+  end
+  puts "**************************************************************"
+  puts "ALL DONE!"
 end
