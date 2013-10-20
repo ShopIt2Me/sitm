@@ -1,23 +1,39 @@
 require 'spec_helper'
 
 describe ProductsController do
-  let (:prod1_attrs) { {asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4M6,B00CTGB4OO,B00CTGB5FW,B00CTGB2X2,B00CTGB1Y2"}}
+  let (:prod1) { Product.create(asin: 'B00CTGB8OK', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "B00CTGB4M6,B00CTGU4M7")}
+  let (:prod2) { Product.create(asin: 'B00CTGB4M6', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "")}
+  let (:prod3) { Product.create(asin: 'B00CTGU4M7', buylink: 'link', large_image: 'l_image', medium_image: 'm_image', small_image: 's_image', asins_of_sim_prods: "")}
+  let (:simple_session) { SimpleSession.create(session_key: 'test', value: {ary_of_likes: [], ary_of_displayed_ids: []})}
 
   context "when a user likes a product"
-  it "for the first time, should add array of product id in the session value" do 
-    prod1 = Product.create(prod1_attrs)
-    SimpleSession.create(session_key: 'test')
-    post :like, product_id: prod1.id, session_key: 'test'
+    it "should add liked product id to array of liked product ids in session value" do
+      prod1
+      simple_session
+      post :like, product_id: prod1.id, session_key: 'test'
 
-    expect(SimpleSession.last.value[:ary_of_likes]).to eq ([prod1.id])
-  end
-  
-  it "should add liked product id to array of liked product ids in session value" do
-    prod1 = Product.create(prod1_attrs)
-    SimpleSession.create(session_key: 'test', value: {ary_of_likes: [1]})
-    post :like, product_id: prod1.id, session_key: 'test'
-    
-    expect(SimpleSession.last.value[:ary_of_likes]).to eq ([1, prod1.id])
-  end
+      expect(SimpleSession.last.ary_of_likes).to eq ([prod1.id])
+    end
 
+  context "when a user loads more products" do
+
+    it "should determine the next batch of products to display based on likes" do
+      prod1.similarprods << [prod2, prod3]
+
+      simple_session.update_liked_ids(prod1.id)
+
+      get :load, :format => :json, session_key: 'test'
+      expect(response.body). to include([prod2, prod3].to_json)
+
+    end
+
+    it "should update the array of already displayed product ids for the session" do
+      prod1.similarprods << [prod2, prod3]
+      simple_session.update_liked_ids(prod1.id)
+
+      get :load, { :format => :json, session_key: 'test'}
+
+      expect(SimpleSession.last.ary_of_displayed_ids).to eq ([prod2.id, prod3.id])
+    end
+  end
 end
