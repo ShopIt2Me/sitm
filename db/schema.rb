@@ -16,12 +16,20 @@ ActiveRecord::Schema.define(version: 20131019042302) do
 
 
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: true do |t|
     t.integer "product_id"
     t.text    "img_link"
+  end
+
+  create_table "product_priorities", force: true do |t|
+    t.integer  "product_id"
+    t.string   "asin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
@@ -37,7 +45,6 @@ ActiveRecord::Schema.define(version: 20131019042302) do
     t.text     "medium_image"
     t.text     "asins_of_sim_prods"
   end
-
 
   create_table "similars", force: true do |t|
     t.integer "similarprod_id"
