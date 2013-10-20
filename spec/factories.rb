@@ -12,6 +12,7 @@ FactoryGirl.define do
     medium_image {"http://www.example.com/med.jpg"}
     large_image {"http://www.example.com/large.jpg"}
     title {"American Apparel Hoodie!!"}
+    department {"mens"}
     price {"$25.99"}
     brand {"American Apparel"}
     buylink {"http://www.amazon.com/example_link"}
@@ -24,6 +25,7 @@ FactoryGirl.define do
     medium_image "http://www.example.com/med.jpg"
     large_image "http://www.example.com/large.jpg"
     title "American Apparel Hoodie!!"
+    department "mens"
     price "$25.99"
     brand "American Apparel"
     buylink "http://www.amazon.com/example_link"

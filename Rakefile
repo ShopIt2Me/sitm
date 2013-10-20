@@ -57,5 +57,6 @@ task "db:connect_similar" => :environment do
       end
     end
   end
+  puts "**************************************************************"
   puts "DEFINED #{relationship_count} RELATIONSHIPS."
 end

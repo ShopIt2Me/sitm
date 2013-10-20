@@ -11,6 +11,7 @@
 #       medium_image: ''
 #       large_image: ''
 #       title: ''
+#       department: ''
 #       price: ''
 #       brand: ''
 #       buylink: ''
@@ -75,6 +76,7 @@ module ProductLookup
         medium_image: item_response["MediumImage"]["URL"],
         large_image: item_response["LargeImage"]["URL"],
         title: item_response["ItemAttributes"]["Title"],
+        department: item_response["ItemAttributes"]["Department"],
         price: item_response["ItemAttributes"]["ListPrice"] ? item_response["ItemAttributes"]["ListPrice"]["FormattedPrice"] : '-',
         brand: item_response["ItemAttributes"]["Brand"],
         buylink: item_response["DetailPageURL"],
@@ -91,7 +93,9 @@ module ProductLookup
     [similar_product].flatten.map { |product| product["ASIN"] }
   end
 
-  def get_ten_asins(page = '', keywords = '', brand = '')
+  def get_ten_asins(gender = '', page = '', keywords = '', brand = '')
+    department = '1040658' if gender == 'mens'
+    department = '1040660' if gender == 'womens'
     page = _get_random_page if page.empty?
     brand = _get_random_brand if brand.empty?
     req = ProductLookup.get_request_object
@@ -100,7 +104,8 @@ module ProductLookup
       'SearchIndex'   => 'Apparel',
       'ResponseGroup' => 'ItemAttributes',
       'Brand'         =>  brand,
-      'Sort'          =>  'salesrank',
+      'Sort'          => 'salesrank',
+      'BrowseNode'    =>  department,
       'Keywords'      =>  keywords,
       'ItemPage'      =>  page
     }
@@ -130,7 +135,8 @@ if $0 == __FILE__
   require 'awesome_print'
   require_relative '../../config/environment'
 
-  # ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52,B00DP34DW0")
-  ProductLookup.load_product_batch("B00DQN7NA8")
+  ProductLookup.load_product_batch("B00CHHCCDC,B00CHHBDQE,B00DH9OSWM,B00CHHBDA0,B00CHHBDAU,B00CHHB2QU,B00CHHB2T2,B00DH9NB52,B00DP34DW0")
+  # ProductLookup.get_ten_asins
+  # ProductLookup.load_product_batch("B00DQN7NA8")
   # ap ProductLookup.load_product_batch("B00CHHB2QU")
 end

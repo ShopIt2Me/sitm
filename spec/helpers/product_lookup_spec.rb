@@ -28,7 +28,7 @@ describe 'ProductLookup' do
   end
 
   it "get_ten_asins returns nil if no results are found" do
-    expect(ProductLookup.get_ten_asins('1981273')).to eq(nil)
+    expect(ProductLookup.get_ten_asins('mens', '1981273')).to eq(nil)
   end
 
   it "get_similar_products attribute is an empty string when product has no similarities" do
