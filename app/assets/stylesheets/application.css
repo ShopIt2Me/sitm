@@ -9,7 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require component
  *= require default
  *= require_tree .
  */
+
+img{
+  margin: 0 auto;
+}
