@@ -14,26 +14,27 @@
  *= require_tree .
  */
 
+
+
 div.like {
   height: 60px;
   position: absolute;
   width: 50%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0;
   overflow: hidden;
-  z-index: 50;
   text-align: center;
   font-family: 'linecons';
   font-size: 40px;
 }
 
-.dislike{
+div.dislike{
   height: 60px;
   position: absolute;
   right:0%;
   width: 50%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0;
   overflow: hidden;
   text-align: center;
   float: right;
@@ -41,9 +42,41 @@ div.like {
   font-size: 40px;
 }
 
-body {
-  /*background-color: white !important;*/
+.product p {
+  opacity: 0;
 }
+
+
+li:hover .dislike{
+  opacity: .7;
+  transition-property:opacity;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
+}
+
+li:hover .like{
+  opacity: .7;
+  transition-property:opacity;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
+}
+
+li:hover p{
+  opacity: .7;
+  transition-property:opacity;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
+}
+
 
 img {
   margin: 0 auto;
@@ -51,10 +84,6 @@ img {
 
 ul.grid li div.product {
   position: relative;
-}
-
-.like-dislike { 
-  display: none;
 }
 
 span#sessionkey {
@@ -89,7 +118,6 @@ span#sessionkey {
   margin: 0;
   padding: 10px;
   line-height: 26px;
-  display: none;
 }
 
 #infscr-loading {
