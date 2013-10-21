@@ -21,6 +21,8 @@
 
 $(document).ready(function(){
   applyInfiniteScroll();
+  displayInformationOnHover('ul.grid li');
+  displayLikeDislikeOnHover('ul.grid li');
 });
 
 function applyInfiniteScroll() {
@@ -38,7 +40,8 @@ function applyInfiniteScroll() {
     itemSelector : '.item',        // selector for all items you'll retrieve
     loading: {
       img: 'http://i.imgur.com/6RMhx.gif',
-      msgText: ''
+      msgText: '',
+      speed: 0
     },
   },
     // trigger Masonry as a callback
@@ -50,22 +53,27 @@ function applyInfiniteScroll() {
         // show elems now they're ready
         $newElems.animate({ opacity: 1 });
         $container.masonry( 'appended', $newElems, true );
-
-        $('ul.grid li').hover(likeAppear, likeDisappear)
-        $('.like').on ('click', callLikeAction)
-        $('.dislike').on ('click', removeProduct)
-
-        $('ul.grid li').hover(function(){
-          if ($(this).find('p').is(':animated')) {
-            return false;
-          }
-          $(this).find('p').fadeIn(200)
-        }, function() {
-          $(this).find('p').fadeOut(200)
-        });
-
-        
+        displayInformationOnHover($newElems);
+        displayLikeDislikeOnHover($newElems);
       });
     }
     );
+}
+
+function displayInformationOnHover(elements) {
+  $(elements).hover(function(){
+    if ($(this).find('p').is(':animated')) {
+      return false;
+    }
+    $(this).find('p').fadeIn(200);
+  }, function() {
+    $(this).find('p').fadeOut(200);
+  });
+}
+
+function displayLikeDislikeOnHover(elements) {
+  var elements = $(elements);
+  $(elements).hover(likeAppear, likeDisappear);
+  elements.find('.like').on('click', callLikeAction);
+  elements.find('.dislike').on('click', removeProduct);
 }

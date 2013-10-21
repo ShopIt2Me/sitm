@@ -94,10 +94,10 @@ span#sessionkey {
 
 #infscr-loading {
   width: 100%;
-  /*margin: 0 auto;*/
   position: fixed;
   bottom: 30px;
   text-align: center;
+  transition: none;
 }
 
 #grid li div.like-dislike a {
