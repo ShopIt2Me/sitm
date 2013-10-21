@@ -36,7 +36,6 @@ function applyInfiniteScroll() {
     navSelector  : '#page-nav',    // selector for the paged navigation 
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',     // selector for all items you'll retrieve
-    extraScrollPx: 50,
     loading: {
         img: 'http://i.imgur.com/6RMhx.gif'
       },

@@ -36,5 +36,16 @@ describe ProductsController do
 
       expect(SimpleSession.last.ary_of_displayed_ids).to eq([prod2.id, prod3.id])
     end
+
+    it "should display ten unique random products if no products on page were liked" do
+      new_session = FactoryGirl.create(:simple_session, { session_key: 'test' + rand(1..500).to_s, value: {ary_of_likes: [], ary_of_displayed_ids: [1,2,5] } })
+
+      20.times do |n|
+        FactoryGirl.create(:product, asin: (n+10).to_s )
+      end
+
+      get :load, session_key: new_session.session_key
+      expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(13)
+    end
   end
 end
