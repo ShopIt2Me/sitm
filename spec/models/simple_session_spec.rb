@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SimpleSession do
-  let(:simple_session) { SimpleSession.create(session_key: 'test', value: {ary_of_likes: [1], ary_of_displayed_ids: []})}
+  let(:simple_session) { FactoryGirl.create(:simple_session) }
   let(:product) { FactoryGirl.create(:product) }
   it { should validate_uniqueness_of(:session_key)}
   it { should validate_presence_of(:session_key)}
