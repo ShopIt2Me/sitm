@@ -7,6 +7,7 @@
     
 
       <div class="side-a">
+
         <div class="like-dislike">
           <div class="like" data-productid="<%= product.id %>">
             <a class="heart" href="#">&#xe000;</a>
@@ -16,8 +17,9 @@
           </div>
         </div>
 
-        <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
-          
+        <div class="side-a-img">
+          <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
+        </div>
       </div>
       <div class="side-b" style="position:absolute;top:0px; background-color:#67C8FF">
         <%= product.title %>

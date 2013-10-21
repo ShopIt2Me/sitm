@@ -4,8 +4,8 @@
 }
 
 function addClickA() {
-  $('.side-a').click(function () {
-    $($(this).parent()).addClass('wrap-flip')
+  $('.side-a-img').click(function () {
+    $($(this).parent().parent()).addClass('wrap-flip')
 })}
 
 function addClickB() {
