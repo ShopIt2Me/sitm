@@ -39,13 +39,13 @@
 }
 #toggleswitch{
   position: relative;
-  top: 50%;
-  height: 30px;
+  top: 37%;
+  height: 35px;
 }
 
 .gender{
-  width: 20px;
-  height: 30px;
+  width: 27px;
+  height: 35px;
 }
 #bothgenders{
   min-width: 40px;
@@ -161,15 +161,20 @@ span#sessionkey {
   #slider{
     width: 140px;
     height: 40px;
-    margin-right: 10px;
+    margin-right: 7px;
   }
   #toggleswitch{
     top: 25%;
+    height: 30px;
   }
   #logo{
     display: none;
   }
   #logo_sm{
     display: inline;
+  }
+  .gender{
+    position: relative;
+    width: 21px;
   }
 }
