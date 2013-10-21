@@ -47,7 +47,7 @@
 }
 
 /* Effect 2: Move Up */
-.grid.effect-2 li.animate {
+.grid.effect-2 li.animate2 {
 	-webkit-transform: translateY(200px);
 	-moz-transform: translateY(200px);
 	transform: translateY(200px);
@@ -266,20 +266,16 @@
 	}
 }
 
+
 /* Not vendor code, added to boiler plate ------------------------------------------*/
 
 @media screen and (min-width: 1400px) {
-.grid {
-	max-width: 130em;
+  .grid {
+    max-width: 130em;
+  }
+
+  .grid li {
+    padding: 15px;
+    width: 20%;
+  }
 }
-
-.grid li {
-	padding: 15px;
-	width: 20%;
-}
-
-
-
-}
-
-
