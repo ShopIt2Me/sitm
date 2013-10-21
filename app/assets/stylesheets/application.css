@@ -51,6 +51,9 @@
   min-width: 40px;
 }
 
+input{
+  outline: 0;
+}
 #logo{
   margin-top: 5px;
 }

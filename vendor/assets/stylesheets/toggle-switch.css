@@ -125,7 +125,7 @@
       line-height: 30px;
       vertical-align: middle; }
     .switch-toggle input:focus ~ a, .switch-toggle input:focus + label {
-      outline: 1px dotted #888888; }
+      outline: 0px dotted #888888; }
     .switch-toggle input {
       position: absolute;
       opacity: 0; }

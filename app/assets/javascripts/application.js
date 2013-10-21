@@ -23,6 +23,7 @@ $(document).ready(function(){
   applyInfiniteScroll();
   displayInformationOnHover('ul.grid li');
   displayLikeDislikeOnHover('ul.grid li');
+  initGenderChoice()
 });
 
 function applyInfiniteScroll() {
@@ -76,4 +77,8 @@ function displayLikeDislikeOnHover(elements) {
   $(elements).hover(likeAppear, likeDisappear);
   elements.find('.like').on('click', callLikeAction);
   elements.find('.dislike').on('click', removeProduct);
+}
+
+function initGenderChoice(){
+  
 }
