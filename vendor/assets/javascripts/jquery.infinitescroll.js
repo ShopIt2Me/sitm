@@ -394,7 +394,7 @@
 		},
 
         _nearbottom: function infscr_nearbottom() {
-            console.log('fuck')
+
             var opts = this.options,
             pixelsFromWindowBottomToBottom = 0 + $(document).height() - (opts.binder.scrollTop()) - $(window).height();
 
@@ -649,30 +649,24 @@
 
         // Check to see next page is needed
         scroll: function infscr_scroll() {
-            console.log('scrolllll')
+
             var opts = this.options,
             state = opts.state;
 
             // if behavior is defined and this function is extended, call that instead of default
             if (!!opts.behavior && this['scroll_'+opts.behavior] !== undefined) {
-                console.log('bla')
                 this['scroll_'+opts.behavior].call(this);
                 return;
             }
 
-            console.log(state)
-
             if (state.isDuringAjax || state.isInvalidPage || state.isDone || state.isDestroyed || state.isPaused) {
-                console.log('bla2')
-                return;
-            }
+				return;
+			}
 
             if (!this._nearbottom()) {
-                console.log('bla-28')
-                return;
-            }
+				return;
+			}
 
-                console.log('bla-21238')
             this.retrieve();
 
         },

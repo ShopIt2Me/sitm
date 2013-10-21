@@ -17,27 +17,18 @@
 //= require turbolinks
 //= require masonry.pkgd.min
 //= require imagesloaded
-
 //= require_tree .
 
 $(document).ready(function(){
-  // new AnimOnScroll( document.getElementById( 'grid' ), {
-  //   minDuration : 0.4,
-  //   maxDuration : 0.7,
-  //   viewportFactor : 0.2
-  // });
-
   applyInfiniteScroll();
 });
 
 function applyInfiniteScroll() {
   var $container = $('#grid');
-  
+
   $container.imagesLoaded(function(){
     $container.masonry({
-      itemSelector: '.item',
-      transitionDuration : 0
-      // columnWidth: 100
+      itemSelector: '.item'
     });
   });
   
@@ -45,14 +36,13 @@ function applyInfiniteScroll() {
     navSelector  : '#page-nav',    // selector for the paged navigation 
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',     // selector for all items you'll retrieve
+    extraScrollPx: 50,
     loading: {
         img: 'http://i.imgur.com/6RMhx.gif'
-      }
+      },
     },
     // trigger Masonry as a callback
     function( newElements ) {
-
-      console.log(1234)
       // hide new items while they are loading
       var $newElems = $( newElements ).css({ opacity: 0 });
       // ensure that images load before adding to masonry layout
@@ -64,3 +54,7 @@ function applyInfiniteScroll() {
     }
   );
 }
+
+
+
+
