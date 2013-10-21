@@ -15,7 +15,7 @@ class SimpleSession < ActiveRecord::Base
   def update_displayed_ids(ary_of_loaded_prods)
     product_ids = ary_of_loaded_prods.map { |el| el.is_a?(Fixnum) ? el : el.id }
     self.ary_of_displayed_ids << product_ids
-    self.ary_of_displayed_ids.flatten!
+    self.ary_of_displayed_ids.flatten!.uniq!
     self.save
   end
 

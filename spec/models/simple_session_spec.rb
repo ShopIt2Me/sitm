@@ -24,6 +24,12 @@ describe SimpleSession do
     expect(simple_session.ary_of_displayed_ids).to eq([2,3])
   end
 
+  it "should update displayed product ids given an array of loaded product ids only with ids that are not being shown (no dupes)" do
+    simple_session.update_displayed_ids([2,3])
+    simple_session.update_displayed_ids([2,3])
+    expect(simple_session.ary_of_displayed_ids).to eq([2,3])
+  end
+
   it ".update_displayed_ids accepts an array of Product objects" do
     simple_session.update_displayed_ids([5,7])
     simple_session.update_displayed_ids([product])
