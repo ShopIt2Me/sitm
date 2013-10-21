@@ -43,6 +43,7 @@
   height: 35px;
 }
 
+
 .gender{
   width: 27px;
   height: 35px;
@@ -51,9 +52,6 @@
   min-width: 40px;
 }
 
-input{
-  outline: 0;
-}
 #logo{
   margin-top: 5px;
 }
