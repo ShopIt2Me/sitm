@@ -23,6 +23,8 @@ $(document).ready(function(){
   applyInfiniteScroll();
   bindListener(getChild('ul.grid li', '.like'), 'click', callLikeAction)
   bindListener(getChild('ul.grid li', '.dislike'), 'click', removeProduct)
+  addClickA();
+  addClickB();
 });
 
 function getChild(parentSelector, childSelector) {
