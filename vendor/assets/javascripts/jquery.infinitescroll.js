@@ -315,7 +315,7 @@
                 this._showdonemsg();
             }
 
-            // opts.state.isDone = true;
+            opts.state.isDone = true;
             opts.state.currPage = 1; // if you need to go back to this instance
             opts.state.isPaused = false;
             opts.state.isBeyondMaxPage = false;
@@ -789,7 +789,7 @@
             $(this).bind("scroll", event.special.smartscroll.handler);
         },
         teardown: function () {
-            // $(this).unbind("scroll", event.special.smartscroll.handler);
+            $(this).unbind("scroll", event.special.smartscroll.handler);
         },
         handler: function (event, execAsap) {
             // Save the context
