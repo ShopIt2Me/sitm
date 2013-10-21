@@ -13,10 +13,10 @@
 //= require modernizr.custom
 //= require jquery
 //= require jquery_ujs
-//= require jquery.infinitescroll
 //= require turbolinks
 //= require masonry.pkgd.min
 //= require imagesloaded
+//= require jquery.infinitescroll
 //= require_tree .
 
 $(document).ready(function(){
@@ -53,7 +53,6 @@ function applyInfiniteScroll() {
     }
   );
 }
-
 
 
 
