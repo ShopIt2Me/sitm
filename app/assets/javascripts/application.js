@@ -23,7 +23,7 @@ $(document).ready(function(){
   applyInfiniteScroll();
   displayInformationOnHover('ul.grid li');
   displayLikeDislikeOnHover('ul.grid li');
-  initGenderChoice()
+  initGenderChoice();
 });
 
 function applyInfiniteScroll() {
@@ -80,5 +80,20 @@ function displayLikeDislikeOnHover(elements) {
 }
 
 function initGenderChoice(){
-  
+  $('#men').on('click', function(){
+    if( $('li').filter('.womens_items').length > 0 ){
+      $('#grid').masonry('remove',$('li').filter('.womens_items'))
+      $('#grid').masonry();
+    }
+  });
+  $('#both').on('click', function(){
+    $('#grid').masonry();
+  })
+  $('#women').on('click', function(){
+  if( $('li').filter('.mens_items').length > 0 ){
+      $('#grid').masonry('remove',$('li').filter('.mens_items'))
+      $('#grid').masonry();
+    }
+  })
 }
+
