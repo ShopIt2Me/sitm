@@ -19,4 +19,9 @@ Developer Setup:
 * Seed database     
   $rake db:seed
 
+Tests:
+* Setup the test environment:
+  $rake db:test:prepare
 
+* Run the tests:
+  $rspec
