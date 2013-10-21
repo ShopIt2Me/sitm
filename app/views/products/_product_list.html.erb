@@ -1,7 +1,10 @@
 <% products.each do |product| %>
   <li class="item animate masonry-brick" rel="<%= product.id %>">
-    <a href="<%= product.buylink %>" target="_blank">
-      <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
-    </a>
+    <div>
+      <a href="<%= product.buylink %>" target="_blank">
+        <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
+      </a>
+      <p><%= product.title %></p>
+    </div>
   </li>
 <% end %>

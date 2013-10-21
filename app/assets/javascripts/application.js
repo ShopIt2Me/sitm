@@ -21,6 +21,15 @@
 
 $(document).ready(function(){
   applyInfiniteScroll();
+  $('ul.grid li').hover(function(){
+    if ($(this).find('p').is(':animated')) {
+      return false;
+    }
+    $(this).find('p').fadeIn(200)
+  }, function() {
+    $(this).find('p').fadeOut(200)
+  });
+
 });
 
 function applyInfiniteScroll() {
@@ -37,9 +46,10 @@ function applyInfiniteScroll() {
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',     // selector for all items you'll retrieve
     loading: {
-        img: 'http://i.imgur.com/6RMhx.gif'
-      },
+      img: 'http://i.imgur.com/6RMhx.gif',
+      msgText: ''
     },
+  },
     // trigger Masonry as a callback
     function( newElements ) {
       // hide new items while they are loading
@@ -51,7 +61,7 @@ function applyInfiniteScroll() {
         $container.masonry( 'appended', $newElems, true );
       });
     }
-  );
+    );
 }
 
 
