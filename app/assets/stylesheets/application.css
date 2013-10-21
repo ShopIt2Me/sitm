@@ -15,7 +15,7 @@
  *= require_tree .
  */
 
-#navbar {
+ #navbar {
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
 }
@@ -47,9 +47,16 @@
   width: 20px;
   height: 30px;
 }
+#bothgenders{
+  min-width: 40px;
+}
 
 #logo{
   margin-top: 5px;
+}
+#logo_sm{
+  margin-top: 5px;
+  display: none;
 }
 
 div.like {
@@ -150,4 +157,19 @@ span#sessionkey {
   border-radius: 0 20px 0 0;
 }
 
-
+@media screen and (max-width: 500px) {
+  #slider{
+    width: 140px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  #toggleswitch{
+    top: 25%;
+  }
+  #logo{
+    display: none;
+  }
+  #logo_sm{
+    display: inline;
+  }
+}
