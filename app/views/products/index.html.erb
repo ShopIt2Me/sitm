@@ -1,16 +1,10 @@
 <div class="container">
-  <ul class="grid effect-3" id="grid">
-    <% @products.each do |product| %>
-      <li class="item">
-        <a href="<%= product.buylink %>" target="_blank">
-          <%= image_tag product.large_image, { alt: product.title, title: product.title } %>
-        </a>
-      </li>
-    <% end %>
+  <ul class="grid effect transitions-enabled infinite-scroll clearfix masonry" id="grid">
+    <%= render partial: "product_list", locals: {products: @products} %>
   </ul>
 
   <div id="page-nav">
-    <%= link_to 'bla', "/asdf?page=#{Time.now.to_i}" %>
+    <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}" %>
   </div>
 </div>
 

@@ -1,0 +1,7 @@
+<% products.each do |product| %>
+  <li class="item animate<%= [2,3,8].sample %> masonry-brick" rel="<%= product.id %>">
+    <a href="<%= product.buylink %>" target="_blank">
+      <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
+    </a>
+  </li>
+<% end %>
