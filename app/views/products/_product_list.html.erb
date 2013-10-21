@@ -1,5 +1,5 @@
 <% products.each do |product| %>
-  <li class="item animate masonry-brick wrap" rel="<%= product.id %>">
+  <li class="item animate masonry-brick" rel="<%= product.id %>">
     <div class="product wrap">
 
 
@@ -22,6 +22,6 @@
       <div class="side-b" style="position:absolute;top:0px; background-color:#67C8FF">
         <%= product.title %>
       </div>
-
+    </div>
   </li>
 <% end %>
