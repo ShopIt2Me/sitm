@@ -4,7 +4,8 @@ Sitm::Application.routes.draw do
 
   post '/products/like' => 'products#like'
 
-  get '/products/load.:format', to: 'products#load', constraints: {:format => /json/}
+  get '/products/load', to: 'products#load'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

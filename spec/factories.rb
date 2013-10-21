@@ -34,4 +34,9 @@ FactoryGirl.define do
     initialize_with { attributes } 
   end
 
+  factory :simple_session do
+    session_key { "test" }
+    value { {ary_of_likes: [], ary_of_displayed_ids: [] } }
+  end
+
 end
