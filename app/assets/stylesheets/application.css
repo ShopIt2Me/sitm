@@ -10,9 +10,14 @@
  *
  *= require_self
  *= require default
+ *= require component
  *= require_tree .
  */
 
-img{
+img {
   margin: 0 auto;
+}
+
+#page-nav {
+  display: none;
 }
