@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
     @simple_session.update_displayed_ids(top_ten_prod_ids)
 
-    render json: top_prods.to_json
+    render partial: "products/product_list", locals: { products: top_prods }
   end 
 
   def like
@@ -19,8 +19,9 @@ class ProductsController < ApplicationController
     missing = Product.find(product_id).identify_missing_asins
     # ProductPrioritySet.add_to_set(product_id, missing) UNTIL MERGED
     @simple_session.update_liked_ids(product_id)
-    render :index
+    render :json => "Success".to_json
   end
 
 
 end
+

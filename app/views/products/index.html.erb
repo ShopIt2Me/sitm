@@ -4,7 +4,7 @@
   </ul>
 
   <div id="page-nav">
-    <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}" %>
+    <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}&session_key=#{@simple_session[:session_key]}" %>
   </div>
 </div>
 
