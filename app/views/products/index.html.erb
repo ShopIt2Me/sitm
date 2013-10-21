@@ -1,22 +1,5 @@
 <div class="container">
-  <div id="navbar">
-    <ul id="navList">
-      <li><img id="logo" src="/assets/shopme200mustard.png"></li>
-      <li id="slider">
-        <div id="toggleswitch" class="switch-toggle switch-3 switch-candy yellow">
-          <input id="men" name="gender" type="radio" checked>
-          <label for="men" onclick=""> <img class="gender" src="assets/tie.svg" type="image/svg+xml" /></label>
-
-          <input id="both" name="gender" type="radio">
-          <label for="both" onclick=""><img class="gender" src="assets/tie.svg" type="image/svg+xml" /><img class="gender" src="assets/heel.svg" type="image/svg+xml" /></label> 
-
-          <input id="women" name="gender" type="radio">
-          <label for="women" onclick=""> <img class="gender" src="assets/heel.svg" type="image/svg+xml" /></label>
-
-          <a></a>
-        </div></li>
-      </ul>
-    </div>
+  <%= render 'nav_bar' %>
     <ul class="grid effect-1 transitions-enabled infinite-scroll clearfix masonry" id="grid">
       <%= render partial: "product_list", locals: {products: @products} %>
     </ul>
