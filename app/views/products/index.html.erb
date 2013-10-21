@@ -2,9 +2,19 @@
   <ul class="grid effect-2" id="grid">
     <%@products.each do |product| %>
         <li>
+          <div class="product">
+            <div class="like-dislike">
+              <div class="like" data-productid="<%= product.id %>">
+                <a href="#">&#xe000;</a>
+              </div>
+              <div class="dislike" data-productid="<%= product.id %>">
+                <a href="#">&#xe028;</a>
+              </div>
+            </div>
             <a target="blank" href="<%=product.buylink %>">
-                <img src="<%=product.large_image%>">
+              <img src="<%=product.large_image%>">
             </a>
+          </div>
         </li>
     <%end%>
   </ul>

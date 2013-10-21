@@ -18,6 +18,7 @@
 //= require imagesloaded
 //= require classie
 //= require AnimOnScroll
+//= require like
 //= require_tree .
 
 $(document).ready(function(){
@@ -26,4 +27,8 @@ $(document).ready(function(){
     maxDuration : 0.7,
     viewportFactor : 0.2
   } );
+
+  $('ul.grid li').hover(likeAppear, likeDisappear)
+  $('.like').on ('click', callLikeAction)
+  $('.dislike').on ('click', removeProduct)
 })

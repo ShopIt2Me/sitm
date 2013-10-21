@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <span id="sessionkey"><%= @simple_session.session_key %></span>
 
 <%= yield %>
 
