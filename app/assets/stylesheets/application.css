@@ -37,6 +37,7 @@
   height: 40px;
   margin-right: 20px;
 }
+
 #toggleswitch{
   position: relative;
   top: 50%;
@@ -149,5 +150,41 @@ span#sessionkey {
 #grid li div.dislike {
   border-radius: 0 20px 0 0;
 }
+
+
+.wrap {
+  position: relative;
+  margin: 0 auto;
+  transition: -webkit-transform 1s ease-in;
+  -webkit-transform-style: preserve-3d;
+}
+
+.wrap div {
+  position:relative;
+  -webkit-backface-visibility: hidden;
+  cursor: pointer;
+  box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+}
+
+.wrap-flip {
+  -webkit-transform:rotateY(180deg);
+}
+
+.side-a{
+  position:absolute;
+  z-index:100;
+}
+
+.side-b{
+  padding:15px;
+  background-color: #33363B;  
+  height:100%;
+  width:100%;
+  -webkit-transform:rotateY(-180deg);
+}
+
+
+
+
 
 

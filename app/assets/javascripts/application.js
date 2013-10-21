@@ -23,6 +23,8 @@ $(document).ready(function(){
   applyInfiniteScroll();
   displayInformationOnHover('ul.grid li');
   displayLikeDislikeOnHover('ul.grid li');
+  addClickA();
+  addClickB();
 });
 
 function applyInfiniteScroll() {
