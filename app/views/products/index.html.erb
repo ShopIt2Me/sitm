@@ -1,10 +1,28 @@
 <div class="container">
-  <ul class="grid effect-1 transitions-enabled infinite-scroll clearfix masonry" id="grid">
-    <%= render partial: "product_list", locals: {products: @products} %>
-  </ul>
+  <div id="navbar">
+    <ul id="navList">
+      <li><img id="logo" src="/assets/shopme200mustard.png"></li>
+      <li id="slider">
+        <div id="toggleswitch" class="switch-toggle switch-3 switch-candy yellow">
+          <input id="men" name="gender" type="radio" checked>
+          <label for="men" onclick=""> <img class="gender" src="assets/tie.svg" type="image/svg+xml" /></label>
 
-  <div id="page-nav">
-    <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}&session_key=#{@simple_session[:session_key]}" %>
+          <input id="both" name="gender" type="radio">
+          <label for="both" onclick=""><img class="gender" src="assets/tie.svg" type="image/svg+xml" /><img class="gender" src="assets/heel.svg" type="image/svg+xml" /></label> 
+
+          <input id="women" name="gender" type="radio">
+          <label for="women" onclick=""> <img class="gender" src="assets/heel.svg" type="image/svg+xml" /></label>
+
+          <a></a>
+        </div></li>
+      </ul>
+    </div>
+    <ul class="grid effect-1 transitions-enabled infinite-scroll clearfix masonry" id="grid">
+      <%= render partial: "product_list", locals: {products: @products} %>
+    </ul>
+
+    <div id="page-nav">
+      <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}&session_key=#{@simple_session[:session_key]}" %>
+    </div>
   </div>
-</div>
 
