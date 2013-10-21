@@ -1,5 +1,5 @@
 <% products.each do |product| %>
-  <li class="item animate masonry-brick" rel="<%= product.id %>">
+  <li class="item animate masonry-brick <%= product.department %>_items" rel="<%= product.id %>">
     <div class="product">
 
       <div class="like-dislike">

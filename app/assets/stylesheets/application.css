@@ -15,9 +15,13 @@
  *= require_tree .
  */
 
+
  #navbar {
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
+  position: fixed;
+  z-index: 500;
+  top: 0;
 }
 #navList {
   list-style-type: none;
@@ -85,10 +89,6 @@ div.like {
   float: right;
   font-family: 'linecons';
   font-size: 40px;
-}
-
-body {
-  /*background-color: white !important;*/
 }
 
 img {
@@ -159,6 +159,7 @@ span#sessionkey {
 }
 
 @media screen and (max-width: 500px) {
+
   #slider{
     width: 140px;
     height: 40px;
