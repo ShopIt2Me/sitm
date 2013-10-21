@@ -21,6 +21,7 @@ class SimpleSession < ActiveRecord::Base
 
   def update_liked_ids(liked_prod_id)
     self.ary_of_likes << liked_prod_id
+    self.ary_of_likes.uniq!
     self.save
   end
 end

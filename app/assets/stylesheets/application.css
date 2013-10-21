@@ -14,8 +14,51 @@
  *= require_tree .
  */
 
+div.like {
+  height: 60px;
+  position: absolute;
+  width: 50%;
+  background-color: white;
+  opacity: 0.9;
+  overflow: hidden;
+  z-index: 50;
+  text-align: center;
+  font-family: 'linecons';
+  font-size: 40px;
+}
+
+.dislike{
+  height: 60px;
+  position: absolute;
+  right:0%;
+  width: 50%;
+  background-color: white;
+  opacity: 0.9;
+  overflow: hidden;
+  text-align: center;
+  float: right;
+  font-family: 'linecons';
+  font-size: 40px;
+}
+
+body {
+  /*background-color: white !important;*/
+}
+
 img {
   margin: 0 auto;
+}
+
+ul.grid li div.product {
+  position: relative;
+}
+
+.like-dislike { 
+  display: none;
+}
+
+span#sessionkey {
+  display: none;
 }
 
 #page-nav {
@@ -51,8 +94,21 @@ img {
 
 #infscr-loading {
   width: 100%;
-  /*margin: 0 auto;*/
   position: fixed;
   bottom: 30px;
   text-align: center;
+  transition: none;
 }
+
+#grid li div.like-dislike a {
+  margin-top: 8px;
+}
+
+#grid li div.like {
+  border-radius: 20px 0 0 0;
+}
+
+#grid li div.dislike {
+  border-radius: 0 20px 0 0;
+}
+
