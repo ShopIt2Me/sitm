@@ -87,6 +87,7 @@ div.like {
   font-size: 40px;
   float:left;
   box-shadow: none;
+  z-index: 100;
 }
 
 div.dislike{
@@ -102,6 +103,7 @@ div.dislike{
   font-family: 'linecons';
   font-size: 40px;
   box-shadow: none;
+  z-index: 100;
 }
 
 .product p {
@@ -228,7 +230,7 @@ a.liked {
 
 .side-a{
   position:absolute;
-  z-index:100;
+/*  z-index:100;*/
 }
 
 .side-b{
