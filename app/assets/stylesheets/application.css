@@ -197,6 +197,14 @@ span#sessionkey {
   padding-top: 8px;
 }
 
+.tooltipsy{
+  color: #333;
+  padding: 10px;
+  max-width: 200px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 5px;
+}
+
 #infinite-scroll-end {
   display: none;
   width: 100%;
