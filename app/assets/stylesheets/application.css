@@ -295,7 +295,9 @@ a.liked {
   padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #33363B;  
+  position:absolute !important;
+  top: 0px;
+  background-color: #c6c6c6;  
   height:100%;
   width:100%;
   -webkit-transform:rotateY(-180deg);
