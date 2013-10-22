@@ -29,8 +29,8 @@ function applyBehaviors(elements) {
   initGenderChoice();
   elements.find('.like').click(callLikeAction);
   elements.find('.dislike').click(removeProduct);
-  elements.find('.side-a').click(flipForward);
   elements.find('.side-b').click(flipBack);
+  elements.find('.side-a').click(flipForward);
 }
 
 function applyInfiniteScroll() {
