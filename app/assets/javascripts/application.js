@@ -21,8 +21,12 @@
 
 $(document).ready(function(){
   applyInfiniteScroll();
+  displayInformationOnHover('ul.grid li');
+  displayLikeDislikeOnHover('ul.grid li');
+  initGenderChoice();
   bindListener(getChild('ul.grid li', '.like'), 'click', callLikeAction)
   bindListener(getChild('ul.grid li', '.dislike'), 'click', removeProduct)
+
 });
 
 function getChild(parentSelector, childSelector) {
@@ -80,5 +84,23 @@ function applyInfiniteScroll() {
     );
 }
 
+function displayLikeDislikeOnHover(elements) {
+  var elements = $(elements);
+  $(elements).hover(likeAppear, likeDisappear);
+  elements.find('.like').on('click', callLikeAction);
+  elements.find('.dislike').on('click', removeProduct);
+}
+
+function initGenderChoice(){
+  $('#men').on('click', function(){
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "mens"});
+  });
+  $('#both').on('click', function(){
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "both"});
+  })
+  $('#women').on('click', function(){
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "womens"});
+  })
+}
 
 
