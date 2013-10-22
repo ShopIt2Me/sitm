@@ -16,7 +16,6 @@
  */
 
 #navbar {
-
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   position: fixed;
@@ -195,6 +194,13 @@ span#sessionkey {
   border-radius: 0 20px 0 0;
 }
 
+#infinite-scroll-end {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin: 40px auto;
+}
+
 @media screen and (max-width: 500px) {
 
   #slider{
@@ -234,5 +240,3 @@ div.liked {
 a.liked {
   color: red;
 }
-
-
