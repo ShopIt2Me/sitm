@@ -10,30 +10,86 @@
  *
  *= require_self
  *= require default
+ *= require toggle-switch
  *= require component
  *= require_tree .
  */
+
+#navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  position: fixed;
+  z-index: 500;
+  top: 0;
+}
+#navList {
+  list-style-type: none;
+  display: inline;
+  margin-top: 0;
+  padding: .3em .7em;
+}
+
+.heart:hover {
+  color: red;
+}
+
+.fire:hover {
+  color: #FFCC11;
+}
+
+#navList li {
+  display: inline;
+}
+
+#slider{
+  float: right;
+  width: 200px;
+  height: 40px;
+  margin-right: 20px;
+}
+#toggleswitch{
+  position: relative;
+  top: 37%;
+  height: 35px;
+}
+
+
+.gender{
+  width: 27px;
+  height: 35px;
+}
+#bothgenders{
+  min-width: 40px;
+}
+
+#logo{
+  margin-top: 5px;
+}
+#logo_sm{
+  margin-top: 5px;
+  display: none;
+}
+
 
 div.like {
   height: 60px;
   position: absolute;
   width: 50%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0;
   overflow: hidden;
-  z-index: 50;
   text-align: center;
   font-family: 'linecons';
   font-size: 40px;
 }
 
-.dislike{
+div.dislike{
   height: 60px;
   position: absolute;
   right:0%;
   width: 50%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0;
   overflow: hidden;
   text-align: center;
   float: right;
@@ -41,8 +97,39 @@ div.like {
   font-size: 40px;
 }
 
-body {
-  /*background-color: white !important;*/
+.product p {
+  opacity: 0;
+}
+
+
+li:hover .dislike{
+  opacity: 0.7;
+  transition-property:opacity;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
+}
+
+li:hover .like{
+  opacity: 0.7;
+  transition-property:opacity;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
+}
+
+li:hover p{
+  opacity: 0.7;
+  transition-property:opacity;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
 }
 
 img {
@@ -51,10 +138,6 @@ img {
 
 ul.grid li div.product {
   position: relative;
-}
-
-.like-dislike {
-  display: none;
 }
 
 span#sessionkey {
@@ -89,7 +172,6 @@ span#sessionkey {
   margin: 0;
   padding: 10px;
   line-height: 26px;
-  display: none;
 }
 
 #infscr-loading {
@@ -117,4 +199,44 @@ span#sessionkey {
   width: 100%;
   text-align: center;
   margin: 40px auto;
+}
+
+@media screen and (max-width: 500px) {
+
+  #slider{
+    width: 140px;
+    height: 40px;
+    margin-right: 7px;
+  }
+  #toggleswitch{
+    top: 25%;
+    height: 30px;
+  }
+  #logo{
+    display: none;
+  }
+  #logo_sm{
+    display: inline;
+  }
+  .gender{
+    position: relative;
+    width: 21px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  div.like {
+    opacity: 0.7;
+  }
+  div.dislike {
+    opacity: 0.7;
+  }
+}
+
+div.liked {
+  opacity: 0.7;
+}
+
+a.liked {
+  color: red;
 }

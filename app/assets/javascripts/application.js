@@ -26,8 +26,28 @@ $(document).ready(function(){
 
 function applyBehaviors(elements) {
   elements = $(elements);
-  displayInformationOnHover(elements);
-  displayLikeDislikeOnHover(elements);
+  initGenderChoice();
+  bindListener(getChild('ul.grid li', '.like'), 'click', callLikeAction)
+  bindListener(getChild('ul.grid li', '.dislike'), 'click', removeProduct)
+}
+
+function getChild(parentSelector, childSelector) {
+  parentEl = $(parentSelector)
+  return $(parentEl).find(childSelector)
+}
+
+function bindListener(targetEl, action, callback) {
+  targetEl.on(action, callback);
+}
+
+function callLikeAction(e) {
+  e.preventDefault();
+  $.post('products/like', {session_key:($("#sessionkey").html()) , product_id: this.dataset.productid})
+  .done(function(response){
+    $("li").find("[data-productid='" + response + "']").addClass('liked');
+    $("li").find("[data-productid='" + response + "']").find('a.heart').addClass('liked');
+    $("li").find("[data-productid='" + response + "']").find('a.fire').html('');
+  })
 }
 
 function applyInfiniteScroll() {
@@ -78,17 +98,6 @@ function reactivateInfiniteScroll() {
   $container.infinitescroll('bind');
 }
 
-function displayInformationOnHover(elements) {
-  $(elements).hover(function(){
-    if ($(this).find('p').is(':animated')) {
-      return false;
-    }
-    $(this).find('p').fadeIn(200);
-  }, function() {
-    $(this).find('p').fadeOut(200);
-  });
-}
-
 function displayLikeDislikeOnHover(elements) {
   var elements = $(elements);
   elements.hover(likeAppear, likeDisappear);
@@ -130,4 +139,16 @@ function applyInfiniteScrollEndBehaviors($container) {
 
 function hideInfiniteScrollEnd() {
   $('#infinite-scroll-end').hide();
+}
+
+function initGenderChoice(){
+  $('#men').on('click', function(){
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "mens"});
+  });
+  $('#both').on('click', function(){
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "both"});
+  })
+  $('#women').on('click', function(){
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "womens"});
+  })
 }

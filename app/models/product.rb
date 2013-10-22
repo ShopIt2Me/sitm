@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
 
   validates_presence_of :asin, :buylink, :large_image, :medium_image, :small_image, :department
   validates_uniqueness_of :asin
+  validates_inclusion_of :department, :in => ["mens", "womens"]
 
   def get_asins_ary
     self.asins_of_sim_prods.split(",")
