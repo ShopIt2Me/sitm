@@ -29,11 +29,11 @@
   padding: .3em .7em;
 }
 
-.heart:hover {
+.likeicon:hover {
   color: red;
 }
 
-.fire:hover {
+.dislikeicon:hover {
   color: #FFCC11;
 }
 
@@ -47,6 +47,7 @@
   height: 40px;
   margin-right: 20px;
 }
+
 #toggleswitch{
   position: relative;
   top: 37%;
@@ -70,6 +71,20 @@
   display: none;
 }
 
+.wrap {
+  position: relative;
+  margin: 0 auto;
+  transition: -webkit-transform 1s ease-in;
+  -webkit-transform-style: preserve-3d;
+}
+
+.wrap div {
+  border-radius: 20px;
+  position:relative;
+  cursor: pointer;
+  box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+  -webkit-transform-style: preserve-3d;
+}
 
 div.like {
   height: 60px;
@@ -81,6 +96,9 @@ div.like {
   text-align: center;
   font-family: 'linecons';
   font-size: 40px;
+  float:left;
+  box-shadow: none;
+  z-index: 100;
 }
 
 div.dislike{
@@ -95,14 +113,11 @@ div.dislike{
   float: right;
   font-family: 'linecons';
   font-size: 40px;
+  box-shadow: none;
+  z-index: 100;
 }
 
-.product p {
-  opacity: 0;
-}
-
-
-li:hover .dislike{
+.product:hover .dislike {
   opacity: 0.7;
   transition-property:opacity;
   -moz-transition-property: opacity; /* Firefox 4 */
@@ -112,7 +127,7 @@ li:hover .dislike{
   -webkit-transition-duration: .75s; /* Safari */
 }
 
-li:hover .like{
+.product:hover .like{
   opacity: 0.7;
   transition-property:opacity;
   -moz-transition-property: opacity; /* Firefox 4 */
@@ -120,23 +135,16 @@ li:hover .like{
   -o-transition-property: opacity; /* Opera */
   transition-duration: .75s;
   -webkit-transition-duration: .75s; /* Safari */
+  -moz-transition-property: .75s; /* Firefox 4 */
+  -o-transition-property: .75s; /* Opera */
 }
 
-li:hover p{
-  opacity: 0.7;
-  transition-property:opacity;
-  -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity; /* Safari and Chrome */
-  -o-transition-property: opacity; /* Opera */
-  transition-duration: .75s;
-  -webkit-transition-duration: .75s; /* Safari */
-}
 
 img {
   margin: 0 auto;
 }
 
-ul.grid li div.product {
+ul.grid li .product {
   position: relative;
 }
 
@@ -158,10 +166,7 @@ span#sessionkey {
   border-radius: 20px;
 }
 
-#grid li div {
-  background: white;
-  border-radius: 20px;
-}
+
 
 #grid p {
   position: absolute;
@@ -182,16 +187,14 @@ span#sessionkey {
   transition: none;
 }
 
-#grid li div.like-dislike a {
-  margin-top: 8px;
-}
-
 #grid li div.like {
   border-radius: 20px 0 0 0;
+  padding-top: 8px;
 }
 
 #grid li div.dislike {
   border-radius: 0 20px 0 0;
+  padding-top: 8px;
 }
 
 .tooltipsy{
@@ -248,3 +251,32 @@ div.liked {
 a.liked {
   color: red;
 }
+
+.wrap-flip {
+  -webkit-transform:rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+}
+
+.side-a{
+  background-color: white;
+  position:absolute;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.side-b{
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #33363B;  
+  height:100%;
+  width:100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform:rotateY(-180deg);
+  -moz-transform:rotateY(-180deg);]
+  transform:rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+}
+
