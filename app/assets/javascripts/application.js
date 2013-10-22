@@ -81,19 +81,13 @@ function displayLikeDislikeOnHover(elements) {
 
 function initGenderChoice(){
   $('#men').on('click', function(){
-    if( $('li').filter('.womens_items').length > 0 ){
-      $('#grid').masonry('remove',$('li').filter('.womens_items'))
-      $('#grid').masonry();
-    }
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "mens"});
   });
   $('#both').on('click', function(){
-    $('#grid').masonry();
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "both"});
   })
   $('#women').on('click', function(){
-  if( $('li').filter('.mens_items').length > 0 ){
-      $('#grid').masonry('remove',$('li').filter('.mens_items'))
-      $('#grid').masonry();
-    }
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "womens"});
   })
 }
 

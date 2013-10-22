@@ -20,7 +20,6 @@ function callLikeAction(e) {
 function removeProduct(e) {
   e.preventDefault();
   $('#grid').masonry('remove', $(this).closest('li'));
-  $('#grid').masonry('reloadItems');
-  $('#grid').masonry('reload');
+  $('#grid').masonry();
 }
 

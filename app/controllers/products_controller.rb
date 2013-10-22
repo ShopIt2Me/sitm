@@ -8,13 +8,19 @@ class ProductsController < ApplicationController
 
 
   def load
+    preferred_dept = @simple_session[:value][:preferred_dept]
+
     freq_hash = DisplayPrioritizer.frequentize(@simple_session.ary_of_likes, @simple_session.ary_of_displayed_ids)
     top_ten_prod_ids = DisplayPrioritizer.top_prod_ids(freq_hash, TOTAL_PRODUCTS_RETURNED)
     top_prods = DisplayPrioritizer.get_top_prods(top_ten_prod_ids)
 
     num_random_products = TOTAL_PRODUCTS_RETURNED - top_prods.length
+    if preferred_dept == "both"
+      top_prods << Product.where('id NOT IN (?)', @simple_session.ary_of_displayed_ids).sample(num_random_products)
+    else
+      top_prods << Product.where('id NOT IN (?) AND department = ?', @simple_session.ary_of_displayed_ids, preferred_dept).sample(num_random_products)
+    end
 
-    top_prods << Product.where('id NOT IN (?)', @simple_session.ary_of_displayed_ids).sample(num_random_products)
     top_prods.flatten!
 
     @simple_session.update_displayed_ids(top_prods)
