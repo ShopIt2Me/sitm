@@ -6,5 +6,8 @@
   <div id="page-nav">
     <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}&session_key=#{@simple_session[:session_key]}" %>
   </div>
+  <div id="infinite-scroll-end">
+    <p>No more similar products for your likes right now..</p>
+    <%= link_to 'More Random Products', "#", class: 'more-random' %>
+  </div>
 </div>
-

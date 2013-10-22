@@ -53,7 +53,7 @@ ul.grid li div.product {
   position: relative;
 }
 
-.like-dislike { 
+.like-dislike {
   display: none;
 }
 
@@ -112,3 +112,9 @@ span#sessionkey {
   border-radius: 0 20px 0 0;
 }
 
+#infinite-scroll-end {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin: 40px auto;
+}
