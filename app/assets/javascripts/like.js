@@ -15,12 +15,12 @@ function callLikeAction(e) {
   .done(function(){
     // change the appearance of the heart
   })
+  return false;
 }
- 
+
 function removeProduct(e) {
   e.preventDefault();
   $('#grid').masonry('remove', $(this).closest('li'));
-  $('#grid').masonry('reloadItems');
-  $('#grid').masonry('reload');
+  $('#grid').masonry();
 }
 
