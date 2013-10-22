@@ -46,6 +46,10 @@ gem 'vacuum'
 
 gem 'awesome_print'
 
+group :production do
+  gem 'clockwork'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

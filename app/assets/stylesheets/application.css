@@ -16,7 +16,6 @@
  */
 
 #navbar {
-
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   position: fixed;
@@ -195,13 +194,19 @@ span#sessionkey {
   border-radius: 0 20px 0 0;
 }
 
-.tooltipsy
-{
+.tooltipsy{
   color: #333;
   padding: 10px;
   max-width: 200px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 5px;
+}
+
+#infinite-scroll-end {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin: 40px auto;
 }
 
 @media screen and (max-width: 500px) {
@@ -243,5 +248,3 @@ div.liked {
 a.liked {
   color: red;
 }
-
-

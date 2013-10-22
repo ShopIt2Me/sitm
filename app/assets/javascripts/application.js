@@ -22,13 +22,17 @@
 
 $(document).ready(function(){
   applyInfiniteScroll();
-  displayInformationOnHover('ul.grid li');
-  displayLikeDislikeOnHover('ul.grid li');
-  initGenderChoice();
+  applyBehaviors('ul.grid li');
   initToolTips();
+  initGenderSlider();
+});
+
+function applyBehaviors(elements) {
+  elements = $(elements);
   bindListener(getChild('ul.grid li', '.like'), 'click', callLikeAction)
   bindListener(getChild('ul.grid li', '.dislike'), 'click', removeProduct)
-});
+}
+
 
 function getChild(parentSelector, childSelector) {
   parentEl = $(parentSelector)
@@ -49,8 +53,6 @@ function callLikeAction(e) {
   })
 }
 
-
-
 function applyInfiniteScroll() {
   var $container = $('#grid');
 
@@ -59,61 +61,104 @@ function applyInfiniteScroll() {
       itemSelector: '.item'
     });
   });
-  
+
   $container.infinitescroll({
-    navSelector  : '#page-nav',    // selector for the paged navigation 
+    navSelector  : '#page-nav',    // selector for the paged navigation
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',        // selector for all items you'll retrieve
     loading: {
       img: 'http://i.imgur.com/6RMhx.gif',
       msgText: '',
+      finishedMsg: '',
       speed: 0
     },
-  },
-    // trigger Masonry as a callback
-    function( newElements ) {
+    errorCallback: function() {
+      $('#infinite-scroll-end').show();
+    }
+  }, function( newElements ) { // trigger Masonry as a callback
       // hide new items while they are loading
-      var $newElems = $( newElements ).css({ opacity: 1 });
+      var $newElems = $( newElements );
       // ensure that images load before adding to masonry layout
       $newElems.imagesLoaded(function(){
-        // show elems now they're ready
-        $newElems.animate({ opacity: 1 });
         $container.masonry( 'appended', $newElems, true );
+        applyBehaviors($newElems);
+        $newElems.css({opacity: 1})
       });
     }
-    );
+  );
+
+  applyInfiniteScrollEndBehaviors($container);
+}
+
+function reactivateInfiniteScroll() {
+  var $container = $('#grid');
+  $container.infinitescroll('update', {
+    state: {
+      isDuringAjax: false,
+      isDone: false
+    }
+  });
+  $container.infinitescroll('bind');
 }
 
 function displayLikeDislikeOnHover(elements) {
   var elements = $(elements);
-  $(elements).hover(likeAppear, likeDisappear);
-  elements.find('.like').on('click', callLikeAction);
+  elements.hover(likeAppear, likeDisappear);
+  elements.find('.like').on('click', function(e) {
+    callLikeAction.call(this, e);
+    hideInfiniteScrollEnd();
+    reactivateInfiniteScroll();
+    return false;
+  });
   elements.find('.dislike').on('click', removeProduct);
 }
 
-function initGenderChoice(){
-  $('#men').on('click', function(){
+function applyInfiniteScrollEndBehaviors($container) {
+  var loadRandomProductsUrl = $('#page-nav a').attr('href') + '&fill_with_random=true';
+
+  $('#infinite-scroll-end .more-random').on('click', function() {
+    var isAjaxHappening;
+
+    if (!isAjaxHappening) {
+      isAjaxHappening = true;
+      $.get(loadRandomProductsUrl, function(data) {
+
+        var filteredData = $(data).filter(function() { return this.nodeType !== 3 });
+
+        $container.append(filteredData);
+        $container.imagesLoaded(function(){
+          $container.masonry( 'appended', filteredData, true );
+          filteredData.css({opacity: 1});
+          applyBehaviors(filteredData);
+        });
+      }).done(function() {
+        isAjaxHappening = false;
+      })
+    }
+
+    return false;
+  });
+}
+
+function hideInfiniteScrollEnd() {
+  $('#infinite-scroll-end').hide();
+}
+
+
+function initGenderSlider(){
+  initGenderChoice('#men')
+  initGenderChoice('#both')
+  initGenderChoice('#women')
+}
+
+function initGenderChoice(elem){
+  $elem = $(elem)
+  $elem.on('click', function(){
     hideAllToolTips();
     $(this).data('tooltipsy').show();
     $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "mens"});
     setTimeout(function(){
-      $('#men').data('tooltipsy').hide();
-    }, 2000);
-  });
-  $('#both').on('click', function(){
-    hideAllToolTips();
-    $(this).data('tooltipsy').show();
-    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "both"});
-    setTimeout(function(){
-      $('#both').data('tooltipsy').hide();
-    }, 2000);
-  });
-  $('#women').on('click', function(){
-    hideAllToolTips();
-    $(this).data('tooltipsy').show();
-    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "womens"});
-    setTimeout(function(){
-      $('#women').data('tooltipsy').hide();
+      $elem.data('tooltipsy').hide();
     }, 2000);
   });
 }
@@ -138,4 +183,3 @@ function initToolTips(){
     offset: [-10, 20]
   });
 }
-
