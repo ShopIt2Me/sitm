@@ -48,6 +48,7 @@ gem 'awesome_print'
 
 group :production do
   gem 'clockwork'
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password

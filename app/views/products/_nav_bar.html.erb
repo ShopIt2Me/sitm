@@ -2,29 +2,30 @@
   <ul id="navList">
     <li>
       <a href="/">
-      <img id="logo" src="/assets/shopme200mustard.png">
-      <img id="logo_sm" src="/assets/shopme140mustard.png"></li>
-    </a>
-      <li id="slider">
-        <div id="toggleswitch" class="switch-toggle switch-3 switch-candy yellow">
-          <input id="men" name="gender" type="radio">
-          <label for="men" onclick="" class="dept_class"> 
-            <img class="gender" src="assets/tie.svg" type="image/svg+xml" />
-          </label>
-          <input id="both" name="gender" type="radio" checked="checked">
-          <label for="both" onclick="" class="dept_class">
-            <div id="bothgenders">
-              <img class="gender" src="assets/tie.svg" type="image/svg+xml" />
-              <img class="gender" src="assets/heel.svg" type="image/svg+xml" />
-            </div>
-          </label> 
-
-          <input id="women" name="gender" type="radio">
-          <label for="women" onclick="" class="dept_class">
-            <img class="gender" src="assets/heel.svg" type="image/svg+xml" />
-          </label>
-          <a></a>
-        </div>
+        <%= image_tag("shopme200mustard.png", id: "logo") %>
+        <%= image_tag("shopme140mustard.png", id: "logo_sm") %>
       </li>
-    </ul>
-  </div>
+    </a>
+    <li id="slider">
+      <div id="toggleswitch" class="switch-toggle switch-3 switch-candy yellow">
+        <input id="men" name="gender" type="radio">
+        <label for="men" onclick="" class="dept_class"> 
+          <%= image_tag("tie.svg", class: "gender", type: "image/svg+xml") %>
+        </label>
+        <input id="both" name="gender" type="radio" checked="checked">
+        <label for="both" onclick="" class="dept_class">
+          <div id="bothgenders">
+            <%= image_tag("tie.svg", class: "gender", type: "image/svg+xml") %>
+            <%= image_tag("heel.svg", class: "gender", type: "image/svg+xml") %>
+          </div>
+        </label> 
+
+        <input id="women" name="gender" type="radio">
+        <label for="women" onclick="" class="dept_class">
+          <%= image_tag("heel.svg", class: "gender", type: "image/svg+xml") %>
+        </label>
+        <a></a>
+      </div>
+    </li>
+  </ul>
+</div>
