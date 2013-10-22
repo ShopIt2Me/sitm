@@ -45,7 +45,7 @@ describe ProductsController do
       end
 
       get :load, session_key: new_session.session_key
-      expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(13)
+      expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(8)
     end
   end
 end
