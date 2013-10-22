@@ -1,23 +1,22 @@
- function removeProduct(e) {
+function removeProduct(e) {
   e.preventDefault();
   $('#grid').masonry('remove', $(this).closest('li'));
+  $('#grid').masonry();
 }
 
-function addClickA(e) {
-  $('.side-a').click(function () {
-    $($(this).parent()).addClass('wrap-flip')
+function flipForward () {
+    $(this).parent().addClass('wrap-flip')
     $(this).parent().find('.like').hide()
     $(this).parent().find('.dislike').hide()
-})}
+}
 
-function addClickB() {
-  $('.side-b').click(function () {
-    $($(this).parent()).removeClass('wrap-flip')
-    $($(this).parent()).one('webkitTransitionEnd', function(){
+function flipBack () {
+    $(this).parent().removeClass('wrap-flip')
+    $(this).parent().one('webkitTransitionEnd', function(){
         $(this).parent().find('.like').show()
         $(this).parent().find('.dislike').show()
     })
-})}
+}
 
 function callLikeAction(e) {
   e.preventDefault();

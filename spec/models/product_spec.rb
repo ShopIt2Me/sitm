@@ -16,6 +16,10 @@ describe Product do
   it { should have_many(:images)}
   it { should have_many(:similars)}
   it { should have_many(:similarprods)}
+  it { should_not allow_value("girls").for(:department) }
+  it { should_not allow_value("boys").for(:department) }
+  it { should allow_value("mens").for(:department) }
+  it { should allow_value("womens").for(:department) }
 
   it 'returns asins for similar products not in db as an array of strings' do
     

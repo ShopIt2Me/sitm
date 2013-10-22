@@ -1,27 +1,18 @@
 <% products.each do |product| %>
-<li class="item animate masonry-brick" rel="<%= product.id %>">
-  <div class="product wrap">
 
-      <div class="like" data-productid="<%= product.id %>">
-        <a class="heart" href="#">&#xe000;</a>
-      </div>
-      <div class="dislike" data-productid="<%= product.id %>">
-        <a class="fire" href="#">&#xe028;</a>
-      </div>
-
-
-
-   
-
+  <li class="item animate masonry-brick <%= product.department %>_items" rel="<%= product.id %>">
+    <div class="product wrap">
+        <div class="like" data-productid="<%= product.id %>">
+          <a class="heart" href="#">&#xe000;</a>
+        </div>
+        <div class="dislike" data-productid="<%= product.id %>">
+          <a class="fire" href="#">&#xe028;</a>
+        </div>
     <div class="side-a">
-
-
-    
       <div class="side-a-img">
         <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
       </div>
     </div>
-
     <div class="side-b" style="position:absolute;top:0px; background-color:#67C8FF">
       <%= product.title %>
     </div>

@@ -106,13 +106,14 @@
     display: block;
     height: 30px;
     /* Outline the toggles when the inputs are focused
-	 */
+   */
     position: relative;
     /* For callout panels in foundation
-	 */
+   */
     padding: 0 !important;
     /* Generate styles for the multiple states */ }
     .switch-toggle * {
+      cursor: pointer;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box; }
@@ -125,7 +126,7 @@
       line-height: 30px;
       vertical-align: middle; }
     .switch-toggle input:focus ~ a, .switch-toggle input:focus + label {
-      outline: 1px dotted #888888; }
+      outline: 0px dotted #888888; }
     .switch-toggle input {
       position: absolute;
       opacity: 0; }
@@ -189,7 +190,7 @@
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
     .switch-candy a {
       border: 1px solid #333333;
-      background-color: #67c8ff;
+      background-color: #0099cc;
       border-radius: 3px;
       background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
       background-image: linear-gradient(to  bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
