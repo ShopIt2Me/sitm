@@ -17,6 +17,7 @@
 //= require masonry.pkgd.min
 //= require imagesloaded
 //= require jquery.infinitescroll
+//= require tooltipsy
 //= require_tree .
 
 $(document).ready(function(){
@@ -24,6 +25,7 @@ $(document).ready(function(){
   displayInformationOnHover('ul.grid li');
   displayLikeDislikeOnHover('ul.grid li');
   initGenderChoice();
+  initToolTips();
 });
 
 function applyInfiniteScroll() {
@@ -81,13 +83,48 @@ function displayLikeDislikeOnHover(elements) {
 
 function initGenderChoice(){
   $('#men').on('click', function(){
+    hideAllToolTips();
+    $(this).data('tooltipsy').show();
     $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "mens"});
+    setTimeout(function(){
+      $('#men').data('tooltipsy').hide();
+    }, 2000);
   });
   $('#both').on('click', function(){
+    hideAllToolTips();
+    $(this).data('tooltipsy').show();
     $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "both"});
-  })
+    setTimeout(function(){
+      $('#both').data('tooltipsy').hide();
+    }, 2000);
+  });
   $('#women').on('click', function(){
+    hideAllToolTips();
+    $(this).data('tooltipsy').show();
     $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "womens"});
-  })
+    setTimeout(function(){
+      $('#women').data('tooltipsy').hide();
+    }, 2000);
+  });
 }
 
+function hideAllToolTips(){
+  $('#men').data('tooltipsy').hide();
+  $('#both').data('tooltipsy').hide();
+  $('#women').data('tooltipsy').hide();
+}
+
+function initToolTips(){
+  $('#men').tooltipsy({
+    content: "Men's selection loading next...",
+    offset: [-10, 20]
+  });
+  $('#both').tooltipsy({
+    content: "Men's and women's selection loading next...",
+    offset: [-10, 20]
+  });
+  $('#women').tooltipsy({
+    content: "Women's selection loading next...",
+    offset: [-10, 20]
+  });
+}
