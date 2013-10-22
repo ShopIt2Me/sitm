@@ -74,7 +74,7 @@
 .wrap {
   position: relative;
   margin: 0 auto;
-  -moz-transition: -moz-transform 1s ease-in; /* Firefox 4 */
+  -moz-transition: -moz-transform .75s ease-in; /* Firefox 4 */
   -webkit-transition: -webkit-transform 1s ease-in; /* Safari and Chrome */
   -o-transition: -o-transform 1s ease-in;
   transition: transform 1s ease-in;
