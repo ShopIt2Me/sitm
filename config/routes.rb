@@ -1,4 +1,5 @@
 Sitm::Application.routes.draw do
+  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
 
   root 'products#index'
 
@@ -7,7 +8,7 @@ Sitm::Application.routes.draw do
   get '/products/load', to: 'products#load'
 
   post '/sessions/set_pref_dept' => 'sessions#set_pref_dept'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -48,7 +49,7 @@ Sitm::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
