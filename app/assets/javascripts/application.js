@@ -21,7 +21,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-  applyInfiniteScroll();
+  new Sitm();
   applyBehaviors('ul.grid li');
   initToolTips();
   initGenderSlider();
@@ -33,43 +33,6 @@ function applyBehaviors(elements) {
   elements.find('.dislike').click(removeProduct);
   elements.find('.side-b').click(flipBack);
   elements.find('.side-a').click(flipForward);
-}
-
-function applyInfiniteScroll() {
-  var $container = $('#grid');
-
-  $container.imagesLoaded(function(){
-    $container.masonry({
-      itemSelector: '.item'
-    });
-  });
-
-  $container.infinitescroll({
-    navSelector  : '#page-nav',    // selector for the paged navigation
-    nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
-    itemSelector : '.item',        // selector for all items you'll retrieve
-    loading: {
-      img: 'http://i.imgur.com/6RMhx.gif',
-      msgText: '',
-      finishedMsg: '',
-      speed: 0
-    },
-    errorCallback: function() {
-      $('#infinite-scroll-end').show();
-    }
-  }, function( newElements ) { // trigger Masonry as a callback
-      // hide new items while they are loading
-      var $newElems = $( newElements );
-      // ensure that images load before adding to masonry layout
-      $newElems.imagesLoaded(function(){
-        $container.masonry( 'appended', $newElems, true );
-        applyBehaviors($newElems);
-        $newElems.css({opacity: 1})
-      });
-    }
-  );
-
-  applyInfiniteScrollEndBehaviors($container);
 }
 
 function reactivateInfiniteScroll() {
