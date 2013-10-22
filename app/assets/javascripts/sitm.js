@@ -16,13 +16,14 @@ Sitm.prototype.applyBehaviors = function() {
 }
 
 Sitm.prototype.bindInfiniteScroll = function() {
-  this.$container.imagesLoaded(function(){
-    this.$container.masonry({
+  var self = this;
+  self.$container.imagesLoaded(function(){
+    self.$container.masonry({
       itemSelector: '.item'
     });
   });
 
-  this.$container.infinitescroll({
+  self.$container.infinitescroll({
     navSelector  : '#page-nav',    // selector for the paged navigation
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',        // selector for all items you'll retrieve
@@ -40,12 +41,14 @@ Sitm.prototype.bindInfiniteScroll = function() {
       var $newElems = $( newElements );
       // ensure that images load before adding to masonry layout
       $newElems.imagesLoaded(function(){
-        this.$container.masonry( 'appended', $newElems, true );
+        self.$container.masonry( 'appended', $newElems, true );
         applyBehaviors($newElems);
         $newElems.css({opacity: 1})
       });
     }
   );
 
-  applyInfiniteScrollEndBehaviors(this.$container);
+  applyInfiniteScrollEndBehaviors(self.$container);
 }
+
+
