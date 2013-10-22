@@ -73,5 +73,11 @@ describe ProductsController do
       expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(2)
     end
 
+    it "loads men's products when user specifies preferred department as men's" do
+      new_session = FactoryGirl.create(:simple_session, { session_key: 'test' + rand(1..500).to_s, value: {ary_of_likes: [], ary_of_displayed_ids: [1], preferred_dept:"mens" } })
+      FactoryGirl.create(:product, department: "mens", id: 1000)
+      get :load, fill_with_random: true, session_key: new_session.session_key
+      expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(2)
+    end
   end
 end
