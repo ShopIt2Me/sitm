@@ -146,19 +146,25 @@ function hideInfiniteScrollEnd() {
 
 
 function initGenderSlider(){
-  initGenderChoice('#men')
-  initGenderChoice('#both')
-  initGenderChoice('#women')
+  initGenderChoice('men')
+  initGenderChoice('both')
+  initGenderChoice('women')
 }
 
 function initGenderChoice(elem){
-  $elem = $(elem)
+  $elem = $('#' + elem);
   $elem.on('click', function(){
     hideAllToolTips();
+    var self = this
     $(this).data('tooltipsy').show();
-    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: "mens"});
+    if(elem === "both"){
+      $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: elem});
+    }
+    else{
+    $.post("/sessions/set_pref_dept",{session_key:($("#sessionkey").html()), preferred_dept: elem+"s"});
+  }
     setTimeout(function(){
-      $elem.data('tooltipsy').hide();
+      $(self).data('tooltipsy').hide();
     }, 2000);
   });
 }
@@ -171,15 +177,15 @@ function hideAllToolTips(){
 
 function initToolTips(){
   $('#men').tooltipsy({
-    content: "Men's selection loading next...",
+    content: "Men's selection loading next",
     offset: [-10, 20]
   });
   $('#both').tooltipsy({
-    content: "Men's and women's selection loading next...",
+    content: "Men's and women's selection loading next",
     offset: [-10, 20]
   });
   $('#women').tooltipsy({
-    content: "Women's selection loading next...",
+    content: "Women's selection loading next",
     offset: [-10, 20]
   });
 }
