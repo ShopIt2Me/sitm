@@ -34,6 +34,7 @@ group :doc do
 end
 
 group :test, :development do
+  gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'dotenv-rails'
