@@ -29,11 +29,11 @@
   padding: .3em .7em;
 }
 
-.heart:hover {
+.likeicon:hover {
   color: red;
 }
 
-.fire:hover {
+.dislikeicon:hover {
   color: #FFCC11;
 }
 
@@ -143,7 +143,7 @@ img {
   margin: 0 auto;
 }
 
-ul.grid li div.product {
+ul.grid li .product {
   position: relative;
 }
 
@@ -166,7 +166,7 @@ span#sessionkey {
 }
 
 #grid li div {
-  background: white;
+  background-color: white;
   border-radius: 20px;
 }
 
