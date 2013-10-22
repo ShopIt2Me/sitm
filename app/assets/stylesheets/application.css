@@ -275,7 +275,7 @@ a.liked {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transform:rotateY(-180deg);
-  -moz-transform:rotateY(-180deg);]
+  -moz-transform:rotateY(-180deg);
   transform:rotateY(-180deg);
   -webkit-transform-style: preserve-3d;
 }
