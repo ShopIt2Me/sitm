@@ -129,7 +129,7 @@ div.dislike{
   opacity: 0.7;
   transition-property:opacity;
   -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity;  Safari and Chrome 
+  -webkit-transition-property: opacity;  /*Safari and Chrome*/ 
   -o-transition-property: opacity; /* Opera */
   transition-duration: .75s;
   -webkit-transition-duration: .75s; /* Safari */
@@ -291,7 +291,6 @@ a.liked {
     padding-bottom: 60px;
   }
 
-
   div.like {
     opacity: 1;
   }
@@ -322,6 +321,6 @@ a.liked {
   .wrap-flip div {
   border-radius: 20px;
   padding-bottom: 30px;
-} 
+  } 
 
 }
