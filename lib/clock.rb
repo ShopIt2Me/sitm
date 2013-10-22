@@ -14,4 +14,4 @@ handler do |job|
   end
 end
 
-every(10.seconds, 'Querying Amazon API..')
+every(2.seconds, 'Querying Amazon API..')
