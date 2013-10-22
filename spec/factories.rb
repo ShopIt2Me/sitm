@@ -36,7 +36,7 @@ FactoryGirl.define do
 
   factory :simple_session do
     session_key { "test" }
-    value { {ary_of_likes: [], ary_of_displayed_ids: [] } }
+    value { {ary_of_likes: [], ary_of_displayed_ids: [], preferred_dept: "both" } }
   end
 
 end
