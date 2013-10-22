@@ -29,7 +29,6 @@ $(document).ready(function(){
 
 function applyBehaviors(elements) {
   elements = $(elements);
-  initGenderChoice();
   elements.find('.like').click(callLikeAction);
   elements.find('.dislike').click(removeProduct);
   elements.find('.side-b').click(flipBack);
