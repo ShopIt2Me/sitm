@@ -9,12 +9,12 @@ describe ProductsController do
   let (:simple_session) { FactoryGirl.create(:simple_session) }
 
   context "when a user likes a product"
-    it "should add liked product id to array of liked product ids in session value" do
-      simple_session
-      post :like, product_id: prod1.id, session_key: 'test'
+  it "should add liked product id to array of liked product ids in session value" do
+    simple_session
+    post :like, product_id: prod1.id, session_key: 'test'
 
-      expect(SimpleSession.last.ary_of_likes).to eq([prod1.id])
-    end
+    expect(SimpleSession.last.ary_of_likes).to eq([prod1.id])
+  end
 
   context "when a user loads more products" do
 
@@ -65,5 +65,13 @@ describe ProductsController do
       get :load, fill_with_random: true, session_key: new_session.session_key
       expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(2)
     end
+
+    it "loads both gender's products when user specifies preferred department as 'both'" do
+      new_session = FactoryGirl.create(:simple_session, { session_key: 'test' + rand(1..500).to_s, value: {ary_of_likes: [], ary_of_displayed_ids: [1], preferred_dept:"both" } })
+      FactoryGirl.create(:product, department: "womens", id: 1000)
+      get :load, fill_with_random: true, session_key: new_session.session_key
+      expect(SimpleSession.find_by(session_key: new_session.session_key).ary_of_displayed_ids.length).to eq(2)
+    end
+
   end
 end
