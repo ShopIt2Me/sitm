@@ -21,8 +21,9 @@
 
 $(document).ready(function(){
   applyInfiniteScroll();
-  bindListener(getChild('ul.grid li', '.like'), 'click', callLikeAction)
-  bindListener(getChild('ul.grid li', '.dislike'), 'click', removeProduct)
+  getChild('ul.grid li', '.like').click(callLikeAction)
+  getChild('ul.grid li', '.dislike').click(removeProduct)
+
   addClickA();
   addClickB();
 });
@@ -31,22 +32,6 @@ function getChild(parentSelector, childSelector) {
   parentEl = $(parentSelector)
   return $(parentEl).find(childSelector)
 }
-
-function bindListener(targetEl, action, callback) {
-  targetEl.on(action, callback);
-}
-
-function callLikeAction(e) {
-  e.preventDefault();
-  $.post('products/like', {session_key:($("#sessionkey").html()) , product_id: this.dataset.productid})
-  .done(function(response){
-    $("li").find("[data-productid='" + response + "']").addClass('liked');
-    $("li").find("[data-productid='" + response + "']").find('a.heart').addClass('liked');
-    $("li").find("[data-productid='" + response + "']").find('a.fire').html('');
-
-  })
-}
-
 
 
 function applyInfiniteScroll() {

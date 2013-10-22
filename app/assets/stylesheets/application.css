@@ -70,9 +70,9 @@
 
 .wrap div {
   position:relative;
-  -webkit-backface-visibility: hidden;
   cursor: pointer;
   box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+  -webkit-transform-style: preserve-3d;
 }
 
 div.like {
@@ -106,12 +106,7 @@ div.dislike{
   z-index: 100;
 }
 
-.product p {
-  opacity: 0;
-}
-
-
-li:hover .dislike{
+.product:hover .dislike {
   opacity: 0.7;
   transition-property:opacity;
   -moz-transition-property: opacity; /* Firefox 4 */
@@ -121,7 +116,7 @@ li:hover .dislike{
   -webkit-transition-duration: .75s; /* Safari */
 }
 
-li:hover .like{
+.product:hover .like{
   opacity: 0.7;
   transition-property:opacity;
   -moz-transition-property: opacity; /* Firefox 4 */
@@ -129,18 +124,9 @@ li:hover .like{
   -o-transition-property: opacity; /* Opera */
   transition-duration: .75s;
   -webkit-transition-duration: .75s; /* Safari */
+  -moz-transition-property: .75s; /* Firefox 4 */
+  -o-transition-property: .75s; /* Opera */
 }
-
-li:hover p{
-  opacity: 0.7;
-  transition-property:opacity;
-  -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity; /* Safari and Chrome */
-  -o-transition-property: opacity; /* Opera */
-  transition-duration: .75s;
-  -webkit-transition-duration: .75s; /* Safari */
-}
-
 
 img {
   margin: 0 auto;
@@ -192,16 +178,47 @@ span#sessionkey {
   transition: none;
 }
 
-#grid li div.like-dislike a {
-  margin-top: 8px;
-}
-
 #grid li div.like {
   border-radius: 20px 0 0 0;
+  padding-top: 8px;
 }
 
 #grid li div.dislike {
   border-radius: 0 20px 0 0;
+  padding-top: 8px;
+}
+
+
+div.liked {
+  opacity: 0.7;
+}
+
+a.liked {
+  color: red;
+}
+
+.wrap-flip {
+  -webkit-transform:rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+}
+
+.side-a{
+  position:absolute;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.side-b{
+  background-color: #33363B;  
+  height:100%;
+  width:100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform:rotateY(-180deg);
+  -moz-transform:rotateY(-180deg);]
+  transform:rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
 }
 
 @media screen and (max-width: 900px) {
@@ -212,36 +229,5 @@ span#sessionkey {
     opacity: 0.7;
   }
 }
-
-div.liked {
-  opacity: 0.7;
-}
-
-a.liked {
-  color: red;
-}
-
-
-
-
-.wrap-flip {
-  -webkit-transform:rotateY(180deg);
-}
-
-.side-a{
-  position:absolute;
-/*  z-index:100;*/
-}
-
-.side-b{
-  background-color: #33363B;  
-  height:100%;
-  width:100%;
-  -webkit-transform:rotateY(-180deg);
-}
-
-
-
-
 
 
