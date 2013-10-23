@@ -19,7 +19,6 @@
 //= require jquery.infinitescroll
 //= require tooltipsy
 //= require eventhandlers
-//= require init
 //= require main
 //= require_tree .
 
