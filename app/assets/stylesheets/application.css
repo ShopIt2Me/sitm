@@ -76,13 +76,11 @@
   margin: 0 auto;
 }
 
-/**
- * Grid
- */
+  /**
+   * Grid
+   */
   #grid li {
-    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-    border: 0;
-    margin: 10px;
+    border: 10px solid transparent;
     padding: 0;
   }
 
@@ -142,6 +140,7 @@
 
   .side-a img {
     width: 100%;
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
   }
 
   /**
