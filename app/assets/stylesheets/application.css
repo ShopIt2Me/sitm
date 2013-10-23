@@ -15,6 +15,9 @@
  *= require_tree .
  */
 
+/* TODO-JW: PLEASE USE OTHER FILES!! */
+
+
 #navbar {
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -257,7 +260,7 @@ div.liked {
   opacity: 0.7;
 }
 
-a.liked {
+span.liked {
   color: red;
 }
 

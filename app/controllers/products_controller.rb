@@ -24,11 +24,14 @@ class ProductsController < ApplicationController
   end
 
   def like
-    product_id = params[:product_id].to_i
-    missing = Product.find(product_id).identify_missing_asins
+    product_id = params[:id].to_i
+    product = Product.find(product_id)
+    missing = product.identify_missing_asins
     ProductPrioritySet.add_to_set(product_id, missing)
     @simple_session.update_liked_ids(product_id)
     render :json => (product_id).to_json
+  # rescue => e
+  #   render :status => :unprocessable_entity, :json => {message: e}.to_json
   end
 
 end

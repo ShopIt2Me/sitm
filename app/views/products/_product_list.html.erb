@@ -2,7 +2,10 @@
   <li class="item animate masonry-brick <%= product.department %>_items" rel="<%= product.id %>">
     <div class="product wrap">
       <div class="like" data-productid="<%= product.id %>">
-        <a class="likeicon" href="#">&#xe000;</a>
+        <%= link_to like_product_path(product), remote: true, class: "likeicon" do %>
+        &#xe000;
+        <% end %>
+        <!-- a class="likeicon" href="#">&#xe000;</a-->
       </div>
       <div class="dislike" data-productid="<%= product.id %>">
         <a class="dislikeicon" href="#">&#xe028;</a>

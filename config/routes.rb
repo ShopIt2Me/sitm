@@ -2,7 +2,9 @@ Sitm::Application.routes.draw do
 
   root 'products#index'
 
-  post '/products/like' => 'products#like'
+  #post '/products/like' => 'products#like'
+
+  get '/products/:id/like' => 'products#like', as: :like_product
 
   get '/products/load', to: 'products#load'
 

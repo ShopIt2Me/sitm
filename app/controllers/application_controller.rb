@@ -6,12 +6,10 @@ class ApplicationController < ActionController::Base
   before_filter :update_session
 
   def update_session
-    unless params[:session_key]
-      params[:session_key] = generate_session_key
-    end
-      @simple_session = SimpleSession.find_by session_key: params[:session_key]
+    session[:session_key] ||= generate_session_key
+    @simple_session = SimpleSession.find_by session_key: session[:session_key]
     unless @simple_session
-      @simple_session = SimpleSession.create(session_key: params[:session_key], value: {ary_of_likes: [], ary_of_displayed_ids:[], preferred_dept: 'both'})
+      @simple_session = SimpleSession.create(session_key: session[:session_key], value: {ary_of_likes: [], ary_of_displayed_ids:[], preferred_dept: 'both'})
     end
   end
 
