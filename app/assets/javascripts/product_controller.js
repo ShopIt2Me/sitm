@@ -16,7 +16,7 @@ var ProductController = {
 
   dislike: function(e){
     e.preventDefault();
-    $(this).closest('.product').remove();
+    ProductController.$container.masonry('remove', $(this).closest('.product'));
     ProductController.$container.masonry();
   },
 
