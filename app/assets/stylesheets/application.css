@@ -200,17 +200,23 @@
     height: 80px;
     font-size: 20px;
     text-align: center;
-    margin: 16px 0;
+    margin: 0;
+    top: 6%;
+    position: relative;
   }
 
   .side-b p.price {
+    position: relative;
     text-align: center;
     font-weight: 600;
     font-size: 18px;
-    margin: 16px auto 0;
+    margin: 0 auto;
+    top: 10%;
   }
 
   .side-b a.buy-button {
+    position: relative;
+    top: 6%;
     margin: 0 auto;
     text-align: center;
     width: 50%;
