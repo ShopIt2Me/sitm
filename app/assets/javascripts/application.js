@@ -29,25 +29,7 @@ $(document).ready(function(){
     });
   });
 
-  // FLIPS!
-  $container.on('click', 'li > div', function() {
-    var $productItem = $(this);
-    $productItem.toggleClass('flipping')
 
-    $(this).one('webkitTransitionEnd', function() {
-      $productItem.toggleClass('flipped');
-      $productItem.removeClass('flipping-forward');
-    });
-
-    if ($productItem.hasClass('flipped')) {
-      $productItem.addClass('flipping-forward');
-    }
-  });
-
-  $container.on('click', '.like', function(e) {
-    $(this).closest('.product').addClass('liked');
-    return false;
-  });
 });
 
 // $(document).ready(function(){
