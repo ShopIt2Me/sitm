@@ -282,7 +282,7 @@ a.liked {
 .side-b{
   position:absolute !important;
   top: 0px;
-  background-color: white;  
+  background-color: ghostwhite;  
   height:100%;
   width:100%;
   -webkit-transform:rotateY(-180deg);
@@ -318,12 +318,19 @@ p.price {
   font-size: 18px;
 }
 
-.buy-button1 {
+.buy-button {
   margin: 0 auto;
   text-align: center;
   width: 50%;
   height: 120px;
   background-color: #63D1F4;
+  box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+  border-radius: 20px;
+  -moz-transform-style: preserve-3d; /* Firefox 4 */
+  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
+  -o-transform-style: preserve-3d; /* Opera */
+  transform-style: preserve-3d;
+  color: black;
 }
 
 

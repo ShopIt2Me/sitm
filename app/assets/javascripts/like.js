@@ -25,7 +25,7 @@ function callLikeAction(e) {
     $("li").find("[data-productid='" + response + "']").addClass('liked');
     $("li").find("[data-productid='" + response + "']").find('a.likeicon').addClass('liked');
     $("li").find("[data-productid='" + response + "']").find('a.dislikeicon').html('');
-    $("li").find("[data-productid='" + response + "']").unbind('click')
+    $("li").find("[data-productid='" + response + "']").unbind('click',function(){})
   })
 }
 

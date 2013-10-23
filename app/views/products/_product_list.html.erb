@@ -14,11 +14,10 @@
       </div>
       <div class="side-b">
         <p class="title"><%= product.title %></p>
-        <!-- option 1 -->
-        <div class="buy-button1">
+        <a class="buy-button" href="<%= product.buylink %>" target="_blank">
           BUY
           <%= image_tag("shoppingbag.svg", class: "bag", type: "image/svg+xml") %>
-        </div>
+        </a>
 
 
         <p class="price"><%= product.price if product.price !="-" %></p>
