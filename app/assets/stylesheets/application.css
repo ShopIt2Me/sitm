@@ -68,14 +68,6 @@
   min-width: 40px;
 }
 
-/**
- * Container
- */
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-
   /**
    * Grid
    */
@@ -92,7 +84,6 @@
    * FLIPS!
    */
   .flipper {
-    /*position: relative;*/
     margin: 0 auto;
     -moz-transition: -moz-transform .75s ease-in; 
     -webkit-transition: -webkit-transform 1s ease-in; 
