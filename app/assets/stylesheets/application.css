@@ -185,16 +185,6 @@ span#sessionkey {
   margin-top: 5px;
 }
 
-#grid p {
-  position: absolute;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 0 0 20px 20px;
-  width: 100%;
-  margin: 0;
-  padding: 10px;
-  line-height: 26px;
-}
 
 #infscr-loading {
   width: 100%;
@@ -339,6 +329,7 @@ a.liked {
 }
 
 .side-a{
+  min-height: 280px;
   background-color: white;
   position:absolute;
   -moz-transform-style: preserve-3d; /* Firefox 4 */
@@ -352,10 +343,9 @@ a.liked {
 }
 
 .side-b{
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #33363B;  
+  position:absolute !important;
+  top: 0px;
+  background-color: ghostwhite;  
   height:100%;
   width:100%;
   -webkit-transform:rotateY(-180deg);
@@ -370,6 +360,40 @@ a.liked {
   -webkit-backface-visibility: hidden; /* Safari and Chrome */
   -o-backface-visibility: hidden; /* Opera */
   backface-visibility: hidden; 
+}
+
+.side-a-img {
+  box-shadow: none !important;
+}
+
+p.title {
+  padding: 16px 10%;
+  height: 122px;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+p.price {
+  margin: 16px auto 0px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.buy-button {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  height: 120px;
+  background-color: #63D1F4;
+  box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+  border-radius: 20px;
+  -moz-transform-style: preserve-3d; /* Firefox 4 */
+  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
+  -o-transform-style: preserve-3d; /* Opera */
+  transform-style: preserve-3d;
+  color: black;
 }
 
 

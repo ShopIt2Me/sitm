@@ -21,12 +21,12 @@ function flipBack () {
 function callLikeAction(e) {
   e.preventDefault();
   $.post('products/like', {session_key:($("#sessionkey").html()) , product_id: this.dataset.productid})
-    .done(function(response){
-      $("li").find("[data-productid='" + response + "']").addClass('liked');
-      $("li").find("[data-productid='" + response + "']").find('a.likeicon').addClass('liked');
-      $("li").find("[data-productid='" + response + "']").find('a.dislikeicon').html('');
-      $("li").find("[data-productid='" + response + "']").unbind('click')
-    })
+  .done(function(response){
+    $("li").find("[data-productid='" + response + "']").addClass('liked');
+    $("li").find("[data-productid='" + response + "']").find('a.likeicon').addClass('liked');
+    $("li").find("[data-productid='" + response + "']").find('a.dislikeicon').html('');
+    $("li").find("[data-productid='" + response + "']").unbind('click',function(){})
+  })
 
   hideInfiniteScrollEnd();
   reactivateInfiniteScroll();

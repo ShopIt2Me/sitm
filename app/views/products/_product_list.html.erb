@@ -12,9 +12,18 @@
           <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
         </div>
       </div>
-      <div class="side-b" style="position:absolute;top:0px; background-color:#67C8FF">
-        <%= product.title %>
+      <div class="side-b">
+        <p class="title"><%= product.title %></p>
+        <a class="buy-button" href="<%= product.buylink %>" target="_blank">
+          BUY
+          <%= image_tag("shoppingbag.svg", class: "bag", type: "image/svg+xml") %>
+        </a>
+
+
+        <p class="price"><%= product.price if product.price !="-" %></p>
       </div>
     </div>
   </li>
 <% end %>
+
+
