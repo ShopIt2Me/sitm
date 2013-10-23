@@ -117,7 +117,7 @@
    * Product Side-A
    */
   .side-a {
-    position: relative;
+    position: relative; 
   }
 
   .side-a .like-dislike-wrapper {
@@ -172,6 +172,7 @@
 
   .side-a img {
     width: 100%;
+    min-height: 280px; 
     box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
   }
 
@@ -179,7 +180,6 @@
    * Product Side-B
    */
   .side-b {
-    padding: 10px 20px 0 20px;
     background-color: #33363B;  
     height:100%;
     width:100%;
@@ -194,6 +194,40 @@
     transform:rotateY(-180deg);
   }
 
+  .side-b p.title {
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 80px;
+    font-size: 20px;
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  .side-b p.price {
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 16px auto 0;
+  }
+
+  .side-b a.buy-button {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    height: 120px;
+    background-color: #63D1F4;
+    color: black;
+    border-radius: 20px;
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .side-b a.buy-button img {
+    margin: 0 auto;
+  }
 /**
  * Footer
  */
