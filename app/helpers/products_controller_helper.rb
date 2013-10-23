@@ -10,4 +10,16 @@ module ProductsControllerHelper
     end
   end
 
+  def handle_randomized_times_result_session(params)
+    if params[:fill_with_random]
+      @simple_session[:value][:randomized_times] = rand(4..7)
+      @simple_session.save
+    end
+
+    if @simple_session[:value][:randomized_times].to_i > 0
+      @simple_session[:value][:randomized_times] -= 1
+      @simple_session.save
+    end
+  end
+
 end

@@ -49,7 +49,6 @@ function applyInfiniteScroll() {
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',        // selector for all items you'll retrieve
     loading: {
-      img: 'http://i.imgur.com/6RMhx.gif',
       msgText: '',
       finishedMsg: '',
       speed: 0
@@ -111,6 +110,8 @@ function applyInfiniteScrollEndBehaviors($container) {
           $container.masonry( 'appended', filteredData, true );
           filteredData.css({opacity: 1});
           applyBehaviors(filteredData);
+          hideInfiniteScrollEnd();
+          reactivateInfiniteScroll();
         });
       }).done(function() {
         isAjaxHappening = false;
