@@ -27,5 +27,8 @@ function callLikeAction(e) {
     $("li").find("[data-productid='" + response + "']").find('a.dislikeicon').html('');
     $("li").find("[data-productid='" + response + "']").unbind('click',function(){})
   })
+
+  hideInfiniteScrollEnd();
+  reactivateInfiniteScroll();
 }
 
