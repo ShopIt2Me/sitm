@@ -5,16 +5,19 @@ class ProductsController < ApplicationController
   def index
   	@products = Product.all.shuffle.shift(20)
     @simple_session.update_displayed_ids(@products)
+    @simple_session[:value][:randomized_times] = rand(4..7)
+    @simple_session.save
   end
-
 
   def load
     preferred_dept = @simple_session[:value][:preferred_dept]
+    handle_randomized_times_result_session(params)
 
     freq_hash = DisplayPrioritizer.frequentize(@simple_session.ary_of_likes, @simple_session.ary_of_displayed_ids)
     top_ten_prod_ids = DisplayPrioritizer.top_prod_ids(freq_hash, TOTAL_PRODUCTS_RETURNED)
     top_prods = DisplayPrioritizer.get_top_prods(top_ten_prod_ids)
-    if (params[:fill_with_random])
+
+    if @simple_session[:value][:randomized_times].to_i > 0
       num_random_products = TOTAL_PRODUCTS_RETURNED - top_prods.length
       top_prods = get_top_prods(preferred_dept, top_prods, num_random_products)
     end

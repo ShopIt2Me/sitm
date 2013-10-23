@@ -109,6 +109,8 @@ function applyInfiniteScrollEndBehaviors($container) {
           $container.masonry( 'appended', filteredData, true );
           filteredData.css({opacity: 1});
           applyBehaviors(filteredData);
+          hideInfiniteScrollEnd();
+          reactivateInfiniteScroll();
         });
       }).done(function() {
         isAjaxHappening = false;
