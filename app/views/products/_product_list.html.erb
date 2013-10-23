@@ -1,7 +1,8 @@
 <% products.each do |product| %>
   <li class="product animate masonry-brick <%= product.department %>_items">
 
-    <div class="fippler">    
+    <div class="flipper">    
+
       <div class="side-a">
         <div class="like-dislike-wrapper">
           <div class="like" data-productid="<%= product.id %>">
@@ -15,6 +16,9 @@
 
         <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
       </div>
+
+
+
 
       <div class="side-b">
         <p><%= product.title %></p>
