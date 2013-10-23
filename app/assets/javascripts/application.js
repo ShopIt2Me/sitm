@@ -21,6 +21,15 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+  // ensure all AJAX calls get sent with the right X-CSRF-Token (such
+  // that all front-end and back-end sessions will be properly matched)
+  $(document).ajaxSend(function(e, xhr, options) {
+    var token = $("meta[name='csrf-token']").attr("content");
+    xhr.setRequestHeader("X-CSRF-Token", token);
+  });
+
+
   applyInfiniteScroll();
   applyBehaviors('ul.grid li');
   initToolTips();
