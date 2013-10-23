@@ -229,7 +229,7 @@ span#sessionkey {
   margin: 40px auto;
 }
 
-@media screen and (max-device-width: 500px) {
+@media screen and (max-width: 500px) {
 
   #slider{
     width: 140px;
@@ -252,6 +252,72 @@ span#sessionkey {
   }
 }
 
+@media screen and (max-width: 900px) {
+.wrap div {
+   border-radius: 20px 20px 0 0;
+   box-shadow: none;
+   -webkit-transform-style: preserve-3d;
+ }
+
+ #grid li {
+   padding-bottom: 60px;
+ }
+
+ div.like {
+   opacity: 1;
+ }
+ div.dislike {
+   opacity: 1;
+ }
+
+ div.like {
+   position: absolute;
+   bottom:-60px;
+ }
+
+ div.dislike{
+   position: absolute;
+   bottom:-60px;
+ }
+ 
+ #grid li div.like {
+   border-radius: 0px 0 0 20px;
+   padding-top: 8px;
+ }
+
+ #grid li div.dislike {
+   border-radius: 0 0px 20px 0;
+   padding-top: 8px;
+ }
+
+ .wrap-flip div {
+ border-radius: 20px;
+ padding-bottom: 30px;
+ } 
+ .product:hover .dislike {
+  opacity: 1.0;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-property:opacity;
+  -moz-transition-duration: .75s;
+  -webkit-transition-duration: .75s; /* Safari */
+  -o-transition-duration: .75s;
+  transition-duration: .75s;
+}
+
+.product:hover .like{
+  opacity: 1.0;
+  -moz-transition-property: opacity; /* Firefox 4 */
+  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -o-transition-property: opacity; /* Opera */
+  transition-property:opacity;
+  -moz-transition-duration: .75s; /* Firefox 4 */
+  -webkit-transition-duration: .75s; /* Safari and Chrome */
+  -o-transition-duration: .75s; /* Opera */
+  transition-duration: .75s;
+}
+}
 
 div.liked {
   opacity: 0.7;
@@ -306,47 +372,4 @@ a.liked {
   backface-visibility: hidden; 
 }
 
-@media screen and (max-device-width: 900px) {
-  .wrap div {
-    border-radius: 20px 20px 0 0;
-    box-shadow: none;
-    -webkit-transform-style: preserve-3d;
-  }
 
-  #grid li {
-    padding-bottom: 60px;
-  }
-
-  div.like {
-    opacity: 1;
-  }
-  div.dislike {
-    opacity: 1;
-  }
-
-  div.like {
-    position: absolute;
-    bottom:-60px;
-  }
-
-  div.dislike{
-    position: absolute;
-    bottom:-60px;
-  }
-  
-  #grid li div.like {
-    border-radius: 0px 0 0 20px;
-    padding-top: 8px;
-  }
-
-  #grid li div.dislike {
-    border-radius: 0 0px 20px 0;
-    padding-top: 8px;
-  }
-
-  .wrap-flip div {
-  border-radius: 20px;
-  padding-bottom: 30px;
-  } 
-
-}

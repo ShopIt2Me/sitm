@@ -50,8 +50,7 @@ function applyInfiniteScroll() {
     itemSelector : '.item',        // selector for all items you'll retrieve
     loading: {
       msgText: '',
-      finishedMsg: '',
-      speed: 0
+      finishedMsg: ''
     },
     errorCallback: function() {
       $('#infinite-scroll-end').show();
