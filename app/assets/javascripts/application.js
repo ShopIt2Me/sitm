@@ -27,6 +27,11 @@ $(document).ready(function(){
       itemSelector: '.product'
     });
   });
+
+  // FLIPS!
+  $container.on('click', 'li > div', function() {
+    $(this).toggleClass('flipping')
+  });
 });
 
 // $(document).ready(function(){
