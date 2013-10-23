@@ -195,6 +195,12 @@
   .liked .flipping .like-dislike-wrapper {
     display: none;
   }  
+  
+  .liked .flipping-forward .like-dislike-wrapper {
+    display: none;
+  }  
+
+
 
 /**
  * Footer
