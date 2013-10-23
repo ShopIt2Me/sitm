@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   TOTAL_PRODUCTS_RETURNED = 5
 
   def index
+    reset_session
+    update_session
   	@products = Product.all.shuffle.shift(20)
     @simple_session.update_displayed_ids(@products)
   end
