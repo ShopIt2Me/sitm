@@ -23,6 +23,13 @@ class Product < ActiveRecord::Base
     missing
   end
 
+  def title_mini
+    if self.title.match(/.{45}[^\s\b]+/).to_s.empty?
+      self.title
+    else
+      self.title.match(/.{45,50}[^\s\b]+/).to_s
+    end
+  end
 end
 
 
