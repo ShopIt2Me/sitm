@@ -1,0 +1,6 @@
+var SuccessHandler = {
+  moreRandomProduct: function(){
+    
+  }
+
+}

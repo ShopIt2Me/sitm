@@ -18,6 +18,7 @@
 //= require imagesloaded
 //= require jquery.infinitescroll
 //= require tooltipsy
+//= require main
 //= require_tree .
 
 $(document).ready(function(){
