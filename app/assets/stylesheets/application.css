@@ -15,6 +15,9 @@
  *= require_tree .
  */
 
+/*
+ * NAVBAR
+ */
 #navbar {
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -22,6 +25,7 @@
   z-index: 500;
   top: 0;
 }
+
 #navList {
   list-style-type: none;
   display: inline;
@@ -29,347 +33,130 @@
   padding: .3em .7em;
 }
 
-.likeicon:hover {
-  color: red;
-}
-@media screen and (min-width: 901px) {
-
-  .dislikeicon:hover {
-    color: #FFCC11;
-  }
-
-}
-
-
 #navList li {
   display: inline;
 }
 
+#navList li #logo {
+  margin-top: 5px;
+}
 
-#slider{
+#navList li #logo_sm {
+  margin-top: 5px;
+  display: none;
+}
+
+#navList li#slider {
   float: right;
   width: 200px;
   height: 40px;
   margin-right: 20px;
 }
 
-#toggleswitch{
+#navList li#slider #toggleswitch {
   position: relative;
   top: 37%;
   height: 35px;
 }
 
-.gender{
+#navList li#slider #toggleswitch img.gender {
   width: 27px;
   height: 35px;
 }
-#bothgenders{
+
+#navList li#slider #toggleswitch div#bothgenders {
   min-width: 40px;
 }
 
-#logo{
-  margin-top: 5px;
-}
-#logo_sm{
-  margin-top: 5px;
-  display: none;
-}
-
-.wrap {
-  position: relative;
-  margin: 0 auto;
-  -moz-transition: -moz-transform .75s ease-in; /* Firefox 4 */
-  -webkit-transition: -webkit-transform 1s ease-in; /* Safari and Chrome */
-  -o-transition: -o-transform 1s ease-in;
-  transition: transform 1s ease-in;
-  -moz-transform-style: preserve-3d; /* Firefox 4 */
-  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
-  -o-transform-style: preserve-3d; /* Opera */
-  transform-style: preserve-3d; 
-}
-
-.wrap div {
-  overflow: hidden;
-  border-radius: 20px;
-  position:relative;
-  cursor: pointer;
-  box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-  -moz-transform-style: preserve-3d; /* Firefox 4 */
-  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
-  -o-transform-style: preserve-3d; /* Opera */
-  transform-style: preserve-3d; 
-}
-
-
-
-div.like {
-  height: 60px;
-  position: absolute;
-  width: 50%;
-  background-color: white;
-  opacity: 0;
-  overflow: hidden;
-  text-align: center;
-  font-family: 'linecons';
-  font-size: 40px;
-  float:left;
-  box-shadow: none;
-  z-index: 100;
-}
-
-div.dislike{
-  height: 60px;
-  position: absolute;
-  right:0%;
-  width: 50%;
-  background-color: white;
-  opacity: 0;
-  overflow: hidden;
-  text-align: center;
-  float: right;
-  font-family: 'linecons';
-  font-size: 40px;
-  box-shadow: none;
-  z-index: 100;
-}
-
-
-.product:hover .dislike {
-  opacity: 0.7;
-  -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity;  /*Safari and Chrome*/ 
-  -o-transition-property: opacity; /* Opera */
-  transition-property:opacity;
-  -moz-transition-duration: .75s;
-  -webkit-transition-duration: .75s; /* Safari */
-  -o-transition-duration: .75s;
-  transition-duration: .75s;
-}
-
-.product:hover .like{
-  opacity: 0.7;
-  -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity; /* Safari and Chrome */
-  -o-transition-property: opacity; /* Opera */
-  transition-property:opacity;
-  -moz-transition-duration: .75s; /* Firefox 4 */
-  -webkit-transition-duration: .75s; /* Safari and Chrome */
-  -o-transition-duration: .75s; /* Opera */
-  transition-duration: .75s;
-}
-
-
-img {
-  margin: 0 auto;
-}
-
-ul.grid li .product {
-  position: relative;
-}
-
-span#sessionkey {
-  display: none;
-}
-
-#page-nav {
-  display: none;
-}
-
-#grid li {
-  padding: 0;
-  color: #333;
-  border: 10px solid transparent;
-}
-
-#no_mo{
-  margin-top: 5px;
-}
-
-#grid p {
-  position: absolute;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 0 0 20px 20px;
-  width: 100%;
-  margin: 0;
-  padding: 10px;
-  line-height: 26px;
-}
-
-#infscr-loading {
-  width: 100%;
-  position: fixed;
-  bottom: 30px;
-  text-align: center;
-  transition: none;
-}
-
-#grid li div.like {
-  border-radius: 20px 0 0 0;
-  padding-top: 8px;
-}
-
-#grid li div.dislike {
-  border-radius: 0 20px 0 0;
-  padding-top: 8px;
-}
-
-.tooltipsy{
-  color: #333;
-  padding: 10px;
-  max-width: 200px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 5px;
-}
-
-#infinite-scroll-end {
-  display: none;
-  width: 100%;
-  text-align: center;
-  margin: 40px auto;
-}
-
-@media screen and (max-width: 500px) {
-
-  #slider{
-    width: 140px;
-    height: 40px;
-    margin-right: 7px;
+/**
+ * Grid
+ */
+  #grid li {
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+    border-radius: 20px;
+    border: 0;
+    margin: 10px;
+    padding: 0;
   }
-  #toggleswitch{
-    top: 25%;
-    height: 30px;
-  }
-  #logo{
-    display: none;
-  }
-  #logo_sm{
-    display: inline;
-  }
-  .gender{
+
+  /**
+   * Product Side-A
+   */
+  .side-a {
     position: relative;
-    width: 21px;
   }
-}
 
-@media screen and (max-width: 900px) {
-.wrap div {
-   border-radius: 20px 20px 0 0;
-   box-shadow: none;
-   -webkit-transform-style: preserve-3d;
- }
+  .side-a .like-dislike-wrapper {
+    display: none;
+    font-family: 'linecons';
+  }
 
- #grid li {
-   padding-bottom: 60px;
- }
+  .side-a:hover .like-dislike-wrapper {
+    position: absolute;
+    display: block;
+    height: 30%;
+    width: 100%;
+    margin-top: -20%;
+    top: 50%;
+    background: white;
+    opacity: 0.7;
+  }
 
- div.like {
-   opacity: 1;
- }
- div.dislike {
-   opacity: 1;
- }
+  .side-a .like-dislike-wrapper > div {
+    height: 60px;
+    font-size: 63px;
+    width: 50%;
+    float: left;
+    padding: 25px 0 0 55px;
+  }
 
- div.like {
-   position: absolute;
-   bottom:-60px;
- }
+  .side-a .like-dislike-wrapper > div .like {
+  }
 
- div.dislike{
-   position: absolute;
-   bottom:-60px;
- }
- 
- #grid li div.like {
-   border-radius: 0px 0 0 20px;
-   padding-top: 8px;
- }
+  .side-a .like-dislike-wrapper > div .like:hover {
+  }
 
- #grid li div.dislike {
-   border-radius: 0 0px 20px 0;
-   padding-top: 8px;
- }
+  .side-a .like-dislike-wrapper > div .dislike {
+  }
 
- .wrap-flip div {
- border-radius: 20px;
- padding-bottom: 30px;
- } 
- .product:hover .dislike {
-  opacity: 1.0;
-  -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity; /* Safari and Chrome */
-  -o-transition-property: opacity; /* Opera */
-  transition-property:opacity;
-  -moz-transition-duration: .75s;
-  -webkit-transition-duration: .75s; /* Safari */
-  -o-transition-duration: .75s;
-  transition-duration: .75s;
-}
+  .side-a .like-dislike-wrapper > div a.likeicon {
+   
+  }
 
-.product:hover .like{
-  opacity: 1.0;
-  -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity; /* Safari and Chrome */
-  -o-transition-property: opacity; /* Opera */
-  transition-property:opacity;
-  -moz-transition-duration: .75s; /* Firefox 4 */
-  -webkit-transition-duration: .75s; /* Safari and Chrome */
-  -o-transition-duration: .75s; /* Opera */
-  transition-duration: .75s;
-}
-}
+  .side-a .like-dislike-wrapper > div a.likeicon:hover {
+    color: red;
+  }  
 
-div.liked {
-  opacity: 0.7;
-}
+  .side-a .like-dislike-wrapper > div a.dislikeicon:hover {
+    color: #FFCC11;
+  }
 
-a.liked {
-  color: red;
-}
+  .side-a img {
+    border-radius: 20px;
+    width: 100%;
+  }
 
-.wrap-flip {
-  -moz-transform: rotateY(180deg); /* Firefox 4 */
-  -webkit-transform: rotateY(180deg); /* Safari and Chrome */
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  -moz-transform-style: preserve-3d; /* Firefox 4 */
-  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
-  -o-transform-style: preserve-3d; /* Opera */
-  transform-style: preserve-3d; 
-}
+  /**
+   * Product Side-B
+   */
+  .side-b p {
+    display: none;
+  }  
 
-.side-a{
-  background-color: white;
-  position:absolute;
-  -moz-transform-style: preserve-3d; /* Firefox 4 */
-  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
-  -o-transform-style: preserve-3d; /* Opera */
-  transform-style: preserve-3d; 
-  -moz-backface-visibility: hidden; /* Firefox 4 */
-  -webkit-backface-visibility: hidden; /* Safari and Chrome */
-  -o-backface-visibility: hidden; /* Opera */
-  backface-visibility: hidden; 
-}
 
-.side-b{
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #33363B;  
-  height:100%;
-  width:100%;
-  -webkit-transform:rotateY(-180deg);
-  -moz-transform:rotateY(-180deg);
-  -o-transform: rotateY(-180deg);
-  transform:rotateY(-180deg);
-  -moz-transform-style: preserve-3d; /* Firefox 4 */
-  -webkit-transform-style: preserve-3d; /* Safari and Chrome */
-  -o-transform-style: preserve-3d; /* Opera */
-  transform-style: preserve-3d; 
-  -moz-backface-visibility: hidden; /* Firefox 4 */
-  -webkit-backface-visibility: hidden; /* Safari and Chrome */
-  -o-backface-visibility: hidden; /* Opera */
-  backface-visibility: hidden; 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
