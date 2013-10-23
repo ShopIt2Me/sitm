@@ -266,6 +266,7 @@ a.liked {
 }
 
 .side-a{
+  min-height: 280px;
   background-color: white;
   position:absolute;
   -moz-transform-style: preserve-3d; /* Firefox 4 */
@@ -279,12 +280,9 @@ a.liked {
 }
 
 .side-b{
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
   position:absolute !important;
   top: 0px;
-  background-color: #c6c6c6;  
+  background-color: white;  
   height:100%;
   width:100%;
   -webkit-transform:rotateY(-180deg);
@@ -301,7 +299,32 @@ a.liked {
   backface-visibility: hidden; 
 }
 
+.side-a-img {
+  box-shadow: none !important ;
+}
+
 p.title {
+  padding: 16px 10%;
+  height: 122px;
+  font-size: 20px;
   margin: 0 auto;
   text-align: center;
 }
+
+p.price {
+  margin: 16px auto 0px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.buy-button1 {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  height: 120px;
+  background-color: #63D1F4;
+}
+
+
+
