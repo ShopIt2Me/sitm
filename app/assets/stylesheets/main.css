@@ -104,11 +104,13 @@
   }
 
   .side-a .like-dislike-wrapper {
+    padding-top: 7%;
     display: none;
     font-family: 'linecons';
     position: absolute;
     height: 120px;
     width: 100%;
+    text-align: center;
   }
 
   .side-a:hover .like-dislike-wrapper {
@@ -123,7 +125,6 @@
     font-size: 4em;
     width: 50%;
     float: left;
-    padding: 25px 0 0 55px;
   }
 
   .side-a .like-dislike-wrapper > a.likeicon:hover {
