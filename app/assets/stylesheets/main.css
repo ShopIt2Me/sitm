@@ -68,30 +68,30 @@
    */
   .flipper {
     margin: 0 auto;
-    -moz-transition: -moz-transform .75s ease-in; 
-    -webkit-transition: -webkit-transform 1s ease-in; 
+    -moz-transition: -moz-transform .75s ease-in;
+    -webkit-transition: -webkit-transform 1s ease-in;
     -o-transition: -o-transform 1s ease-in;
     transition: transform 1s ease-in;
-    -moz-transform-style: preserve-3d; 
-    -webkit-transform-style: preserve-3d; 
-    -o-transform-style: preserve-3d; 
-    transform-style: preserve-3d; 
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
   }
 
   .flipper > div {
     -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     -o-backface-visibility: hidden;
-    backface-visibility: hidden; 
+    backface-visibility: hidden;
   }
 
   .flipping {
-    -moz-transform: rotateY(180deg); 
-    -webkit-transform: rotateY(180deg); 
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
-  
+
   .flipping .side-a:hover .like-dislike-wrapper {
     display: none;
   }
@@ -117,7 +117,8 @@
     opacity: 0.7;
   }
 
-  .side-a .like-dislike-wrapper > div {
+  .side-a .like-dislike-wrapper > a {
+    display: block;
     height: 60px;
     font-size: 4em;
     width: 50%;
@@ -125,11 +126,11 @@
     padding: 25px 0 0 55px;
   }
 
-  .side-a .like-dislike-wrapper > div a.likeicon:hover {
+  .side-a .like-dislike-wrapper > a.likeicon:hover {
     color: red;
-  }  
+  }
 
-  .side-a .like-dislike-wrapper > div a.dislikeicon:hover {
+  .side-a .like-dislike-wrapper > a.dislikeicon:hover {
     color: #FFCC11;
   }
 
@@ -143,7 +144,7 @@
    */
   .side-b {
     padding: 10px 20px 0 20px;
-    background-color: #33363B;  
+    background-color: #33363B;
     height:100%;
     width:100%;
     overflow: hidden;
@@ -177,11 +178,11 @@
 
   .liked .flipping .like-dislike-wrapper {
     display: none;
-  }  
-  
+  }
+
   .liked .flipping-forward .like-dislike-wrapper {
     display: none;
-  }  
+  }
 
 
 
