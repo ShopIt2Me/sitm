@@ -1,0 +1,23 @@
+@media screen and (max-width: 500px) {
+
+  #slider{
+    width: 140px;
+    height: 40px;
+    margin-right: 7px;
+  }
+  #toggleswitch{
+    top: 25%;
+    height: 30px;
+  }
+  #logo{
+    display: none;
+  }
+  #logo_sm{
+    display: inline;
+  }
+  .gender{
+    position: relative;
+    width: 21px;
+  }
+  
+}
