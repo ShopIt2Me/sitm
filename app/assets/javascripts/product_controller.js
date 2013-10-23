@@ -15,16 +15,15 @@ var ProductController = {
   },
 
   dislike: function(e){
+    e.preventDefault();
     $(this).closest('.product').remove();
     ProductController.$container.masonry();
-    e.preventDefault();
   },
 
   flip: function(e){
-    var returnIfClasses = ['like', 'dislike'];
-    $.each(returnIfClasses, function(i, klass) {
-      if ($(e.target).hasClass(klass)) return;
-    });
+    if ($(e.target).hasClass('like')) {
+      return;
+    }
 
     // 'this' will be the item on which we are listening for the event, *not* ProductController
     var $productItem = $(this);
