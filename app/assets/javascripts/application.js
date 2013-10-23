@@ -20,6 +20,15 @@
 //= require tooltipsy
 //= require_tree .
 
+$(document).ready(function(){
+  var $container = $('#grid');
+  $container.imagesLoaded(function(){
+    $container.masonry({
+      itemSelector: '.product'
+    });
+  });
+});
+
 // $(document).ready(function(){
 //   applyInfiniteScroll();
 //   applyBehaviors('ul.grid li');

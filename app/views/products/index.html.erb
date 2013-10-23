@@ -1,5 +1,8 @@
-<div class="container">
+<header>
   <%= render 'nav_bar' %>
+</header>
+
+<section class="container">
   <ul class="grid effect-1 transitions-enabled infinite-scroll clearfix masonry" id="grid">
     <%= render partial: "product_list", locals: {products: @products} %>
   </ul>
@@ -7,10 +10,12 @@
   <div id="page-nav">
     <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}&session_key=#{@simple_session[:session_key]}" %>
   </div>
+</section>
 
+<footer>
   <div id="infinite-scroll-end">
     <%= image_tag("clotheshanger.png", title: "=(") %>
     <p id="no_mo">No more similar products for your likes right now...</p>
     <%= link_to 'See what else is available!', "#", class: 'more-random' %>
   </div>
-</div>
+</footer>
