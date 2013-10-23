@@ -49,10 +49,8 @@ function applyInfiniteScroll() {
     nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
     itemSelector : '.item',        // selector for all items you'll retrieve
     loading: {
-      img: 'http://i.imgur.com/6RMhx.gif',
       msgText: '',
-      finishedMsg: '',
-      speed: 0
+      finishedMsg: ''
     },
     errorCallback: function() {
       $('#infinite-scroll-end').show();
