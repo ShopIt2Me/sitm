@@ -32,6 +32,11 @@ $(document).ready(function(){
   $container.on('click', 'li > div', function() {
     $(this).toggleClass('flipping')
   });
+
+  $container.on('click', '.like', function(e) {
+    $(this).closest('.product').addClass('liked');
+    return false;
+  });
 });
 
 // $(document).ready(function(){
