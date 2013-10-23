@@ -117,6 +117,10 @@
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
+  
+  .flipping .side-a:hover .like-dislike-wrapper {
+    display: none;
+  }
 
   /**
    * Product Side-A
@@ -137,10 +141,6 @@
     width: 100%;
     background: white;
     opacity: 0.7;
-  }
-
-  .flipping .side-a:hover .like-dislike-wrapper {
-    display: none;
   }
 
   .side-a .like-dislike-wrapper > div {
@@ -180,7 +180,7 @@
   /**
    * Product Side-B
    */
-  .flipper .side-b {
+  .side-b {
     padding: 10px 20px 0 20px;
     background-color: #33363B;  
     height:100%;
@@ -217,17 +217,3 @@
   text-align: center;
   margin: 40px auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
