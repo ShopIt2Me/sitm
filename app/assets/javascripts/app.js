@@ -1,8 +1,17 @@
 var App = {
+  init: function() {
+
+  },
+
+  bindEvents: function() {
+
+  },
+
   infiniteScroll: function(){
 
   },
-  navBar: function(){
+
+  selectGender: function(){
 
 
   }

@@ -2,12 +2,15 @@ $(document).ready(function(){
   init();
 });
 
-function init(){
+function init() {
   // initInfiniteScroll();
   // initDislike();
   // initGenderSlider();
   // initToolTips();
   // bindHandlers();
+
+  // App.init();
+  ProductController.init();
 }
 
 function bindHandlers(){
