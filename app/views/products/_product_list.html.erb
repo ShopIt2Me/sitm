@@ -5,21 +5,22 @@
 
       <div class="side-a">
         <div class="like-dislike-wrapper">
-
           <%= link_to like_product_path(product), method: :post, remote: true, class: 'like likeicon' do %>
             &#xe000;
           <% end %>
 
-
           <a class="dislike dislikeicon" href="#">&#xe028;</a>
-
         </div>
 
         <%= image_tag product.large_image, { alt: product.title, title: product.title} %>
       </div>
 
       <div class="side-b">
-        <p><%= product.title %></p>
+        <p class="title"><%= product.title_mini %></p>
+        <a class="buy-button" href= "<%= product.buylink %>" target= "_blank"> BUY
+          <%= image_tag("shoppingbag.svg", class: "bag", type: "image/svg+xml") %>
+        </a>
+        <p class="price"><%= product.price if product.price !="-"%></p>
       </div>
     </div>
 
