@@ -1,4 +1,4 @@
-var App = {
+var AppController = {
   init: function() {
 
   },
