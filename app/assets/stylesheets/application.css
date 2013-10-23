@@ -32,14 +32,19 @@
 .likeicon:hover {
   color: red;
 }
+@media screen and (min-width: 901px) {
 
-.dislikeicon:hover {
-  color: #FFCC11;
+  .dislikeicon:hover {
+    color: #FFCC11;
+  }
+
 }
+
 
 #navList li {
   display: inline;
 }
+
 
 #slider{
   float: right;
@@ -95,6 +100,8 @@
   transform-style: preserve-3d; 
 }
 
+
+
 div.like {
   height: 60px;
   position: absolute;
@@ -126,10 +133,11 @@ div.dislike{
   z-index: 100;
 }
 
+
 .product:hover .dislike {
   opacity: 0.7;
   -moz-transition-property: opacity; /* Firefox 4 */
-  -webkit-transition-property: opacity; /* Safari and Chrome */
+  -webkit-transition-property: opacity;  /*Safari and Chrome*/ 
   -o-transition-property: opacity; /* Opera */
   transition-property:opacity;
   -moz-transition-duration: .75s;
@@ -363,4 +371,5 @@ a.liked {
   -o-backface-visibility: hidden; /* Opera */
   backface-visibility: hidden; 
 }
+
 
