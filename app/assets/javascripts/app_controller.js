@@ -8,7 +8,6 @@ var AppController = {
     AppController.$infiniteScrollEnd = $('#infinite-scroll-end');
     AppController.loadRandomProductsUrl = $('#page-nav a').attr('href') + '&fill_with_random=true';
     AppController.bindEvents();
-
   },
 
   bindEvents: function() {
@@ -17,6 +16,7 @@ var AppController = {
     AppController.bindLoadMoreProducts();
     AppController.bindToolTips();
     AppController.bindGenderSlider();
+    AppController.bindModal();
     AppController.$container.on('click', '.like', AppController.reactivateInfiniteScroll);
   },
 
@@ -142,5 +142,9 @@ var AppController = {
     AppController.$both.data('tooltipsy').hide();
     AppController.$womens.data('tooltipsy').hide();
   },
+
+  bindModal: function(){
+    $('#welcome').modal();
+  }
 };
 
