@@ -7,11 +7,19 @@ var ProductController = {
   bindEvents: function() {
     ProductController.$container.on('click', '.flipper', ProductController.flip);
     ProductController.$container.on('click', '.dislike', ProductController.dislike);
+    ProductController.$container.on('click', '.like', ProductController.preventDuplicateLikes);
     ProductController.$container.on('ajax:success', '.like', ProductController.like);
   },
 
   like: function(e) {
     $(this).closest('.product').addClass('liked');
+  },
+
+  preventDuplicateLikes: function(e) {
+    if ($(this).closest('.liked').length) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   },
 
   dislike: function(e){
