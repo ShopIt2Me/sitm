@@ -37,7 +37,7 @@ var AppController = {
         finishedMsg: ''
       },
       errorCallback: function() {
-        $('#infinite-scroll-end').show();
+        AppController.showInfiniteScrollEnd();
       }
     }, function( newElements ) { // trigger Masonry as a callback
         // hide new items while they are loading
@@ -51,6 +51,10 @@ var AppController = {
     );
   },
 
+  showInfiniteScrollEnd: function() {
+    $('#infinite-scroll-end').show();
+  },
+
   bindLoadMoreProducts: function() {
 
   },
@@ -60,3 +64,4 @@ var AppController = {
 
   }
 }
+
