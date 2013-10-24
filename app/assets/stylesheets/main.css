@@ -111,7 +111,7 @@
    */
   .side-a {
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background-color: white;
   }
 
@@ -172,7 +172,7 @@
   .title {
     padding-left: 10%;
     padding-right: 10%;
-    height: 25%; 
+    height: 25%;
     font-size: 20px;
     text-align: center;
     margin: 0;
@@ -270,29 +270,39 @@
 }
 
 /**
- * Footer
+ * Modal
  */
- .modal-body {
+.modal {
+  text-align: center;
+}
+
+.modal-body {
   position: relative;
- }
+}
 
- .modal h2 {
+.modal h2 {
+  font-weight: lighter;
   margin: 0;
- }
+}
 
- .icon {
+.modal h3 {
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+.icon {
   font-family: 'linecons';
- }
+}
 
- .heart {
+.heart {
   color: red;
- }
+}
 
 .fire {
   color: #FF8C00;
 }
 
-#welcome-button { 
+#welcome-button {
   background: none no-repeat;
   cursor: pointer;
   display: block;
