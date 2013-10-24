@@ -37,34 +37,34 @@
   display: inline;
 }
 
-#navList li #logo {
+#logo {
   margin-top: 5px;
 }
 
-#navList li #logo_sm {
+#logo_sm {
   margin-top: 5px;
   display: none;
 }
 
-#navList li#slider {
+#slider {
   float: right;
   width: 200px;
   height: 40px;
   margin-right: 20px;
 }
 
-#navList li#slider #toggleswitch {
+#toggleswitch {
   position: relative;
   top: 37%;
   height: 35px;
 }
 
-#navList li#slider #toggleswitch img.gender {
+.gender {
   width: 27px;
   height: 35px;
 }
 
-#navList li#slider #toggleswitch div#bothgenders {
+#bothgenders {
   min-width: 40px;
 }
 
@@ -77,7 +77,7 @@
   }
 
   .product {
-    cursor: pointer;
+    margin: 0 auto 10px auto;
   }
 
   /**
