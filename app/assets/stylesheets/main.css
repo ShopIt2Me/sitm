@@ -166,7 +166,7 @@
     transform:rotateY(-180deg);
   }
 
-  .side-b p.title {
+  .title {
     padding-left: 10%;
     padding-right: 10%;
     height: 80px;
@@ -177,7 +177,7 @@
     position: relative;
   }
 
-  .side-b p.price {
+  .price {
     position: relative;
     text-align: center;
     font-weight: 600;
@@ -186,7 +186,7 @@
     top: 10%;
   }
 
-  .side-b a.buy-button {
+  .buy-button {
     position: relative;
     top: 6%;
     margin: 0 auto;
@@ -203,7 +203,7 @@
     transform-style: preserve-3d;
   }
 
-  .side-b a.buy-button img {
+  .buy-button img {
     margin: 0 auto;
   }
 
