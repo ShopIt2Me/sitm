@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     update_session
   	@products = Product.all.shuffle.shift(20)
     @simple_session.update_displayed_ids(@products)
-    @simple_session[:value][:randomized_times] = rand(4..7)
+    @simple_session[:value][:randomized_times] = rand(8..12)
     @simple_session.save
   end
 

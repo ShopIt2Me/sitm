@@ -12,7 +12,7 @@ module ProductsControllerHelper
 
   def handle_randomized_times_result_session(params)
     if params[:fill_with_random]
-      @simple_session[:value][:randomized_times] = rand(4..7)
+      @simple_session[:value][:randomized_times] = rand(6..10)
       @simple_session.save
     end
 
