@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def like
-    product_id = params[:product_id].to_i
+    product_id = params[:id].to_i
     missing = Product.find(product_id).identify_missing_asins
     ProductPrioritySet.add_to_set(product_id, missing)
     @simple_session.update_liked_ids(product_id)

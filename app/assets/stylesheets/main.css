@@ -1,21 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require default
- *= require toggle-switch
- *= require component
- *= require_tree .
- */
-
-/*
  * NAVBAR
  */
 #navbar {
@@ -37,34 +20,34 @@
   display: inline;
 }
 
-#navList li #logo {
+#logo {
   margin-top: 5px;
 }
 
-#navList li #logo_sm {
+#logo_sm {
   margin-top: 5px;
   display: none;
 }
 
-#navList li#slider {
+#slider {
   float: right;
   width: 200px;
   height: 40px;
   margin-right: 20px;
 }
 
-#navList li#slider #toggleswitch {
+#toggleswitch {
   position: relative;
   top: 37%;
   height: 35px;
 }
 
-#navList li#slider #toggleswitch img.gender {
+.gender {
   width: 27px;
   height: 35px;
 }
 
-#navList li#slider #toggleswitch div#bothgenders {
+#bothgenders {
   min-width: 40px;
 }
 
@@ -121,58 +104,38 @@
   }
 
   .side-a .like-dislike-wrapper {
+    display: none;
     font-family: 'linecons';
     position: absolute;
     height: 120px;
     width: 100%;
-    background: white;
-    opacity: 0;
   }
 
   .side-a:hover .like-dislike-wrapper {
+    display: block;
+    background: white;
     opacity: 0.7;
-    -moz-transition-property: opacity;
-    -webkit-transition-property: opacity;
-    -o-transition-property: opacity;
-    transition-property:opacity;
-    -moz-transition-duration: .5s;
-    -webkit-transition-duration: .5s;
-    -o-transition-duration: .5s;
-    transition-duration: .5s;
   }
 
-  .side-a .like-dislike-wrapper > div {
+  .side-a .like-dislike-wrapper > a {
+    display: block;
     height: 60px;
-    font-size: 63px;
+    font-size: 4em;
     width: 50%;
     float: left;
     padding: 25px 0 0 55px;
   }
 
-  .side-a .like-dislike-wrapper > div .like {
-  }
-
-  .side-a .like-dislike-wrapper > div .like:hover {
-  }
-
-  .side-a .like-dislike-wrapper > div .dislike {
-  }
-
-  .side-a .like-dislike-wrapper > div a.likeicon {
-
-  }
-
-  .side-a .like-dislike-wrapper > div a.likeicon:hover {
+  .side-a .like-dislike-wrapper > a.likeicon:hover {
     color: red;
   }
 
-  .side-a .like-dislike-wrapper > div a.dislikeicon:hover {
+  .side-a .like-dislike-wrapper > a.dislikeicon:hover {
     color: #FFCC11;
   }
 
   .side-a img {
     width: 100%;
-    min-height: 280px;
     box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
   }
 
@@ -180,6 +143,7 @@
    * Product Side-B
    */
   .side-b {
+    padding: 10px 20px 0 20px;
     background-color: #33363B;
     height:100%;
     width:100%;
@@ -194,46 +158,34 @@
     transform:rotateY(-180deg);
   }
 
-  .side-b p.title {
-    padding-left: 10%;
-    padding-right: 10%;
-    height: 80px;
-    font-size: 20px;
-    text-align: center;
-    margin: 0;
-    top: 6%;
-    position: relative;
+  /**
+   * Liked product
+   */
+
+  .liked .side-a .like-dislike-wrapper {
+    display: block;
+    background-color: white;
+    opacity: 0.7;
   }
 
-  .side-b p.price {
-    position: relative;
-    text-align: center;
-    font-weight: 600;
-    font-size: 18px;
-    margin: 0 auto;
-    top: 10%;
+  .liked .side-a a.likeicon {
+    color: red;
   }
 
-  .side-b a.buy-button {
-    position: relative;
-    top: 6%;
-    margin: 0 auto;
-    text-align: center;
-    width: 50%;
-    height: 120px;
-    background-color: #63D1F4;
-    color: black;
-    border-radius: 20px;
-    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-    -moz-transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+  .liked .side-a a.dislikeicon {
+    display: none;
   }
 
-  .side-b a.buy-button img {
-    margin: 0 auto;
+  .liked .flipping .like-dislike-wrapper {
+    display: none;
   }
+
+  .liked .flipping-forward .like-dislike-wrapper {
+    display: none;
+  }
+
+
+
 /**
  * Footer
  */

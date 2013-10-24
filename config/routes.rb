@@ -3,11 +3,12 @@ Sitm::Application.routes.draw do
   root 'products#index'
 
   post '/products/like' => 'products#like'
+  post '/products/:id/like' => 'products#like', as: :like_product
 
   get '/products/load', to: 'products#load'
 
   post '/sessions/set_pref_dept' => 'sessions#set_pref_dept'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -48,7 +49,7 @@ Sitm::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
