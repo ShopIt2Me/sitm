@@ -1,7 +1,9 @@
 var AppController = {
   init: function() {
-
     AppController.ensureCorrectAJAXSessionTokens();
+    AppController.$mens = $("#mens");
+    AppController.$both = $("#both");
+    AppController.$womens = $("#womens");
     AppController.$container = $('#grid');
     AppController.$infiniteScrollEnd = $('#infinite-scroll-end');
     AppController.loadRandomProductsUrl = $('#page-nav a').attr('href') + '&fill_with_random=true';
@@ -10,11 +12,11 @@ var AppController = {
   },
 
   bindEvents: function() {
+    AppController.bindToolTips();
+    AppController.bindGenderSlider();
     AppController.bindMasonry();
     AppController.bindInfiniteScroll();
     AppController.bindLoadMoreProducts();
-    AppController.bindTooltips();
-
     AppController.$container.on('click', '.like', AppController.reactivateInfiniteScroll);
   },
 
@@ -77,7 +79,7 @@ var AppController = {
           });
         }).done(function() {
           isAjaxHappening = false;
-        })
+        });
       }
 
       return false;
@@ -102,28 +104,38 @@ var AppController = {
     AppController.$infiniteScrollEnd.hide();
   },
 
-  selectGender: function() {
-
+  bindGenderSlider: function() {
+    AppController.$mens.on("click", AppController.selectGender);
+    AppController.$both.on("click", AppController.selectGender);
+    AppController.$womens.on("click", AppController.selectGender);
   },
 
-  bindTooltips: function(){
-    $('#men').tooltipsy({
-    content: "Only men's selection loading next",
-    offset: [-10, 20]
+  selectGender: function() {
+    AppController.hideAllToolTips();
+    $(this).data('tooltipsy').show();
+    $.post('sessions/set_pref_dept', {prefererred_dept: $(this).attr("id")});
+    setTimeout(AppController.hideAllToolTips, 2000);
+  },
+
+  bindToolTips: function() {
+    AppController.$mens.tooltipsy({
+      content: "Men's selection loading next",
+      offset: [-10, 20]
     });
-    $('#both').tooltipsy({
+    AppController.$both.tooltipsy({
       content: "Men's and women's selection loading next",
       offset: [-10, 20]
     });
-    $('#women').tooltipsy({
-      content: "Only women's selection loading next",
+    AppController.$womens.tooltipsy({
+      content: "Women's selection loading next",
       offset: [-10, 20]
     });
   },
 
-  hideAllToolTips: function(){
-    $('#men').data('tooltipsy').hide();
-    $('#both').data('tooltipsy').hide();
-    $('#women').data('tooltipsy').hide();
-  }
-}
+  hideAllToolTips: function() {
+    AppController.$mens.data('tooltipsy').hide();
+    AppController.$both.data('tooltipsy').hide();
+    AppController.$womens.data('tooltipsy').hide();
+  },
+};
+
