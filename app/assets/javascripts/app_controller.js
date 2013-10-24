@@ -44,8 +44,10 @@ var AppController = {
       itemSelector : '.product',     // selector for all items you'll retrieve
       loading: {
         msgText: '',
-        finishedMsg: ''
+        finishedMsg: '',
+        speed: 0
       },
+      animate: false,
       errorCallback: function() {
         // infiniteScroll calls this method when it gets an empty response
         // show footer with load more items link
