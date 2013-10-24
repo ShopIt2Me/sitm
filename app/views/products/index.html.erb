@@ -14,8 +14,11 @@
 
 <footer>
   <div id="infinite-scroll-end">
-    <%= image_tag("clotheshanger.png", title: "=(") %>
+    <a href="#" class="more-random">
+      <%= image_tag("clotheshanger.png", title: "=(") %>
+    </a>
     <p id="no_mo">No more similar products for your likes right now...</p>
-    <%= link_to 'See what else is available!', "#", class: 'more-random' %>
+    <a href="#top">Like more</a> or 
+    <%= link_to 'see what else is available!', "#", class: 'more-random' %>
   </div>
 </footer>
