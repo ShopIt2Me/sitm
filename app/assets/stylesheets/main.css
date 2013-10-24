@@ -269,3 +269,23 @@
   text-align: center;
   margin: 40px auto;
 }
+
+/**
+ * Footer
+ */
+ .modal-body {
+  position: relative;
+ }
+
+ .modal-button {
+  cursor: pointer;
+  display: block;
+  width: 95px;
+  height: 95px;
+  margin: auto;
+  margin-bottom: 20px;
+ }
+
+ .modal-button:hover{
+  
+ }
