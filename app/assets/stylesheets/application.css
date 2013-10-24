@@ -11,6 +11,7 @@
  *= require_self
  *= require default
  *= require toggle-switch
+ *= require bootstrap
  *= require component
  *= require_tree .
  */

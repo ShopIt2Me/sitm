@@ -21,3 +21,24 @@
   }
   
 }
+@media screen and (max-device-width: 500px) {
+
+  #welcome-button { 
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    margin-bottom: 20px;
+    background-image: url("gotit60.png");
+  }
+
+  #welcome-button:active {
+    background-position: -60px 0;
+  }
+  
+  .modal h2,
+  .modal h3 {
+    font-size: medium;
+  }
+  
+}
+

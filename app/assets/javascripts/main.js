@@ -3,17 +3,9 @@ $(document).ready(function(){
 });
 
 function init() {
-  // initInfiniteScroll();
-  // initDislike();
-  // initGenderSlider();
-  // bindHandlers();
-
   ProductController.init();
   AppController.init();
+  $('#welcome').modal()
 }
 
-function bindHandlers(){
 
-  //bind to like AJAX
-  //bind to load more randoms
-}
