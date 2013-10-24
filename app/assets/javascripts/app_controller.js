@@ -28,6 +28,27 @@ var AppController = {
   },
 
   bindInfiniteScroll: function() {
+    AppController.$container.infinitescroll({
+      navSelector  : '#page-nav',    // selector for the paged navigation
+      nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
+      itemSelector : '.product',        // selector for all items you'll retrieve
+      loading: {
+        msgText: '',
+        finishedMsg: ''
+      },
+      errorCallback: function() {
+        $('#infinite-scroll-end').show();
+      }
+    }, function( newElements ) { // trigger Masonry as a callback
+        // hide new items while they are loading
+        var $newElems = $( newElements );
+        // ensure that images load before adding to masonry layout
+        $newElems.imagesLoaded(function(){
+          AppController.$container.masonry( 'appended', $newElems, true );
+          applyBehaviors($newElems);
+        });
+      }
+    );
   },
 
   bindLoadMoreProducts: function() {
