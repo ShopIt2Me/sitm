@@ -5,7 +5,6 @@ $(document).ready(function(){
 function init() {
   ProductController.init();
   AppController.init();
-  $('#welcome').modal()
 }
 
 
