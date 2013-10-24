@@ -14,6 +14,8 @@ var AppController = {
     AppController.bindInfiniteScroll();
     AppController.bindLoadMoreProducts();
     AppController.bindTooltips();
+
+    AppController.$container.on('click', '.like', AppController.reactivateInfiniteScroll);
   },
 
   ensureCorrectAJAXSessionTokens: function() {
@@ -45,25 +47,17 @@ var AppController = {
       errorCallback: function() {
         // infiniteScroll calls this method when it gets an empty response
         // show footer with load more items link
-        AppController.showInfiniteScrollEnd();
+        AppController.$infiniteScrollEnd.show();
       }
     }, function(newElements) { // trigger Masonry as a callback
         // hide new items while they are loading
         var $newElems = $(newElements);
         // ensure that images load before adding to masonry layout
-        $newElems.imagesLoaded(function(){
+        $newElems.imagesLoaded(function() {
           AppController.$container.masonry('appended', $newElems, true);
         });
       }
     );
-  },
-
-  showInfiniteScrollEnd: function() {
-    AppController.$infiniteScrollEnd.show();
-  },
-
-  hideInfiniteScrollEnd: function() {
-    AppController.$infiniteScrollEnd.hide();
   },
 
   bindLoadMoreProducts: function() {
@@ -79,7 +73,6 @@ var AppController = {
           AppController.$container.append(filteredResponse);
           AppController.$container.imagesLoaded(function(){
             AppController.$container.masonry('appended', filteredResponse, true);
-            AppController.hideInfiniteScrollEnd();
             AppController.reactivateInfiniteScroll();
           });
         }).done(function() {
@@ -106,6 +99,7 @@ var AppController = {
       }
     });
     AppController.$container.infinitescroll('bind');
+    AppController.$infiniteScrollEnd.hide();
   },
 
   selectGender: function() {
