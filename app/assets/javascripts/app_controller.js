@@ -105,6 +105,7 @@ var AppController = {
       }
     });
     AppController.$container.infinitescroll('bind');
+    AppController.$container.find('#infscr-loading img').show();
     AppController.$infiniteScrollEnd.hide();
   },
 
