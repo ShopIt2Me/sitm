@@ -13,8 +13,6 @@
     position: relative;
   }
 
-  .flipping .like-dislike-wrapper:hover,
-  .flipping .like-dislike-wrapper,
   .side-a:hover .like-dislike-wrapper, 
   .side-a .like-dislike-wrapper, 
   .side-a .like-dislike-wrapper:hover {
@@ -24,8 +22,12 @@
     background: white;
   }
 
-  .flipped .like-dislike-wrapper:hover,
-  .flipped .like-dislike-wrapper {
-    visibility: hidden;
+  .flipping-forward .like-dislike-wrapper:hover,
+  .flipping-forward .like-dislike-wrapper,
+  .flipping .like-dislike-wrapper:hover,
+  .flipping .like-dislike-wrapper,
+  .flipped .side-a .like-dislike-wrapper:hover,
+  .flipped .side-a .like-dislike-wrapper {
+    display: none;
   }
 }
