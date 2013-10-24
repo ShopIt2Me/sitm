@@ -1,7 +1,6 @@
 var AppController = {
   init: function() {
     AppController.ensureCorrectAJAXSessionTokens();
-
     AppController.$mens = $("#mens");
     AppController.$both = $("#both");
     AppController.$womens = $("#womens");
@@ -9,6 +8,7 @@ var AppController = {
     AppController.$infiniteScrollEnd = $('#infinite-scroll-end');
     AppController.loadRandomProductsUrl = $('#page-nav a').attr('href') + '&fill_with_random=true';
     AppController.bindEvents();
+
   },
 
   bindEvents: function() {
@@ -145,3 +145,4 @@ var AppController = {
     AppController.$womens.data('tooltipsy').hide();
   },
 };
+
