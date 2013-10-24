@@ -8,7 +8,7 @@
   </ul>
 
   <div id="page-nav">
-    <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}&session_key=#{@simple_session[:session_key]}" %>
+    <%= link_to 'More Products', "/products/load?page=#{Time.now.to_i}" %>
   </div>
 </section>
 
@@ -18,7 +18,7 @@
       <%= image_tag("clotheshanger.png", title: "=(") %>
     </a>
     <p id="no_mo">No more similar products for your likes right now...</p>
-    <a href="#top">Like more</a> or 
+    <a href="#top">Like more</a> or
     <%= link_to 'see what else is available!', "#", class: 'more-random' %>
   </div>
 </footer>
