@@ -21,32 +21,6 @@
 //= require main
 //= require_tree .
 
-$(document).ready(function(){
-  var $container = $('#grid');
-  $container.imagesLoaded(function(){
-    $container.masonry({
-      itemSelector: '.product'
-    });
-  });
-
-
-});
-
-// $(document).ready(function(){
-//   applyInfiniteScroll();
-//   applyBehaviors('ul.grid li');
-//   initToolTips();
-//   initGenderSlider();
-// });
-
-// function applyBehaviors(elements) {
-//   elements = $(elements);
-//   elements.find('.like').click(callLikeAction);
-//   elements.find('.dislike').click(removeProduct);
-//   elements.find('.side-b').click(flipBack);
-//   elements.find('.side-a').click(flipForward);
-// }
-
 // function applyInfiniteScroll() {
 //   var $container = $('#grid');
 
