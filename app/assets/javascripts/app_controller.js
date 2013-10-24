@@ -2,17 +2,21 @@ var AppController = {
   init: function() {
     AppController.ensureCorrectAJAXSessionTokens();
 
+    AppController.$mens = $("#mens");
+    AppController.$both = $("#both");
+    AppController.$womens = $("#womens");
     AppController.$container = $('#grid');
     AppController.$infiniteScrollEnd = $('#infinite-scroll-end');
     AppController.loadRandomProductsUrl = $('#page-nav a').attr('href') + '&fill_with_random=true';
-
     AppController.bindEvents();
   },
 
   bindEvents: function() {
+    AppController.bindToolTips();
     AppController.bindMasonry();
     AppController.bindInfiniteScroll();
     AppController.bindLoadMoreProducts();
+    AppController.bindGenderSlider();
   },
 
   ensureCorrectAJAXSessionTokens: function() {
@@ -83,7 +87,7 @@ var AppController = {
           });
         }).done(function() {
           isAjaxHappening = false;
-        })
+        });
       }
 
       return false;
@@ -107,7 +111,37 @@ var AppController = {
     AppController.$container.infinitescroll('bind');
   },
 
-  selectGender: function() {
+  bindGenderSlider: function() {
+    AppController.$mens.on("click", AppController.selectGender);
+    AppController.$both.on("click", AppController.selectGender);
+    AppController.$womens.on("click", AppController.selectGender);
+  },
 
-  }
-}
+  selectGender: function() {
+    AppController.hideAllToolTips();
+    $(this).data('tooltipsy').show();
+    $.post('sessions/set_pref_dept', {prefererred_dept: $(this).attr("id")});
+    setTimeout(AppController.hideAllToolTips, 2000);
+  },
+
+  bindToolTips: function() {
+    AppController.$mens.tooltipsy({
+      content: "Men's selection loading next",
+      offset: [-10, 20]
+    });
+    AppController.$both.tooltipsy({
+      content: "Men's and women's selection loading next",
+      offset: [-10, 20]
+    });
+    AppController.$womens.tooltipsy({
+      content: "Women's selection loading next",
+      offset: [-10, 20]
+    });
+  },
+
+  hideAllToolTips: function() {
+    AppController.$mens.data('tooltipsy').hide();
+    AppController.$both.data('tooltipsy').hide();
+    AppController.$womens.data('tooltipsy').hide();
+  },
+};
