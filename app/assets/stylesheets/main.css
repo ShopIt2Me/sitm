@@ -295,11 +295,11 @@
 }
 
 .heart {
-  color: red;
+  color: #c0392b;
 }
 
 .fire {
-  color: #FF8C00;
+  color: #e67e22;
 }
 
 #welcome-button {
@@ -317,6 +317,11 @@
 
 #welcome-button:active {
   background-position: -95px 0;
+}
+
+#welcome-bag {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #hint {
