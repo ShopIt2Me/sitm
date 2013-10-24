@@ -148,7 +148,7 @@
   }
 
   .side-a img {
-    width: 100%;
+    margin: 0 auto;
   }
 
   /**
@@ -252,10 +252,9 @@
  */
 #infscr-loading {
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 30px;
   text-align: center;
-  transition: none;
 }
 
 #page-nav {
