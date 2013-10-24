@@ -1,0 +1,33 @@
+@media screen and (max-width: 900px) {
+
+  .side-a {
+    position: relative;
+    background-color: white;
+  }
+  
+  .side-a img {
+    padding-bottom: 120px
+  }  
+
+  .flipper {
+    position: relative;
+  }
+
+  .side-a:hover .like-dislike-wrapper, 
+  .side-a .like-dislike-wrapper, 
+  .side-a .like-dislike-wrapper:hover {
+    display: block;
+    bottom: 0;
+    opacity: 1;
+    background: white;
+  }
+
+  .flipping-forward .like-dislike-wrapper:hover,
+  .flipping-forward .like-dislike-wrapper,
+  .flipping .like-dislike-wrapper:hover,
+  .flipping .like-dislike-wrapper,
+  .flipped .side-a .like-dislike-wrapper:hover,
+  .flipped .side-a .like-dislike-wrapper {
+    display: none;
+  }
+}

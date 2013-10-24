@@ -1,0 +1,261 @@
+/*
+ * NAVBAR
+ */
+#navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  position: fixed;
+  z-index: 500;
+  top: 0;
+}
+
+#navList {
+  list-style-type: none;
+  display: inline;
+  margin-top: 0;
+  padding: .3em .7em;
+}
+
+#navList li {
+  display: inline;
+}
+
+#logo {
+  margin-top: 5px;
+}
+
+#logo_sm {
+  margin-top: 5px;
+  display: none;
+}
+
+#slider {
+  float: right;
+  width: 200px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+#toggleswitch {
+  position: relative;
+  top: 37%;
+  height: 35px;
+}
+
+.gender {
+  width: 27px;
+  height: 35px;
+}
+
+#bothgenders {
+  min-width: 40px;
+}
+
+.tooltipsy{
+  color: #333;
+  padding: 10px;
+  max-width: 200px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 5px;
+}
+
+  /**
+   * Grid
+   */
+  #grid li {
+    border: 10px solid transparent;
+    padding: 0;
+  }
+
+  .product {
+    cursor: pointer;
+  }
+
+  /**
+   * FLIPS!
+   */
+  .flipper {
+    margin: 0 auto;
+    -moz-transition: -moz-transform .75s ease-in;
+    -webkit-transition: -webkit-transform 1s ease-in;
+    -o-transition: -o-transform 1s ease-in;
+    transition: transform 1s ease-in;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+  }
+
+  .flipper > div {
+    min-height: 280px;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flipping {
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+
+  .flipping .side-a:hover .like-dislike-wrapper {
+    display: none;
+  }
+
+  /**
+   * Product Side-A
+   */
+  .side-a {
+    width: 100%;
+    height: 100%; 
+    background-color: white;
+  }
+
+  .side-a .like-dislike-wrapper {
+    padding-top: 7%;
+    display: none;
+    font-family: 'linecons';
+    position: absolute;
+    height: 120px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .side-a:hover .like-dislike-wrapper {
+    display: block;
+    background: white;
+    opacity: 0.7;
+  }
+
+  .side-a .like-dislike-wrapper > a {
+    display: block;
+    height: 60px;
+    font-size: 4em;
+    width: 50%;
+    float: left;
+  }
+
+  .side-a .like-dislike-wrapper > a.likeicon:hover {
+    color: red;
+  }
+
+  .side-a .like-dislike-wrapper > a.dislikeicon:hover {
+    color: #FFCC11;
+  }
+
+  .side-a img {
+    width: 100%;
+  }
+
+  /**
+   * Product Side-B
+   */
+  .side-b {
+    background-color: ghostwhite;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+    -webkit-transform:rotateY(-180deg);
+    -moz-transform:rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform:rotateY(-180deg);
+  }
+
+  .title {
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 25%; 
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    top: 6%;
+    position: relative;
+  }
+
+  .price {
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 auto;
+    top: 10%;
+  }
+
+  .buy-button {
+    position: relative;
+    top: 6%;
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    height: 120px;
+    background-color: #63D1F4;
+    color: black;
+    border-radius: 20px;
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .buy-button img {
+    margin: 0 auto;
+  }
+
+  /**
+   * Liked product
+   */
+
+  .liked .side-a .like-dislike-wrapper {
+    display: block;
+    background-color: white;
+    opacity: 0.7;
+  }
+
+  .liked .side-a a.likeicon {
+    color: red;
+  }
+
+  .liked .side-a a.dislikeicon {
+    display: none;
+  }
+
+  .liked .flipping .like-dislike-wrapper {
+    display: none;
+  }
+
+  .liked .flipping-forward .like-dislike-wrapper {
+    display: none;
+  }
+
+
+
+/**
+ * Footer
+ */
+#infscr-loading {
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  text-align: center;
+  transition: none;
+}
+
+#page-nav {
+  display: none;
+}
+
+#infinite-scroll-end {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin: 40px auto;
+}

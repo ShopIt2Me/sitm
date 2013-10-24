@@ -18,7 +18,7 @@ describe ProductsController do
 
   context "when a user likes a product" do
     it "should add liked product id to array of liked product ids in session value" do
-      post :like, product_id: prod1.id
+      post :like, id: prod1.id
 
       expect(SimpleSession.last.ary_of_likes).to eq([prod1.id])
     end

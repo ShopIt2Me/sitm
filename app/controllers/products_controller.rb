@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     update_session
   	@products = Product.all.shuffle.shift(20)
     @simple_session.update_displayed_ids(@products)
-    @simple_session[:value][:randomized_times] = rand(4..7)
+    @simple_session[:value][:randomized_times] = rand(8..12)
     @simple_session.save
   end
 
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def like
-    product_id = params[:product_id].to_i
+    product_id = params[:id].to_i
     missing = Product.find(product_id).identify_missing_asins
     ProductPrioritySet.add_to_set(product_id, missing)
     @simple_session.update_liked_ids(product_id)
