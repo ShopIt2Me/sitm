@@ -276,8 +276,23 @@
  .modal-body {
   position: relative;
  }
+ .modal-body h3 {
+  font-weight: lighter;
+ }
 
-#welcome-button{ 
+ .icon {
+  font-family: 'linecons';
+ }
+
+ .heart {
+  color: red;
+ }
+
+.fire {
+  color: #FF8C00;
+}
+
+#welcome-button { 
   background: none no-repeat;
   cursor: pointer;
   display: block;
@@ -290,6 +305,11 @@
   line-height: 0px;
 }
 
-#welcome-button:active{
+#welcome-button:active {
   background-position: -95px 0;
+}
+
+#hint {
+  font-size: smaller;
+  margin: 20px;
 }
