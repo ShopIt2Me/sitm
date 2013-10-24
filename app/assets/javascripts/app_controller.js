@@ -121,7 +121,7 @@ var AppController = {
 
   bindToolTips: function() {
     AppController.$mens.tooltipsy({
-      content: "Men's selection loading next",
+      content: "Only men's selection loading next",
       offset: [-10, 20]
     });
     AppController.$both.tooltipsy({
@@ -129,7 +129,7 @@ var AppController = {
       offset: [-10, 20]
     });
     AppController.$womens.tooltipsy({
-      content: "Women's selection loading next",
+      content: "Only women's selection loading next",
       offset: [-10, 20]
     });
   },
