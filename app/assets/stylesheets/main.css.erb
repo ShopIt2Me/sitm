@@ -148,7 +148,7 @@
   }
 
   .side-a img {
-    width: 100%;
+    margin: 0 auto;
   }
 
   /**
@@ -252,10 +252,9 @@
  */
 #infscr-loading {
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 30px;
   text-align: center;
-  transition: none;
 }
 
 #page-nav {
@@ -310,7 +309,7 @@
   height: 95px;
   margin: auto;
   margin-bottom: 20px;
-  background-image: url("gotit.png");
+  background-image: url(<%= asset_path "gotit.png" %>);
   text-indent: -15000px;
   line-height: 0px;
 }
