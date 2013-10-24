@@ -6,7 +6,6 @@ function init() {
   // initInfiniteScroll();
   // initDislike();
   // initGenderSlider();
-    AppController.init();
   // bindHandlers();
 
   ProductController.init();
