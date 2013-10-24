@@ -12,11 +12,11 @@ var AppController = {
   },
 
   bindEvents: function() {
-    AppController.bindToolTips();
-    AppController.bindGenderSlider();
     AppController.bindMasonry();
     AppController.bindInfiniteScroll();
     AppController.bindLoadMoreProducts();
+    AppController.bindToolTips();
+    AppController.bindGenderSlider();
     AppController.$container.on('click', '.like', AppController.reactivateInfiniteScroll);
   },
 
@@ -72,11 +72,13 @@ var AppController = {
 
           var filteredResponse = AppController.filterProductsAJAXResponse(response);
 
-          AppController.$container.append(filteredResponse);
-          AppController.$container.imagesLoaded(function(){
-            AppController.$container.masonry('appended', filteredResponse, true);
-            AppController.reactivateInfiniteScroll();
-          });
+          if (filteredResponse.length) {
+            AppController.$container.append(filteredResponse);
+            AppController.$container.imagesLoaded(function(){
+              AppController.$container.masonry('appended', filteredResponse, true);
+              AppController.reactivateInfiniteScroll();
+            });
+          }
         }).done(function() {
           isAjaxHappening = false;
         });
@@ -113,7 +115,7 @@ var AppController = {
   selectGender: function() {
     AppController.hideAllToolTips();
     $(this).data('tooltipsy').show();
-    $.post('sessions/set_pref_dept', {prefererred_dept: $(this).attr("id")});
+    $.post('sessions/set_pref_dept', {preferred_dept: $(this).attr("id")});
     setTimeout(AppController.hideAllToolTips, 2000);
   },
 
