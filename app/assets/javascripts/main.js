@@ -9,8 +9,8 @@ function init() {
   // initToolTips();
   // bindHandlers();
 
-  // AppController.init();
   ProductController.init();
+  AppController.init();
 }
 
 function bindHandlers(){
