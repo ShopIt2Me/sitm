@@ -1,18 +1,19 @@
 var AppController = {
   init: function() {
-    AppController.ensureCorrectAJAXSessionTokens();
 
+    AppController.ensureCorrectAJAXSessionTokens();
     AppController.$container = $('#grid');
     AppController.$infiniteScrollEnd = $('#infinite-scroll-end');
     AppController.loadRandomProductsUrl = $('#page-nav a').attr('href') + '&fill_with_random=true';
-
     AppController.bindEvents();
+
   },
 
   bindEvents: function() {
     AppController.bindMasonry();
     AppController.bindInfiniteScroll();
     AppController.bindLoadMoreProducts();
+    AppController.bindTooltips();
   },
 
   ensureCorrectAJAXSessionTokens: function() {
@@ -109,5 +110,26 @@ var AppController = {
 
   selectGender: function() {
 
+  },
+
+  bindTooltips: function(){
+    $('#men').tooltipsy({
+    content: "Only men's selection loading next",
+    offset: [-10, 20]
+    });
+    $('#both').tooltipsy({
+      content: "Men's and women's selection loading next",
+      offset: [-10, 20]
+    });
+    $('#women').tooltipsy({
+      content: "Only women's selection loading next",
+      offset: [-10, 20]
+    });
+  },
+
+  hideAllToolTips: function(){
+    $('#men').data('tooltipsy').hide();
+    $('#both').data('tooltipsy').hide();
+    $('#women').data('tooltipsy').hide();
   }
 }
