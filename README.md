@@ -5,9 +5,7 @@ Shopit2me's production app can be found at [shop-me.herokuapp.com](http://shop-m
 Developer Setup:
 * Bundle gems: `$bundle`
 
-* Initialize the database:
-	*`$rake db:create`
-	*`$rake db:migrate`
+* Initialize the database: `$rake db:create`, `$rake db:migrate`
 
 * Create .env file to store API information
   `$touch .env.development`
