@@ -17,3 +17,5 @@ ASSOCIATE_TAG=Amazon-associate-tag
 
 * Seed database: `$rake db:seed`
 
+* Run server: `$rails s`
+
