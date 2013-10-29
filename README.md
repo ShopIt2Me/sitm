@@ -1,6 +1,6 @@
 Shop.me is a web application aimed to provide you with curated products based on your likes and dislikes. With a sleek, dynamic and simple UI you can browse for your next favorite look. Built upon Amazon's product advertising API, you can checkout directly with Amazon. 
 
-Shopit2me's production app can be found at [shop-me.herokuapp.com](http://shop-me.herokuapp.com).
+Shop.me's production app can be found at [shop-me.herokuapp.com](http://shop-me.herokuapp.com).
 
 Developer Setup:
 * Bundle gems: `$bundle`
